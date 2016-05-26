@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 26.05.2016 23:53:38 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="table.ListOsmotra" table="LISTOSMOTRA">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="dateTime" type="java.sql.Timestamp">
+            <column name="DATETIME" />
+        </property>
+        <property name="reason" type="java.lang.String">
+            <column name="REASON" />
+        </property>
+        <property name="complaints" type="java.lang.String">
+            <column name="COMPLAINTS" />
+        </property>
+        <property name="lY" type="java.lang.String" access="field">
+            <column name="LY" />
+        </property>
+        <property name="bedsores" type="java.lang.String">
+            <column name="BEDSORES" />
+        </property>
+        <property name="visibleSwelling" type="java.lang.String">
+            <column name="VISIBLESWELLING" />
+        </property>
+        <property name="stLoc" type="java.lang.String">
+            <column name="STLOC" />
+        </property>
+        <property name="chss" type="java.lang.String">
+            <column name="CHSS" />
+        </property>
+        <property name="ad" type="java.lang.String">
+            <column name="AD" />
+        </property>
+        <property name="pzk" type="java.lang.String">
+            <column name="PZK" />
+        </property>
+        <property name="conclusion" type="java.lang.String">
+            <column name="CONCLUSION" />
+        </property>
+        <property name="recommendations" type="java.lang.String">
+            <column name="RECOMMENDATIONS" />
+        </property>
+        <property name="lobe" type="java.lang.Boolean">
+            <column name="LOBE" />
+        </property>
+        <property name="sleep" type="java.lang.Boolean">
+            <column name="SLEEP" />
+        </property>
+        <property name="dynamics" type="java.lang.Integer">
+            <column name="DYNAMICS" />
+        </property>
+        <property name="styl" type="java.lang.Integer">
+            <column name="STYL" />
+        </property>
+        <property name="tongue" type="java.lang.Integer">
+            <column name="TONGUE" />
+        </property>
+        <property name="skin" type="java.lang.Integer">
+            <column name="SKIN" />
+        </property>
+        <property name="stomach" type="java.lang.Integer">
+            <column name="STOMACH" />
+        </property>
+        <property name="t_heart_id" type="java.lang.Integer">
+            <column name="T_HEART_ID" />
+        </property>
+        <property name="liver_id" type="java.lang.Integer">
+            <column name="LIVER_ID" />
+        </property>
+        <property name="pulse_id" type="java.lang.Integer">
+            <column name="PULSE_ID" />
+        </property>
+        <property name="palpation_id" type="java.lang.Integer">
+            <column name="PALPATION_ID" />
+        </property>
+        <property name="diuresis_id" type="java.lang.Integer">
+            <column name="DIURESIS_ID" />
+        </property>
+        <property name="evaluation_xbs_shvo_id" type="java.lang.Integer">
+            <column name="EVALUATION_XBS_SHVO_ID" />
+        </property>
+        <property name="evaluation_shfa_id" type="java.lang.Integer">
+            <column name="EVALUATION_SHFA_ID" />
+        </property>
+        <property name="swallowing_act_id" type="java.lang.Integer">
+            <column name="SWALLOWING_ACT_ID" />
+        </property>
+        <property name="external_evidence_id" type="java.lang.Integer">
+            <column name="EXTERNAL_EVIDENCE_ID" />
+        </property>
+        <property name="tyazest_id" type="java.lang.Integer">
+            <column name="TYAZEST_ID" />
+        </property>
+    </class>
+</hibernate-mapping>
