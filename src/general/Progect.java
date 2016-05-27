@@ -23,11 +23,11 @@ public class Progect {
 		System.out.println("It is me!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 	
 		
-		/*
-		for(ZyrnalYchKonsPoTelefony z : zurnal){
-			z.getId();
-		System.out.println("me");}
-		*/
+		
+		for(ListOsmotra l : list){
+			l.getId();
+		System.out.println(l.getDateTime());}
+		
 		ListOsmotra z = listDao.getListOsmotra(1);
 		System.out.println(z.getId() +"   "+ z.getDiuresisid()+"   "+z.getAd());
 	}

@@ -5,35 +5,37 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class SimpleGUI extends JFrame {
-	private JButton button = new JButton("Press");
-	private JTextField input = new JTextField("", 10);
-	private JLabel label = new JLabel("Причина выезда:");
-	private JRadioButton radio1 = new JRadioButton("Select this");
-	private JRadioButton radio2 = new JRadioButton("Select that");
-	private JCheckBox check = new JCheckBox("Check", false);
+	private JButton coll = new JButton("Зарегистрировать звонок");
+	private JButton plan = new JButton("Планировщик выездов");
+	private JButton priem = new JButton("Журнал амбулаторного приема");
+	private JButton manipul = new JButton("Журнал лечебно-диагностических манипуляций");
+	private JButton cards = new JButton("Амбулаторные карты");
+	private JButton stat = new JButton("Статистика");
+	private JLabel label = new JLabel("Помошник:");
+
 	
 	public SimpleGUI() {
-	    super("Лист осмотра");
+	    super("Помошник");
 	    this.setBounds(100,100,1000,500);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	    Container container = this.getContentPane();
-	    container.setLayout(new GridLayout(3,2,2,2));
-	    container.add(label);
-	    container.add(input);
-
-	    ButtonGroup group = new ButtonGroup();
-	    group.add(radio1);
-	    group.add(radio2);
-	    container.add(radio1);
-
-	    radio1.setSelected(true);
-	    container.add(radio2);
-	    container.add(check);
-	    button.addActionListener(new ButtonEventListener());
-	    container.add(button);
-	}
+	    container.setLayout(new GridLayout(1,1,5,5));
+	    container.add(label); 
+	    container.setLayout(new GridLayout(3,2,5,5));
 	
+	    
+	    container.add(coll);
+	    container.add(plan);
+	    container.add(priem);
+	    container.add(manipul);
+	    container.add(stat);
+	    container.add(cards);
+	    
+	    //button.addActionListener(new ButtonEventListener());
+	    //container.add(button);
+	}
+	/*
 	class ButtonEventListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			String message = "";
@@ -49,7 +51,7 @@ public class SimpleGUI extends JFrame {
 		    	    JOptionPane.PLAIN_MESSAGE);
 		}
 	}
-
+*/
 	public static void main(String[] args) {
 		SimpleGUI app = new SimpleGUI();
 		app.setVisible(true);

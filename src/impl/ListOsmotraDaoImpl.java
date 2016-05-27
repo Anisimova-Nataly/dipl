@@ -1,6 +1,7 @@
 package impl;
 
 import java.sql.SQLException;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 
@@ -18,6 +19,7 @@ public class ListOsmotraDaoImpl implements ListOsmotraDao{
 	 try{
 		 session = util.HibernateUtil.getSessionFactory().openSession();
 		 session.beginTransaction();
+		 list.setDateTime();
 		 session.save(list);
 		 session.getTransaction().commit();
 	 }catch(Exception e){

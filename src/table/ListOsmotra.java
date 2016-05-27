@@ -1,5 +1,7 @@
 package table;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -97,6 +99,9 @@ public class ListOsmotra {
 	}
 	public java.sql.Timestamp getDateTime() {
 		return dateTime;
+	}
+	public void setDateTime() {
+		this.dateTime = new Timestamp(System.currentTimeMillis());
 	}
 	public void setDateTime(java.sql.Timestamp dateTime) {
 		this.dateTime = dateTime;
