@@ -6,7 +6,7 @@
     <class name="table.ListOsmotra" table="LISTOSMOTRA">
         <id name="id" type="int">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <property name="dateTime" type="java.sql.Timestamp">
             <column name="DATETIME" />
@@ -65,35 +65,35 @@
         <property name="stomach" type="java.lang.Integer">
             <column name="STOMACH" />
         </property>
-        <property name="t_heart_id" type="java.lang.Integer">
-            <column name="T_HEART_ID" />
+        <property name="theartid" type="java.lang.Integer">
+            <column name="THEARTID" />
         </property>
-        <property name="liver_id" type="java.lang.Integer">
-            <column name="LIVER_ID" />
+        <property name="liverid" type="java.lang.Integer">
+            <column name="LIVERID" />
         </property>
-        <property name="pulse_id" type="java.lang.Integer">
-            <column name="PULSE_ID" />
+        <property name="pulseid" type="java.lang.Integer">
+            <column name="PULSEID" />
         </property>
-        <property name="palpation_id" type="java.lang.Integer">
-            <column name="PALPATION_ID" />
+        <property name="palpationid" type="java.lang.Integer">
+            <column name="PALPATIONID" />
         </property>
-        <property name="diuresis_id" type="java.lang.Integer">
-            <column name="DIURESIS_ID" />
+        <property name="diuresisid" type="java.lang.Integer">
+            <column name="DIURESISID" />
         </property>
-        <property name="evaluation_xbs_shvo_id" type="java.lang.Integer">
-            <column name="EVALUATION_XBS_SHVO_ID" />
+        <property name="evaluationxbsshvoid" type="java.lang.Integer">
+            <column name="EVALUATIONXBSSHVOID" />
         </property>
-        <property name="evaluation_shfa_id" type="java.lang.Integer">
-            <column name="EVALUATION_SHFA_ID" />
+        <property name="evaluationshfaid" type="java.lang.Integer">
+            <column name="EVALUATIONSHFAID" />
         </property>
-        <property name="swallowing_act_id" type="java.lang.Integer">
-            <column name="SWALLOWING_ACT_ID" />
+        <property name="swallowingactid" type="java.lang.Integer">
+            <column name="SWALLOWINGACTID" />
         </property>
-        <property name="external_evidence_id" type="java.lang.Integer">
-            <column name="EXTERNAL_EVIDENCE_ID" />
+        <property name="externalevidenceid" type="java.lang.Integer">
+            <column name="EXTERNALEVIDENCEID" />
         </property>
-        <property name="tyazest_id" type="java.lang.Integer">
-            <column name="TYAZEST_ID" />
+        <property name="tyazestid" type="java.lang.Integer">
+            <column name="TYAZESTID" />
         </property>
     </class>
 </hibernate-mapping>

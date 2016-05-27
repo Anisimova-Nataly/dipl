@@ -13,12 +13,12 @@ import table.ListOsmotra;
 public class ListOsmotraDaoImpl implements ListOsmotraDao{
 
 	@Override
-	public void addListOsmotra(ListOsmotra zur) throws SQLException {
+	public void addListOsmotra(ListOsmotra list) throws SQLException {
 	 Session session=null;
 	 try{
 		 session = util.HibernateUtil.getSessionFactory().openSession();
 		 session.beginTransaction();
-		 session.save(zur);
+		 session.save(list);
 		 session.getTransaction().commit();
 	 }catch(Exception e){
 		 e.printStackTrace();
@@ -28,12 +28,12 @@ public class ListOsmotraDaoImpl implements ListOsmotraDao{
 	}
 
 	@Override
-	public void deleteListOsmotra(ListOsmotra zur) throws SQLException {
+	public void deleteListOsmotra(ListOsmotra list) throws SQLException {
 		Session session=null;
 		 try{
 			 session = util.HibernateUtil.getSessionFactory().openSession();
 			 session.beginTransaction();
-			 session.delete(zur);
+			 session.delete(list);
 			 session.getTransaction().commit();
 		 }catch(Exception e){
 			 e.printStackTrace();
@@ -63,18 +63,18 @@ public class ListOsmotraDaoImpl implements ListOsmotraDao{
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<ListOsmotra> getListOsmotras() throws SQLException {
-		List<ListOsmotra> Zyrnals = null;
+		List<ListOsmotra> Lists = null;
 		Session session=null;
 		 try{
 			 session = util.HibernateUtil.getSessionFactory().openSession();
-			 Zyrnals=session.createCriteria(ListOsmotra.class).list();
+			 Lists=session.createCriteria(ListOsmotra.class).list();
 			 
 		 }catch(Exception e){
 			 e.printStackTrace();
 		 }finally{
 			 if((session!=null)&&(session.isOpen())){session.close();}
 		 }
-		return Zyrnals;
+		return Lists;
 	}
 
 }

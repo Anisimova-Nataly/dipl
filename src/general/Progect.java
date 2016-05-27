@@ -1,8 +1,9 @@
 package general;
 
 
-import dao.ZyrnalYchKonsPoTelefonyDao;
-import table.ZyrnalYchKonsPoTelefony;
+import dao.ListOsmotraDao;
+import table.ListOsmotra;
+
 
 import java.sql.SQLException;
 import java.util.List;
@@ -11,14 +12,14 @@ public class Progect {
 
 	public static void main(String[] args) throws SQLException {
 		Factory factory = Factory.getInstance();
-		ZyrnalYchKonsPoTelefonyDao zurnalDao = factory.getZyrnalYchKonsPoTelefonyDao();
-		ZyrnalYchKonsPoTelefony zu = new ZyrnalYchKonsPoTelefony();
-		zu.setId_card(12);
-		zu.setId_rez_kons(13);
-		zu.setValue1("dfgdfgd");
-		zurnalDao.addZyrnalYchKonsPoTelefony(zu);
+		ListOsmotraDao listDao = factory.getListOsmotraDao();
+		ListOsmotra li = new ListOsmotra();
+	//	li.setDiuresisid(12);
+		li.setAd("sdfsfbb");
 		
-		List<ZyrnalYchKonsPoTelefony> zurnal = zurnalDao.getZyrnalYchKonsPoTelefonys();
+		listDao.addListOsmotra(li);
+		
+		List<ListOsmotra> list = listDao.getListOsmotras();
 		System.out.println("It is me!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 	
 		
@@ -27,8 +28,8 @@ public class Progect {
 			z.getId();
 		System.out.println("me");}
 		*/
-		ZyrnalYchKonsPoTelefony z = zurnalDao.getZyrnalYchKonsPoTelefony(1);
-		System.out.println(z.getId() +"   "+ z.getId_card()+"   "+z.getValue1());
+		ListOsmotra z = listDao.getListOsmotra(1);
+		System.out.println(z.getId() +"   "+ z.getDiuresisid()+"   "+z.getAd());
 	}
 
 }

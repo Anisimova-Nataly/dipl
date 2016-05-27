@@ -8,42 +8,42 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /*
-CREATE TABLE list_osmotra(id integer PRIMARY KEY, date_time timestamp with time zone,
- reason text, complaints text, l_y text, bedsores text, visible_swelling text, st_loc text,
+CREATE TABLE listosmotra(id integer PRIMARY KEY, datetime timestamp with time zone,
+ reason text, complaints text, ly text, bedsores text, visibleswelling text, stloc text,
   chss text, ad text, pzk text, conclusion text, recommendations text, lobe boolean, sleep boolean,
    dynamics smallint, styl smallint, tongue smallint, skin smallint, stomach smallint,
-    t_heart_id integer REFERENCES t_heart(id),  liver_id integer REFERENCES liver(id),
-     pulse_id integer REFERENCES pulse(id), palpation_id integer REFERENCES palpation(id),
-      diuresis_id integer REFERENCES diuresis(id),
-       evaluation_xbs_shvo_id integer REFERENCES evaluation_xbs_shvo(id),
-        swallowing_act_id integer REFERENCES swallowing_act(id),
-         evaluation_shfa_id integer REFERENCES evaluation_shfa(id),
-          external_evidence_id integer REFERENCES external_evidence(id),
-           tyazest_id integer REFERENCES tyazest(id));
+    theartid integer REFERENCES theart(id),  liverid integer REFERENCES liver(id),
+     pulseid integer REFERENCES pulse(id), palpationid integer REFERENCES palpation(id),
+      diuresisid integer REFERENCES diuresis(id),
+       evaluationxbsshvoid integer REFERENCES evaluationxbsshvo(id),
+        swallowingactid integer REFERENCES swallowingact(id),
+         evaluationshfaid integer REFERENCES evaluationshfa(id),
+          externalevidenceid integer REFERENCES externalevidence(id),
+           tyazestid integer REFERENCES tyazest(id));
 */
 
 @Entity
-@Table(name = "list_osmotra")
+@Table(name = "listosmotra")
 
 
 public class ListOsmotra {
 	 @Id	
 	 @Column(name = "id")
-	 @GeneratedValue(strategy = GenerationType.AUTO)
+	 @GeneratedValue(strategy= GenerationType.AUTO)
 		private int id;	
-	 @Column(name = "date_time")
+	 @Column(name = "datetime")
 	 	private java.sql.Timestamp dateTime;
 	 @Column(name = "reason")
 	 	private String reason;
 	 @Column(name = "complaints")
 	 	private String complaints;
-	 @Column(name = "l_y")
+	 @Column(name = "ly")
 		private String lY;
 	 @Column(name = "bedsores")
 		private String bedsores;
-	 @Column(name = "visible_swelling")
+	 @Column(name = "visibleswelling")
 		private String visibleSwelling;
-	 @Column(name = "st_loc")
+	 @Column(name = "stloc")
 		private String stLoc;
 	 @Column(name = "chss")
 		private String chss;
@@ -69,26 +69,26 @@ public class ListOsmotra {
 		private Integer skin;
 	 @Column(name = "stomach")
 		private Integer stomach;	 
-	 @Column(name = "t_heart_id")
-		private Integer t_heart_id;
-	 @Column(name = "liver_id")
-		private Integer liver_id;
-	 @Column(name = "pulse_id")
-		private Integer pulse_id;
-	 @Column(name = "palpation_id")
-		private Integer palpation_id;
-	 @Column(name = "diuresis_id")
-		private Integer diuresis_id;
-	 @Column(name = "evaluation_xbs_shvo_id")
-		private Integer evaluation_xbs_shvo_id;
-	 @Column(name = "evaluation_shfa_id")
-		private Integer evaluation_shfa_id;
-	 @Column(name = "swallowing_act_id")
-		private Integer swallowing_act_id;
-	 @Column(name = "external_evidence_id")
-		private Integer external_evidence_id;
-	 @Column(name = "tyazest_id")
-		private Integer tyazest_id;
+	 @Column(name = "theartid")
+		private Integer theartid;
+	 @Column(name = "liverid")
+		private Integer liverid;
+	 @Column(name = "pulseid")
+		private Integer pulseid;
+	 @Column(name = "palpationid")
+		private Integer palpationid;
+	 @Column(name = "diuresisid")
+		private Integer diuresisid;
+	 @Column(name = "evaluationxbsshvoid")
+		private Integer evaluationxbsshvoid;
+	 @Column(name = "evaluationshfaid")
+		private Integer evaluationshfaid;
+	 @Column(name = "swallowingactid")
+		private Integer swallowingactid;
+	 @Column(name = "externalevidenceid")
+		private Integer externalevidenceid;
+	 @Column(name = "tyazestid")
+		private Integer tyazestid;
 	public int getId() {
 		return id;
 	}
@@ -209,65 +209,65 @@ public class ListOsmotra {
 	public void setStomach(Integer stomach) {
 		this.stomach = stomach;
 	}
-	public Integer getT_heart_id() {
-		return t_heart_id;
+	public Integer getTheartid() {
+		return theartid;
 	}
-	public void setT_heart_id(Integer t_heart_id) {
-		this.t_heart_id = t_heart_id;
+	public void setTheartid(Integer theartid) {
+		this.theartid = theartid;
 	}
-	public Integer getLiver_id() {
-		return liver_id;
+	public Integer getLiverid() {
+		return liverid;
 	}
-	public void setLiver_id(Integer liver_id) {
-		this.liver_id = liver_id;
+	public void setLiverid(Integer liverid) {
+		this.liverid = liverid;
 	}
-	public Integer getPulse_id() {
-		return pulse_id;
+	public Integer getPulseid() {
+		return pulseid;
 	}
-	public void setPulse_id(Integer pulse_id) {
-		this.pulse_id = pulse_id;
+	public void setPulseid(Integer pulseid) {
+		this.pulseid = pulseid;
 	}
-	public Integer getPalpation_id() {
-		return palpation_id;
+	public Integer getPalpationid() {
+		return palpationid;
 	}
-	public void setPalpation_id(Integer palpation_id) {
-		this.palpation_id = palpation_id;
+	public void setPalpationid(Integer palpationid) {
+		this.palpationid = palpationid;
 	}
-	public Integer getDiuresis_id() {
-		return diuresis_id;
+	public Integer getDiuresisid() {
+		return diuresisid;
 	}
-	public void setDiuresis_id(Integer diuresis_id) {
-		this.diuresis_id = diuresis_id;
+	public void setDiuresisid(Integer diuresisid) {
+		this.diuresisid = diuresisid;
 	}
-	public Integer getEvaluation_xbs_shvo_id() {
-		return evaluation_xbs_shvo_id;
+	public Integer getEvaluationxbsshvoid() {
+		return evaluationxbsshvoid;
 	}
-	public void setEvaluation_xbs_shvo_id(Integer evaluation_xbs_shvo_id) {
-		this.evaluation_xbs_shvo_id = evaluation_xbs_shvo_id;
+	public void setEvaluationxbsshvoid(Integer evaluationxbsshvoid) {
+		this.evaluationxbsshvoid = evaluationxbsshvoid;
 	}
-	public Integer getEvaluation_shfa_id() {
-		return evaluation_shfa_id;
+	public Integer getEvaluationshfaid() {
+		return evaluationshfaid;
 	}
-	public void setEvaluation_shfa_id(Integer evaluation_shfa_id) {
-		this.evaluation_shfa_id = evaluation_shfa_id;
+	public void setEvaluationshfaid(Integer evaluationshfaid) {
+		this.evaluationshfaid = evaluationshfaid;
 	}
-	public Integer getSwallowing_act_id() {
-		return swallowing_act_id;
+	public Integer getSwallowingactid() {
+		return swallowingactid;
 	}
-	public void setSwallowing_act_id(Integer swallowing_act_id) {
-		this.swallowing_act_id = swallowing_act_id;
+	public void setSwallowingactid(Integer swallowingactid) {
+		this.swallowingactid = swallowingactid;
 	}
-	public Integer getExternal_evidence_id() {
-		return external_evidence_id;
+	public Integer getExternalevidenceid() {
+		return externalevidenceid;
 	}
-	public void setExternal_evidence_id(Integer external_evidence_id) {
-		this.external_evidence_id = external_evidence_id;
+	public void setExternalevidenceid(Integer externalevidenceid) {
+		this.externalevidenceid = externalevidenceid;
 	}
-	public Integer getTyazest_id() {
-		return tyazest_id;
+	public Integer getTyazestid() {
+		return tyazestid;
 	}
-	public void setTyazest_id(Integer tyazest_id) {
-		this.tyazest_id = tyazest_id;
+	public void setTyazestid(Integer tyazestid) {
+		this.tyazestid = tyazestid;
 	}
 	 
 	 
