@@ -8,7 +8,7 @@ import table.ListOsmotra;
 import java.sql.SQLException;
 import java.util.List;
 
-public class Progect {
+public class Project {
 
 	public static void main(String[] args) throws SQLException {
 		Factory factory = Factory.getInstance();
