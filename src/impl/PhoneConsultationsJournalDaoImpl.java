@@ -6,18 +6,19 @@ import java.util.List;
 
 import org.hibernate.Session;
 
-import dao.ZyrnalYchKonsPoTelefonyDao;
+import dao.PhoneConsultationsJournalDao;
 
-import table.ZyrnalYchKonsPoTelefony;
+import table.PhoneConsultationsJournal;
 
-public class ZyrnalYchKonsPoTelefonyDaoImpl implements ZyrnalYchKonsPoTelefonyDao{
+public class PhoneConsultationsJournalDaoImpl implements PhoneConsultationsJournalDao{
 
 	@Override
-	public void addZyrnalYchKonsPoTelefony(ZyrnalYchKonsPoTelefony zur) throws SQLException {
+	public void addPhoneConsultationsJournal(PhoneConsultationsJournal zur) throws SQLException {
 	 Session session=null;
 	 try{
 		 session = util.HibernateUtil.getSessionFactory().openSession();
 		 session.beginTransaction();
+		 zur.setDate();
 		 session.save(zur);
 		 session.getTransaction().commit();
 	 }catch(Exception e){
@@ -28,7 +29,7 @@ public class ZyrnalYchKonsPoTelefonyDaoImpl implements ZyrnalYchKonsPoTelefonyDa
 	}
 
 	@Override
-	public void deleteZyrnalYchKonsPoTelefony(ZyrnalYchKonsPoTelefony zur) throws SQLException {
+	public void deletePhoneConsultationsJournal(PhoneConsultationsJournal zur) throws SQLException {
 		Session session=null;
 		 try{
 			 session = util.HibernateUtil.getSessionFactory().openSession();
@@ -46,12 +47,12 @@ public class ZyrnalYchKonsPoTelefonyDaoImpl implements ZyrnalYchKonsPoTelefonyDa
 
 
 	@Override
-	public ZyrnalYchKonsPoTelefony getZyrnalYchKonsPoTelefony(int id) throws SQLException {
-		ZyrnalYchKonsPoTelefony rez= null;
+	public PhoneConsultationsJournal getPhoneConsultationsJournal(int id) throws SQLException {
+		PhoneConsultationsJournal rez= null;
 		Session session=null;
 		 try{
 			 session = util.HibernateUtil.getSessionFactory().openSession();
-			 rez= session.get(ZyrnalYchKonsPoTelefony.class, id);
+			 rez= session.get(PhoneConsultationsJournal.class, id);
 			 
 		 }catch(Exception e){
 			 e.printStackTrace();
@@ -63,12 +64,12 @@ public class ZyrnalYchKonsPoTelefonyDaoImpl implements ZyrnalYchKonsPoTelefonyDa
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ZyrnalYchKonsPoTelefony> getZyrnalYchKonsPoTelefonys() throws SQLException {
-		List<ZyrnalYchKonsPoTelefony> Zyrnals = null;
+	public List<PhoneConsultationsJournal> getPhoneConsultationsJournals() throws SQLException {
+		List<PhoneConsultationsJournal> Zyrnals = null;
 		Session session=null;
 		 try{
 			 session = util.HibernateUtil.getSessionFactory().openSession();
-			 Zyrnals=session.createCriteria(ZyrnalYchKonsPoTelefony.class).list();
+			 Zyrnals=session.createCriteria(PhoneConsultationsJournal.class).list();
 			 
 		 }catch(Exception e){
 			 e.printStackTrace();
