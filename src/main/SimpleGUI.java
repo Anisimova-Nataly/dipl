@@ -11,18 +11,23 @@ public class SimpleGUI extends JFrame {
 	private JButton manipul = new JButton("Журнал лечебно-диагностических манипуляций");
 	private JButton cards = new JButton("Амбулаторные карты");
 	private JButton stat = new JButton("Статистика");
-	private JLabel label = new JLabel("Помошник:");
-
+	private JLabel label = new JLabel("                               Помощник:");
+	private JLabel label1 = new JLabel("      ");
+	private JLabel label2 = new JLabel("      ");
 	
 	public SimpleGUI() {
-	    super("Помошник");
+	    super("Помощник");
 	    this.setBounds(100,100,1000,500);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	    Container container = this.getContentPane();
-	    container.setLayout(new GridLayout(1,1,5,5));
+	  //  container.setLayout(new GridLayout(1,1,5,5));
+	    container.setLayout(new GridLayout(3,3,15,15));   
+	    
+	    container.add(label2); 
 	    container.add(label); 
-	    container.setLayout(new GridLayout(3,2,5,5));
+	    container.add(label1); 	    
+	    
 	
 	    
 	    container.add(coll);

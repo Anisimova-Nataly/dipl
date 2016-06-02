@@ -1,21 +1,21 @@
 package general;
 
 import dao.ListOsmotraDao;
-import dao.ZyrnalYchKonsPoTelefonyDao;
+import dao.PhoneConsultationsJournalDao;
 import impl.ListOsmotraDaoImpl;
-import impl.ZyrnalYchKonsPoTelefonyDaoImpl;
+import impl.PhoneConsultationsJournalDaoImpl;
 
 public class Factory {
 
 	public static Factory instance = new Factory();
-	public ZyrnalYchKonsPoTelefonyDao zyrnalDao;
+	public PhoneConsultationsJournalDao zyrnalDao;
 	public ListOsmotraDao listDao;
 	private Factory(){};
 	public static Factory getInstance(){
 		return Factory.instance;
 	};
-	public ZyrnalYchKonsPoTelefonyDao getZyrnalYchKonsPoTelefonyDao(){
-		if(zyrnalDao==null)zyrnalDao = new ZyrnalYchKonsPoTelefonyDaoImpl();
+	public PhoneConsultationsJournalDao getPhoneConsultationsJournalDao(){
+		if(zyrnalDao==null)zyrnalDao = new PhoneConsultationsJournalDaoImpl();
 		return zyrnalDao;
 	}
 	public ListOsmotraDao getListOsmotraDao(){
