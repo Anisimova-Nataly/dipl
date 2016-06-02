@@ -9,7 +9,6 @@
 
 		<property name="hibernate.connection.password">16dragon1293</property>
 		
-		<mapping resource="ZyrnalYchKonsPoTelefony.hbm.xml"/>
 		<mapping resource="ListOsmotra.hbm.xml"/>
 		
 
