@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 02.06.2016 18:06:37 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="table.Pulse" table="PULSE">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="value1" type="boolean">
+            <column name="VALUE1" />
+        </property>
+        <property name="value2" type="boolean">
+            <column name="VALUE2" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -3,13 +3,12 @@ package general;
 import dao.ListOsmotraDao;
 import dao.PhoneConsultationsJournalDao;
 import impl.ListOsmotraDaoImpl;
-<<<<<<< HEAD
+
 import impl.PhoneConsultationsJournalDaoImpl;
-=======
-import impl.ZyrnalYchKonsPoTelefonyDaoImpl;
+
 import dao.JournalOutpatientReceptionDao;
 import impl.JournalOutpatientReceptionDaoImpl;
->>>>>>> c4137f3ddec1bc53bafe8b7d9df9ea05fec024a4
+
 
 public class Factory {
 
