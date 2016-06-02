@@ -8,19 +8,19 @@ import javax.swing.*;
 
 import table.PhoneConsultationsJournal;
 
-public class phonecollGUI extends JFrame {
+public class ambulGUI extends JFrame {
 	private JButton ok = new JButton("Сохранить");
 
 	private JButton stat = new JButton("Статистика");
-	private JLabel label = new JLabel("                               Регистрация звонка:");
+	private JLabel label = new JLabel("                               Журнал амбулаторного приема:");
 	private JLabel label1 = new JLabel("      ");
 	private JLabel label2 = new JLabel("      ");
-	private JTextField inputReson = new JTextField("", 5);
-	private JLabel Reson = new JLabel("Причина звонка:");
+
+	private JLabel Res = new JLabel("Объем оказанных услуг:");
 	private JTextField inputCard = new JTextField("", 5);
 	private JLabel Card = new JLabel("ФИО пациента:");
-	private JLabel Coller = new JLabel("Звонивший:");
-	private JTextField inputColler = new JTextField("", 5);
+
+
 	private JLabel Spec = new JLabel("Специалист:");
 	String[] spec = {
 			"Иванов Иван Иванович",
@@ -29,18 +29,14 @@ public class phonecollGUI extends JFrame {
 		};
 	JComboBox comboBoxSpec = new JComboBox(spec);
 	String[] value = {
-			"Изменение даты выезда",
-			"Отмена выезда",
-			"Усиление боли",
-			"Ухудшение общего состояния",
-			"Усиление отдышки",
-			"Даны рекомендации"
+			"Проведена манипуляция"
+
 		};
 	JComboBox comboBoxVal = new JComboBox(value);
 	
 	public static PhoneConsultationsJournal zurnal = new PhoneConsultationsJournal() ;
 	static boolean isPressed = false;
-	public phonecollGUI() {
+	public ambulGUI() {
 	    super("Помощник");
 	    this.setBounds(100,100,1000,500);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,12 +48,11 @@ public class phonecollGUI extends JFrame {
 
 	    container.add(label); 
 	    container.add(label1); 	    
-	    container.add(Reson);
+	    container.add(Res);
 	    container.add(comboBoxVal); 
 	    container.add(Card);
 	    container.add(inputCard);
-	    container.add(Coller);
-	    container.add(inputColler);
+
 	    container.add(Spec);
 	    container.add(comboBoxSpec);
 	
@@ -81,7 +76,7 @@ public class phonecollGUI extends JFrame {
 	}
 
 	public static PhoneConsultationsJournal start() throws InterruptedException {
-		phonecollGUI app = new phonecollGUI();
+		ambulGUI app = new ambulGUI();
 
 		app.setVisible(true);
 		while (isPressed==false) {
