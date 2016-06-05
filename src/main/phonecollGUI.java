@@ -11,11 +11,8 @@ import table.PhoneConsultationsJournal;
 public class phonecollGUI extends JFrame {
 	private JButton ok = new JButton("Сохранить");
 
-	private JButton stat = new JButton("Статистика");
 	private JLabel label = new JLabel("                               Регистрация звонка:");
 	private JLabel label1 = new JLabel("      ");
-	private JLabel label2 = new JLabel("      ");
-	private JTextField inputReson = new JTextField("", 5);
 	private JLabel Reson = new JLabel("Причина звонка:");
 	private JTextField inputCard = new JTextField("", 5);
 	private JLabel Card = new JLabel("ФИО пациента:");
@@ -88,6 +85,8 @@ public class phonecollGUI extends JFrame {
 			TimeUnit.SECONDS.sleep(1);
 		}	
 		 //System.out.println(zurnal.getReason());
+		app.setVisible(false);
+		app.dispose();
 		return zurnal;
 		
 	}

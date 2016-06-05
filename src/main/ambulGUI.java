@@ -11,10 +11,10 @@ import table.PhoneConsultationsJournal;
 public class ambulGUI extends JFrame {
 	private JButton ok = new JButton("Сохранить");
 
-	private JButton stat = new JButton("Статистика");
+	
 	private JLabel label = new JLabel("                               Журнал амбулаторного приема:");
 	private JLabel label1 = new JLabel("      ");
-	private JLabel label2 = new JLabel("      ");
+
 
 	private JLabel Res = new JLabel("Объем оказанных услуг:");
 	private JTextField inputCard = new JTextField("", 5);

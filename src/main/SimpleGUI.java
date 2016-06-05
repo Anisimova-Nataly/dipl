@@ -2,7 +2,13 @@ package main;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.SQLException;
+import java.util.concurrent.TimeUnit;
+
 import javax.swing.*;
+
+import general.Factory;
+import general.Project;
 
 public class SimpleGUI extends JFrame {
 	private JButton coll = new JButton("Зарегистрировать звонок");
@@ -14,12 +20,14 @@ public class SimpleGUI extends JFrame {
 	private JLabel label = new JLabel("                               Помощник:");
 	private JLabel label1 = new JLabel("      ");
 	private JLabel label2 = new JLabel("      ");
-	
-	public SimpleGUI() {
+	public Project proj;
+	static int rez = 0;
+	static boolean isPressed = false;
+	public SimpleGUI(Project p) {
 	    super("Помощник");
 	    this.setBounds(100,100,1000,500);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+	    proj = p;
 	    Container container = this.getContentPane();
 	  //  container.setLayout(new GridLayout(1,1,5,5));
 	    container.setLayout(new GridLayout(3,3,15,15));   
@@ -37,28 +45,27 @@ public class SimpleGUI extends JFrame {
 	    container.add(stat);
 	    container.add(cards);
 	    
-	    //button.addActionListener(new ButtonEventListener());
-	    //container.add(button);
+	    coll.addActionListener(new ButtonEventListener());
+	    container.add(coll);
 	}
-	/*
+	
 	class ButtonEventListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			String message = "";
-			message += "Button was pressed\n";
-			message += "Text is " + input.getText() + "\n";
-			message += (radio1.isSelected()?"Radio #1":"Radio #2") 
-                                + " is selected\n"; 
-			message += "CheckBox is " + ((check.isSelected())
-                                ?"checked":"unchecked"); 
-			JOptionPane.showMessageDialog(null,
-		    		message,
-		    		"Output",
-		    	    JOptionPane.PLAIN_MESSAGE);
-		}
-	}
-*/
-	public static void main(String[] args) {
-		SimpleGUI app = new SimpleGUI();
+		rez = 1;
+		isPressed = true; 
+		String message = "";
+			message += "Веедены данные";
+			
+	}}
+
+	public static int main(Project p ) throws InterruptedException {
+		SimpleGUI app = new SimpleGUI(p );
 		app.setVisible(true);
+		while (isPressed==false) {
+			TimeUnit.SECONDS.sleep(1);
+		}	
+		
+		
+		return rez;
 	}
 }
