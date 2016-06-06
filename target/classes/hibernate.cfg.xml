@@ -7,7 +7,7 @@
 		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/dipl</property>
 		<property name="hibernate.connection.username">postgres</property>
 
-		<property name="hibernate.connection.password">16dragon1293</property>
+		<property name="hibernate.connection.password">15101995</property>
 		
 		<mapping resource="ListOsmotra.hbm.xml"/>
 		

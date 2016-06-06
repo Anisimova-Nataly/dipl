@@ -2,12 +2,17 @@ package main;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.*;
 
 import general.Project;
+import main.SimpleGUI.ButtonEventListener;
 import table.PhoneConsultationsJournal;
 
 public class callListGUI extends JFrame  {
@@ -17,8 +22,10 @@ public class callListGUI extends JFrame  {
   
     private Object[][] tbldata =null;
     private String[] tblheader = { "ID", "ФИО пациента", "ФИО звонившего", "Дата", "Причина звонка", "ФИО принявшего звонок", "Результат" };
-    
-
+	private JLabel lable = new JLabel("Журнал учета консультаций по телефону");
+	private JButton call = new JButton("Зарегистрировать звонок");
+	static int rez = 0;
+	static boolean isPressed = false;
     public callListGUI(Project p) throws InterruptedException, SQLException {
     	
 	    super("Помощник");
@@ -29,7 +36,11 @@ public class callListGUI extends JFrame  {
 	    JTable tbl = new JTable(tbldata, tblheader);
 	   
 	    Container container = this.getContentPane();
-        add(new JScrollPane(tbl));
+	    container.setLayout(new GridLayout(3,1,15,15)); 
+	    container.add(lable);
+        container.add(new JScrollPane(tbl));
+        container.add(call);
+        call.addActionListener(new ButtonEventListener());
         tbl.setFillsViewportHeight(true);
         tbl.setGridColor(Color.GREEN);
         tbl.setAutoCreateRowSorter(true);
@@ -37,11 +48,22 @@ public class callListGUI extends JFrame  {
        // tbl.getColumnModel().addColumnModelListener((TableColumnModelListener) this);
         }
 
+    class ButtonEventListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+		rez = 1;
+		isPressed = true; 
+
+			
+	}}
         
-        
-        public static void start(Project p) throws InterruptedException, SQLException {
+        public static int start(Project p) throws InterruptedException, SQLException {
     		callListGUI app = new callListGUI(p);
     		app.setVisible(true);
-
+    		while (isPressed==false) {
+    			TimeUnit.SECONDS.sleep(1);
+    		}	
+    		
+    		app.dispose();
+    		return rez;
     		
         }}

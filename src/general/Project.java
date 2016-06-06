@@ -11,6 +11,7 @@ import table.PhoneConsultationsJournal;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class Project {
 
@@ -21,7 +22,16 @@ public class Project {
 		Project p = new Project();
 		int rez =  SimpleGUI.main(p);
 		System.out.println(rez);
-		if (rez == 1){p.newCall();} 
+		while (true) {
+			
+			if (rez == 1){rez= 0;  p.newCall();}
+			if (rez == 2){rez= 0; callListGUI c = new callListGUI(p);
+			rez = callListGUI.start(p);
+			}
+			TimeUnit.SECONDS.sleep(1);
+			
+		}
+		
 	
 		
 		//System.out.println("List");
@@ -45,17 +55,7 @@ public class Project {
 		//ListOsmotra z = listDao.getListOsmotra(1);
 		//System.out.println(z.getId() +"   "+ z.getDiuresisid()+"   "+z.getAd());
 		//System.out.println("Zur");
-		//PhoneConsultationsJournalDao zurDao = factory.getPhoneConsultationsJournalDao();
-		//PhoneConsultationsJournal j =  phonecollGUI.start();
-		//System.out.println(j.getReason());
-		//zurDao.addPhoneConsultationsJournal(phonecollGUI.start());
-		//List<PhoneConsultationsJournal> zurnal = zurDao.getPhoneConsultationsJournals();
-		//for(PhoneConsultationsJournal p : zurnal){
-		//System.out.println(p.getId() +"   "+ p.getReason()+"   "+p.getDate().toString());
-		
-		
-	//	}
-		
+	
 	
 		
 		
@@ -67,9 +67,8 @@ public class Project {
 		PhoneConsultationsJournalDao zurDao = factory.getPhoneConsultationsJournalDao();
 		PhoneConsultationsJournal j =  phonecollGUI.start();
 		System.out.println(j.getReason());
-		callListGUI c = new callListGUI(this);
-		callListGUI.start(this);
-		zurDao.addPhoneConsultationsJournal(phonecollGUI.start());
+		zurDao.addPhoneConsultationsJournal(j);
+	//	callListGUI c = new callListGUI.start(this);
 	//	List <PhoneConsultationsJournal> zurnal = zurDao.getPhoneConsultationsJournals();
 	//	for(PhoneConsultationsJournal p : zurnal){
 	//		System.out.println(p.getId() +"   "+ p.getReason()+"   "+p.getDate().toString());

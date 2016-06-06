@@ -51,10 +51,9 @@ public class SimpleGUI extends JFrame {
 	
 	class ButtonEventListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-		rez = 1;
+		rez = 2;
 		isPressed = true; 
-		String message = "";
-			message += "Веедены данные";
+
 			
 	}}
 
@@ -65,7 +64,7 @@ public class SimpleGUI extends JFrame {
 			TimeUnit.SECONDS.sleep(1);
 		}	
 		
-		
+		app.dispose();
 		return rez;
 	}
 }

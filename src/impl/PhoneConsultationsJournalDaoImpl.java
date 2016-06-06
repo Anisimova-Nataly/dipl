@@ -21,11 +21,13 @@ public class PhoneConsultationsJournalDaoImpl implements PhoneConsultationsJourn
 		 zur.setDate();
 		 session.save(zur);
 		 session.getTransaction().commit();
+		 session.close();
 	 }catch(Exception e){
 		 e.printStackTrace();
 	 }finally{
 		 if((session!=null)&&(session.isOpen())){session.close();}
 	 }
+	 
 	}
 
 	@Override
@@ -36,6 +38,7 @@ public class PhoneConsultationsJournalDaoImpl implements PhoneConsultationsJourn
 			 session.beginTransaction();
 			 session.delete(zur);
 			 session.getTransaction().commit();
+			 session.close();
 		 }catch(Exception e){
 			 e.printStackTrace();
 		 }finally{
@@ -53,7 +56,7 @@ public class PhoneConsultationsJournalDaoImpl implements PhoneConsultationsJourn
 		 try{
 			 session = util.HibernateUtil.getSessionFactory().openSession();
 			 rez= session.get(PhoneConsultationsJournal.class, id);
-			 
+			 session.close();
 		 }catch(Exception e){
 			 e.printStackTrace();
 		 }finally{
@@ -70,7 +73,7 @@ public class PhoneConsultationsJournalDaoImpl implements PhoneConsultationsJourn
 		 try{
 			 session = util.HibernateUtil.getSessionFactory().openSession();
 			 Zyrnals=session.createCriteria(PhoneConsultationsJournal.class).list();
-			 
+			 session.close();
 		 }catch(Exception e){
 			 e.printStackTrace();
 		 }finally{

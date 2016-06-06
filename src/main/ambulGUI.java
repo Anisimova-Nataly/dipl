@@ -83,6 +83,7 @@ public class ambulGUI extends JFrame {
 			TimeUnit.SECONDS.sleep(1);
 		}	
 		 //System.out.println(zurnal.getReason());
+		app.dispose();
 		return zurnal;
 		
 	}
