@@ -56,7 +56,7 @@ public class callListGUI extends JFrame  {
 			
 	}}
         
-        public static int start(Project p) throws InterruptedException, SQLException {
+        public int start(Project p) throws InterruptedException, SQLException {
     		callListGUI app = new callListGUI(p);
     		app.setVisible(true);
     		while (isPressed==false) {

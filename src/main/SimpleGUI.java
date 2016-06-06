@@ -57,7 +57,9 @@ public class SimpleGUI extends JFrame {
 			
 	}}
 
-	public static int main(Project p ) throws InterruptedException {
+	public int main(Project p ) throws InterruptedException {
+		isPressed =false;
+		rez=0;
 		SimpleGUI app = new SimpleGUI(p );
 		app.setVisible(true);
 		while (isPressed==false) {

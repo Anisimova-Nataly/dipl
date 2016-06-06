@@ -77,9 +77,10 @@ public class phonecollGUI extends JFrame {
 		}
 	}
 
-	public static PhoneConsultationsJournal start() throws InterruptedException {
+	public PhoneConsultationsJournal start() throws InterruptedException {
 		phonecollGUI app = new phonecollGUI();
-
+		zurnal = new PhoneConsultationsJournal();
+		isPressed = false;
 		app.setVisible(true);
 		while (isPressed==false) {
 			TimeUnit.SECONDS.sleep(1);
