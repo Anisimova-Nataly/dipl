@@ -1,11 +1,13 @@
 package general;
 
 
+import dao.JournalOutpatientReceptionDao;
 import dao.ListOsmotraDao;
 import dao.PhoneConsultationsJournalDao;
 import main.SimpleGUI;
 import main.callListGUI;
 import main.phonecollGUI;
+import table.JournalOutpatientReception;
 import table.ListOsmotra;
 import table.PhoneConsultationsJournal;
 
@@ -33,13 +35,26 @@ public class Project {
 					p = new Project();
 					callListGUI c =new callListGUI(p);
 					int rez1 = c.start(p);
-					boolean gotRes1 = false;
+					//boolean gotRes1 = false;
 					//while (gotRes1 ==false) {
 					//	TimeUnit.SECONDS.sleep(1);}
 					if (rez1 == 1){
-						gotRes1=true;
+						//gotRes1=true;
 						p.newCall();}
 				}
+				if (rez == 3){//журнал амбулаторного приема
+					gotRes =true;
+					rez= 0; 
+					p = new Project();
+					callListGUI c =new callListGUI(p);
+					int rez1 = c.start(p);
+					//boolean gotRes1 = false;
+					//while (gotRes1 ==false) {
+					//	TimeUnit.SECONDS.sleep(1);}
+					if (rez1 == 1){
+						//gotRes1=true;
+						p.newCall();}
+				} 
 			TimeUnit.SECONDS.sleep(1);
 			}
 		}
@@ -116,5 +131,31 @@ public class Project {
 		return objs;
 		
 	}
+
+	public Object[][] listAmb()  throws InterruptedException, SQLException {
+			
+			Factory factory = Factory.getInstance();
+			JournalOutpatientReceptionDao zurDao = factory.getJournalOutpatientReceptionDao();
+			
+
+			List <JournalOutpatientReception> zurnal = zurDao.getJournalOutpatientReceptions();
+			Object[][] objs = new Object[zurnal.size()][5];
+			int i=0;
+			
+			for(JournalOutpatientReception p : zurnal){
+				//System.out.println(p.getId() +"   "+ p.getReason()+"   "+p.getDate().toString());
+				objs[i][0]= p.getId();
+				//objs[i][1]= p.get;
+				//objs[i][2]= p.getCallerid();
+				//objs[i][3]= p.getDate();
+				//objs[i][4]= p.getReason();
+				//objs[i][5]= p.getSpecialistid();
+				//objs[i][6]= p.getConsultationResultId();
+				
+				i++;
+			}
+			return objs;
+			
+		}
 
 }
