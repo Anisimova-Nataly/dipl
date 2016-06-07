@@ -2,11 +2,15 @@ package table;
 
 import java.sql.Timestamp;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /*
@@ -28,8 +32,20 @@ CREATE TABLE listosmotra(id integer PRIMARY KEY, datetime timestamp with time zo
 @Table(name = "listosmotra")
 
 
-public class ListOsmotra {
-	 @Id	
+public class ListOsmotra {	
+	
+	private Liver liver;
+	private Theart theart;
+	private Pulse pulse;
+	private Palpation palpation;
+	private Diuresis diuresis;
+	private EvaluationXbsShvo evaluationXbsShvo;
+	private SwallowingAct swallowingAct;
+	private EvaluationShfa evaluationShfa;
+	private ExternalEvidence externalEvidence;
+	private Tyazest tyazest;
+	
+	@Id	
 	 @Column(name = "id")
 	 @GeneratedValue(strategy= GenerationType.AUTO)
 		private int id;	
@@ -71,26 +87,77 @@ public class ListOsmotra {
 		private Integer skin;
 	 @Column(name = "stomach")
 		private Integer stomach;	 
-	 @Column(name = "theartid")
-		private Integer theartid;
-	 @Column(name = "liverid")
-		private Integer liverid;
-	 @Column(name = "pulseid")
-		private Integer pulseid;
-	 @Column(name = "palpationid")
-		private Integer palpationid;
-	 @Column(name = "diuresisid")
-		private Integer diuresisid;
-	 @Column(name = "evaluationxbsshvoid")
-		private Integer evaluationxbsshvoid;
-	 @Column(name = "evaluationshfaid")
-		private Integer evaluationshfaid;
-	 @Column(name = "swallowingactid")
-		private Integer swallowingactid;
-	 @Column(name = "externalevidenceid")
-		private Integer externalevidenceid;
-	 @Column(name = "tyazestid")
-		private Integer tyazestid;
+	 @OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+		@JoinColumn(name="pulseid") 
+		public Pulse getPulse() {
+			return pulse;
+		}
+		public void setPulse(Pulse pulse) {
+			this.pulse = pulse;
+		}
+	
+	 @OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+		@JoinColumn(name="palpationid") 
+		public Palpation getPalpation() {
+			return palpation;
+		}
+		public void setPalpation(Palpation palpation) {
+			this.palpation = palpation;
+		}
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+		@JoinColumn(name="diuresisid") 
+		public Diuresis getDiuresis() {
+			return diuresis;
+		}
+		public void setDiuresis(Diuresis diuresis) {
+			this.diuresis = diuresis;
+		}		
+	
+	 @OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+		@JoinColumn(name="evaluationxbsshvoid") 
+		public EvaluationXbsShvo getEvaluationXbsShvo() {
+			return evaluationXbsShvo;
+		}
+		public void setEvaluationxbsshvo(EvaluationXbsShvo evaluationXbsShvo) {
+			this.evaluationXbsShvo = evaluationXbsShvo;
+		} 
+	
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+		@JoinColumn(name="evaluationshfaid") 
+		public EvaluationShfa getEvaluationShfa() {
+			return evaluationShfa;
+		}
+		public void setEvaluationShfa(EvaluationShfa evaluationShfa) {
+			this.evaluationShfa = evaluationShfa;
+		} 
+	  
+	 @OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+		@JoinColumn(name="swallowingactid") 
+		public SwallowingAct getSwallowingAct() {
+			return swallowingAct;
+		}
+		public void setSwallowingact(SwallowingAct swallowingAct) {
+			this.swallowingAct = swallowingAct;
+		} 
+		 
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+		@JoinColumn(name="externalevidenceid") 
+		public ExternalEvidence getExternalEvidence() {
+			return externalEvidence;
+		}
+		public void setExternalEvidence(ExternalEvidence externalEvidence) {
+			this.externalEvidence = externalEvidence;
+		}	
+	
+		@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+		@JoinColumn(name="tyazestid") 
+		public Tyazest getTyazest() {
+			return tyazest;
+		}
+		public void setTyazest(Tyazest tyazest) {
+			this.tyazest = tyazest;
+		}	
+	
 	public int getId() {
 		return id;
 	}
@@ -214,68 +281,17 @@ public class ListOsmotra {
 	public void setStomach(Integer stomach) {
 		this.stomach = stomach;
 	}
-	public Integer getTheartid() {
-		return theartid;
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="theartid") 
+	public Theart getTheart() {
+		return theart;
 	}
-	public void setTheartid(Integer theartid) {
-		this.theartid = theartid;
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="liverid") 
+	public Liver getLiver() {
+		return liver;
 	}
-	public Integer getLiverid() {
-		return liverid;
-	}
-	public void setLiverid(Integer liverid) {
-		this.liverid = liverid;
-	}
-	public Integer getPulseid() {
-		return pulseid;
-	}
-	public void setPulseid(Integer pulseid) {
-		this.pulseid = pulseid;
-	}
-	public Integer getPalpationid() {
-		return palpationid;
-	}
-	public void setPalpationid(Integer palpationid) {
-		this.palpationid = palpationid;
-	}
-	public Integer getDiuresisid() {
-		return diuresisid;
-	}
-	public void setDiuresisid(Integer diuresisid) {
-		this.diuresisid = diuresisid;
-	}
-	public Integer getEvaluationxbsshvoid() {
-		return evaluationxbsshvoid;
-	}
-	public void setEvaluationxbsshvoid(Integer evaluationxbsshvoid) {
-		this.evaluationxbsshvoid = evaluationxbsshvoid;
-	}
-	public Integer getEvaluationshfaid() {
-		return evaluationshfaid;
-	}
-	public void setEvaluationshfaid(Integer evaluationshfaid) {
-		this.evaluationshfaid = evaluationshfaid;
-	}
-	public Integer getSwallowingactid() {
-		return swallowingactid;
-	}
-	public void setSwallowingactid(Integer swallowingactid) {
-		this.swallowingactid = swallowingactid;
-	}
-	public Integer getExternalevidenceid() {
-		return externalevidenceid;
-	}
-	public void setExternalevidenceid(Integer externalevidenceid) {
-		this.externalevidenceid = externalevidenceid;
-	}
-	public Integer getTyazestid() {
-		return tyazestid;
-	}
-	public void setTyazestid(Integer tyazestid) {
-		this.tyazestid = tyazestid;
-	}
-	 
-	 
-	 
-	 
+	public void setLiver(Liver liver) {
+		this.liver = liver;
+	}	 
 }

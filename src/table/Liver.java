@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /*CREATE TABLE liver(id integer PRIMARY KEY,
@@ -15,20 +16,33 @@ import javax.persistence.Table;
 @Table(name = "liver")
 
 public class Liver {
-	@Id	
-	 @Column(name = "id")
+	
+	private Liver liverid;
+	
+	private ListOsmotra listOsmotra;
+	
+	@OneToOne(mappedBy="liver")
+	public ListOsmotra getListOsmotra() {
+		return listOsmotra;
+	}
+	public void setListOsmotra(ListOsmotra listOsmotra) {
+		this.listOsmotra = listOsmotra;
+	}
+		@Id	
 	 @GeneratedValue(strategy= GenerationType.AUTO)
-		private int id;	
-	 @Column(name = "value1")
+	 @Column(name = "liverid")
+	public Liver getliverId() {
+		return liverid;
+	}
+	public void setliverId(int id) {
+		this.liverid = liverid;
+	}
+	
+	@Column(name = "value1")
 	 	private boolean value1;
 	 @Column(name = "value2")
 	 	private boolean value2;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 	public boolean isValue1() {
 		return value1;
 	}
@@ -41,4 +55,4 @@ public class Liver {
 	public void setValue2(boolean value2) {
 		this.value2 = value2;
 	}
-}
+	}

@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /*CREATE TABLE pulse(id integer PRIMARY KEY,
@@ -15,20 +16,31 @@ import javax.persistence.Table;
 @Table(name = "pulse")
 
 public class Pulse {
+	private ListOsmotra listOsmotra;
+
+	private Pulse pulseid;
+	
+	@OneToOne(mappedBy="pulse")
+	public ListOsmotra getListOsmotra() {
+		return listOsmotra;
+	}
+	public void setListOsmotra(ListOsmotra listOsmotra) {
+		this.listOsmotra = listOsmotra;
+	}
+	
 	@Id	
-	 @Column(name = "id")
 	 @GeneratedValue(strategy= GenerationType.AUTO)
-		private int id;	
+	 @Column(name = "pulseid")
+		public Pulse getpulseId() {
+			return pulseid;
+		}
+		public void setpulseId(int id) {
+			this.pulseid = pulseid;
+		}
 	 @Column(name = "value1")
 	 	private boolean value1;
 	 @Column(name = "value2")
 	 	private boolean value2;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public boolean isValue1() {
 		return value1;
 	}
