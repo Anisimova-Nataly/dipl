@@ -286,6 +286,9 @@ public class ListOsmotra {
 	public Theart getTheart() {
 		return theart;
 	}
+	public void setTheart(Theart theart) {
+		this.theart = theart;
+	}	 
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="liverid") 
 	public Liver getLiver() {
