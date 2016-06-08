@@ -3,17 +3,14 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 07.06.2016 22:33:36 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="table.Theart" table="THEART">
-        <id name="theartid" type="table.Theart" access="field">
-            <column name="THEARTID" />
+    <class name="table.ExternalEvidence" table="EXTERNALEVIDENCE">
+        <id name="externalevidenceid" type="table.ExternalEvidence" access="field">
+            <column name="EXTERNALEVIDENCEID" />
             <generator class="increment" />
         </id>
         <one-to-one name="listOsmotra" class="table.ListOsmotra"></one-to-one>
-        <property name="value1" type="boolean">
-            <column name="VALUE1" />
-        </property>
-        <property name="value2" type="short">
-            <column name="VALUE2" />
+        <property name="value" type="char">
+            <column name="VALUE" />
         </property>
     </class>
 </hibernate-mapping>

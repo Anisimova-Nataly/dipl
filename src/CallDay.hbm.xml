@@ -3,16 +3,15 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 07.06.2016 22:33:36 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="table.Theart" table="THEART">
-        <id name="theartid" type="table.Theart" access="field">
-            <column name="THEARTID" />
+    <class name="table.CallDay" table="CALLDAY">
+        <id name="id" type="int">
+            <column name="ID" />
             <generator class="increment" />
         </id>
-        <one-to-one name="listOsmotra" class="table.ListOsmotra"></one-to-one>
-        <property name="value1" type="boolean">
+        <property name="value1" type="int">
             <column name="VALUE1" />
         </property>
-        <property name="value2" type="short">
+        <property name="value2" type="int">
             <column name="VALUE2" />
         </property>
     </class>

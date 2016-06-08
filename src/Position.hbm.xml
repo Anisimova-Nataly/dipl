@@ -3,19 +3,13 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 07.06.2016 22:33:36 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="table.HeavyNarcoticJournal" table="HEAVYNARCOTICJOURNAL">
+    <class name="table.Position" table="POSITION">
         <id name="id" type="int">
             <column name="ID" />
             <generator class="increment" />
         </id>
-        <property name="value1" type="int">
-            <column name="VALUE1" />
-        </property>
-        <property name="value2" type="java.sql.Date">
-            <column name="VALUE2" />
-        </property>
-        <property name="value3" type="java.lang.String">
-            <column name="VALUE3" />
+        <property name="value" type="java.lang.String">
+            <column name="VALUE" />
         </property>
     </class>
 </hibernate-mapping>

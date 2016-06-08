@@ -15,24 +15,24 @@ import general.Project;
 import main.SimpleGUI.ButtonEventListener;
 import table.PhoneConsultationsJournal;
 
-public class callListGUI extends JFrame  {
+public class ambListGUI extends JFrame  {
 
     private static final long serialVersionUID = 1L;
    Project proj;
   
     private Object[][] tbldata =null;
-    private String[] tblheader = { "ID", "ФИО пациента", "ФИО звонившего", "Дата", "Причина звонка", "ФИО принявшего звонок", "Результат" };
-	private JLabel lable = new JLabel("Журнал учета консультаций по телефону");
-	private JButton call = new JButton("Зарегистрировать звонок");
+    private String[] tblheader = { "ID", "ФИО пациента", "Дата и время", "ФИО специалиста", "Объем оказанных услуг" };
+	private JLabel lable = new JLabel("Журнал амбулаторного приема");
+	private JButton call = new JButton("Добавить запись");
 	static int rez = 0;
 	static boolean isPressed = false;
-    public callListGUI(Project p) throws InterruptedException, SQLException {
+    public ambListGUI(Project p) throws InterruptedException, SQLException {
     	
 	    super("Помощник");
 	    this.setBounds(100,100,1000,500);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    proj = p;
-	    tbldata = proj.listCall();
+	    tbldata = proj.listAmb();
 	    JTable tbl = new JTable(tbldata, tblheader);
 	   
 	    Container container = this.getContentPane();
@@ -57,7 +57,7 @@ public class callListGUI extends JFrame  {
 	}}
         
         public int start(Project p) throws InterruptedException, SQLException {
-    		callListGUI app = new callListGUI(p);
+    		ambListGUI app = new ambListGUI(p);
     		app.setVisible(true);
     		while (isPressed==false) {
     			TimeUnit.SECONDS.sleep(1);
