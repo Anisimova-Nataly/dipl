@@ -35,6 +35,25 @@
     		<artifactId>jgoodies-common</artifactId>
     		<version>1.8.1</version>
 		</dependency>
+ 		<!-- http://mvnrepository.com/artifact/com.toedter/jcalendar -->
+		<dependency>
+    		<groupId>com.toedter</groupId>
+    		<artifactId>jcalendar</artifactId>
+    		<version>1.4</version>
+		</dependency>
+		<!-- http://mvnrepository.com/artifact/com.miglayout/miglayout -->
+		<dependency>
+    		<groupId>com.miglayout</groupId>
+    		<artifactId>miglayout</artifactId>
+    		<version>3.5.5</version>
+		</dependency>
+ 		<!-- http://mvnrepository.com/artifact/com.jgoodies/jgoodies-forms -->
+		<dependency>
+    		<groupId>com.jgoodies</groupId>
+    		<artifactId>jgoodies-forms</artifactId>
+    		<version>1.6.0</version>
+		</dependency>
+ 		
  		
         <!-- Hibernate -->
         <!-- to start need only this -->
