@@ -1,5 +1,7 @@
 package table;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,7 +31,7 @@ public class Liver {
 		this.listOsmotra = listOsmotra;
 	}
 		@Id	
-	 @GeneratedValue(strategy= GenerationType.AUTO)
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 @Column(name = "liverid")
 	public Liver getliverId() {
 		return liverid;

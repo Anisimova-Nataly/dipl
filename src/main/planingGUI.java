@@ -10,6 +10,11 @@ import javax.swing.JMenuBar;
 import java.awt.List;
 import java.awt.Button;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.concurrent.TimeUnit;
 import java.awt.event.ActionEvent;
 import java.awt.Label;
 import com.jgoodies.forms.layout.FormLayout;
@@ -21,11 +26,19 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JTable;
+import java.awt.SystemColor;
+import javax.swing.JToolBar;
 
 public class planingGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
+	Date curr = new Date();
+
+	JLabel lblNewLabel_1;
+	Calendar cal = Calendar.getInstance();
+	SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd");
+
 
 	/**
 	 * Launch the application.
@@ -58,8 +71,12 @@ public class planingGUI extends JFrame {
 				FormSpecs.LABEL_COMPONENT_GAP_COLSPEC,
 				ColumnSpec.decode("438px:grow"),
 				FormSpecs.RELATED_GAP_COLSPEC,
+				FormSpecs.DEFAULT_COLSPEC,
+				FormSpecs.RELATED_GAP_COLSPEC,
 				FormSpecs.DEFAULT_COLSPEC,},
 			new RowSpec[] {
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				FormSpecs.DEFAULT_ROWSPEC,
 				FormSpecs.RELATED_GAP_ROWSPEC,
 				FormSpecs.DEFAULT_ROWSPEC,
 				FormSpecs.LINE_GAP_ROWSPEC,
@@ -73,21 +90,64 @@ public class planingGUI extends JFrame {
 		lblNewLabel.setVerticalAlignment(SwingConstants.BOTTOM);
 		contentPane.add(lblNewLabel, "4, 2");
 		
-		JButton btnNewButton = new JButton("<");
-		contentPane.add(btnNewButton, "2, 4");
+		JButton btnNewButton_2 = new JButton("Другая дата");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dataGUI  newCal = new dataGUI();
+				newCal.setVisible(true);
+				/*while (newCal.isPressed==false) {
+					try {
+						TimeUnit.SECONDS.sleep(1);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+				System.out.println(newCal.cal.getTime());
+				newCal.setVisible(false);
+				newCal.dispose();
+				*/
+				
+			}
+		});
+		contentPane.add(btnNewButton_2, "6, 2");
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
+		
+		
+		
+		
+		
+		
+		
+		
+		lblNewLabel_1 = new JLabel(formatter.format((cal.getTime())));
+			
+		lblNewLabel_1.setFont(new Font("Dialog", Font.ITALIC, 17));
+		lblNewLabel_1.setForeground(SystemColor.desktop);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		contentPane.add(lblNewLabel_1, "4, 4");
+		contentPane.add(lblNewLabel_1, "4, 6");
 		
+		JButton btnNewButton = new JButton("<");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				cal.add(Calendar.DAY_OF_MONTH, -1);
+				lblNewLabel_1.setText(formatter.format((cal.getTime())));
+			}
+		});
+		contentPane.add(btnNewButton, "2, 6");
 		JButton btnNewButton_1 = new JButton(">");
-		contentPane.add(btnNewButton_1, "6, 4");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				cal.add(Calendar.DAY_OF_MONTH, +1);
+				lblNewLabel_1.setText(formatter.format((cal.getTime())));
+			}
+		});
+		contentPane.add(btnNewButton_1, "6, 6");
 		
 		table = new JTable();
-		contentPane.add(table, "4, 5, fill, fill");
+		contentPane.add(table, "4, 7, fill, fill");
 		
 		JButton button = new JButton("Показать на карте");
-		contentPane.add(button, "4, 6");
+		contentPane.add(button, "4, 8");
 	}
 
 }

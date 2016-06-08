@@ -51,6 +51,8 @@
             <version>${hibernate-version}</version>
         </dependency>
  
+ 
+ 
         <!-- optional -->
         <dependency>
             <groupId>org.hibernate</groupId>
