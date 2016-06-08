@@ -4,7 +4,7 @@
 <!-- Generated 07.06.2016 22:33:36 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="table.Theart" table="THEART">
-        <id name="theartid" type="table.Theart" access="field">
+        <id name="theartid" type="integer" access="field">
             <column name="THEARTID" />
             <generator class="increment" />
         </id>

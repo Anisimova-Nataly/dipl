@@ -7,7 +7,7 @@
 		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/dipl</property>
 		<property name="hibernate.connection.username">postgres</property>
 
-		<property name="hibernate.connection.password">16dragon1293</property>
+		<property name="hibernate.connection.password">15101995</property>
 		
 		<mapping resource="ListOsmotra.hbm.xml"/>
 		
@@ -15,15 +15,20 @@
 		<mapping resource="PhoneConsultationsJournal.hbm.xml" />
 		<mapping resource="Diuresis.hbm.xml" />
 		<mapping resource="EvaluationXbsShvo.hbm.xml" />
+		<mapping resource="EvaluationShfa.hbm.xml" />
+		<mapping resource="ExternalEvidence.hbm.xml" />
 		<mapping resource="HeavyNarcoticJournal.hbm.xml" />
 		<mapping resource="JournalOutpatientReception.hbm.xml" />
 		<mapping resource="Liver.hbm.xml" />
 		<mapping resource="Palpation.hbm.xml" />
+		<mapping resource="Position.hbm.xml" />
 		<mapping resource="Pulse.hbm.xml" />
+		<mapping resource="Specialist.hbm.xml" />
 		<mapping resource="SwallowingAct.hbm.xml" />
 		<mapping resource="Theart.hbm.xml" />
 		<mapping resource="TherapeuticDiagnosticManipulationsJournal.hbm.xml" />
 		<mapping resource="CallPlanningJournal.hbm.xml" />
 		<mapping resource="ListOsmotra.hbm.xml" />
+		<mapping resource="Tyazest.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

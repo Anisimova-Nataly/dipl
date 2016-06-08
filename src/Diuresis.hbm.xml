@@ -4,7 +4,7 @@
 <!-- Generated 07.06.2016 22:33:36 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="table.Diuresis" table="DIURESIS">
-        <id name="diuresisid" type="table.Diuresis" access="field">
+        <id name="diuresisid" type="integer" access="field">
             <column name="DIURESISID" />
             <generator class="increment" />
         </id>

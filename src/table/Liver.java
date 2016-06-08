@@ -32,7 +32,7 @@ public class Liver {
 	}
 		@Id	
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 @Column(name = "liverid")
+	 @Column(name = "id")
 	public Liver getliverId() {
 		return liverid;
 	}

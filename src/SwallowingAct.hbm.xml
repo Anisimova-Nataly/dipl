@@ -4,7 +4,7 @@
 <!-- Generated 07.06.2016 22:33:36 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="table.SwallowingAct" table="SWALLOWINGACT">
-        <id name="listOsmotra" type="table.ListOsmotra">
+        <id name="listOsmotra" type="integer">
             <column name="LISTOSMOTRA" />
             <generator class="increment" />
         </id>

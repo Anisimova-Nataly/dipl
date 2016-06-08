@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 07.06.2016 22:33:36 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 08.06.2016 18:10:10 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="table.EvaluationXbsShvo" table="EVALUATIONXBSSHVO">
-        <id name="evaluationXbsShvoId" type="table.EvaluationXbsShvo" access="field">
+        <id name="evaluationXbsShvoId" type="integer" access="field">
             <column name="EVALUATIONXBSSHVOID" />
-            <generator class="increment" />
+            <generator class="assigned" />
         </id>
         <one-to-one name="listOsmotra" class="table.ListOsmotra"></one-to-one>
         <property name="value1" type="boolean">

@@ -4,7 +4,7 @@
 <!-- Generated 07.06.2016 22:33:36 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="table.ExternalEvidence" table="EXTERNALEVIDENCE">
-        <id name="externalevidenceid" type="table.ExternalEvidence" access="field">
+        <id name="externalevidenceid" type="integer" access="field">
             <column name="EXTERNALEVIDENCEID" />
             <generator class="increment" />
         </id>

@@ -4,8 +4,8 @@
 <!-- Generated 07.06.2016 23:49:44 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="table.Liver" table="LIVER">
-        <id name="liverid" type="table.Liver" access="field">
-            <column name="LIVERID" />
+        <id name="liverid" type="integer" access="field">
+            <column name="ID" />
             <generator class="increment" />
         </id>
         <one-to-one name="listOsmotra" class="table.ListOsmotra"></one-to-one>
