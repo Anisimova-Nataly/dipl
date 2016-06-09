@@ -5,14 +5,14 @@ import java.util.List;
 
 import org.hibernate.Session;
 
-import dao.CallDayDao;
-import table.CallDay;
+import dao.CardDao;
+import table.Card;
 import util.HibernateUtil;
 
-public class CallDayDaoImpl implements CallDayDao {
+public class CardDaoImpl implements CardDao {
 
 	@Override
-	public void addCallDay(CallDay journal) throws SQLException {
+	public void addCard(Card journal) throws SQLException {
 		Session session = null;
 		try{
 			session = HibernateUtil.getSessionFactory().openSession();
@@ -28,7 +28,7 @@ public class CallDayDaoImpl implements CallDayDao {
 	}
 
 	@Override
-	public void deleteCallDay(CallDay journal) throws SQLException {
+	public void deleteCard(Card journal) throws SQLException {
 		Session session = null;
 		try{
 			session = HibernateUtil.getSessionFactory().openSession();
@@ -45,13 +45,13 @@ public class CallDayDaoImpl implements CallDayDao {
 	}
 
 	@Override
-	public CallDay getCallDay(int id) throws SQLException {
-		CallDay result = null;
+	public Card getCard(int id) throws SQLException {
+		Card result = null;
 		
 		Session session = null;
 		try{
 			session = HibernateUtil.getSessionFactory().openSession();
-			result = (CallDay) session.load(CallDay.class, id);
+			result = (Card) session.load(Card.class, id);
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
@@ -61,13 +61,13 @@ public class CallDayDaoImpl implements CallDayDao {
 	}
 
 	@Override
-	public List<CallDay> getCallDay() throws SQLException {
-		List<CallDay> Journals = null;
+	public List<Card> getCard() throws SQLException {
+		List<Card> Journals = null;
 		
 		Session session = null;
 		try{
 			session = HibernateUtil.getSessionFactory().openSession();
-			Journals = session.createCriteria(CallDay.class).list();
+			Journals = session.createCriteria(Card.class).list();
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
