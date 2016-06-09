@@ -1,24 +1,20 @@
 package main;
 
-import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
+
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JMenuBar;
-import java.awt.List;
-import java.awt.Button;
+
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.concurrent.TimeUnit;
+
 import java.awt.event.ActionEvent;
-import java.awt.Label;
+
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormSpecs;
@@ -28,17 +24,21 @@ import com.toedter.calendar.JCalendar;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import javax.swing.UIManager;
+
 import javax.swing.UnsupportedLookAndFeelException;
 
 import java.awt.Font;
 import javax.swing.JTable;
 import java.awt.SystemColor;
-import javax.swing.JToolBar;
+
 
 public class planingGUI extends JPanel {
 
-	private JPanel contentPane;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private JTable table;
 	Date curr = new Date();
 
@@ -60,8 +60,8 @@ public class planingGUI extends JPanel {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Status st = new Status();
-					planingGUI frame = new planingGUI(st);
+					
+					planingGUI frame = new planingGUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -73,7 +73,7 @@ public class planingGUI extends JPanel {
 	/**
 	 * Create the frame.
 	 */
-	public planingGUI(Status status) {
+	public planingGUI() {
 	//	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 400);
 		//contentPane = new JPanel();

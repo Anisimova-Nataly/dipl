@@ -1,44 +1,40 @@
 package main;
 
 import javax.swing.JPanel;
-import javax.swing.JRootPane;
-import javax.swing.BoxLayout;
-import java.awt.FlowLayout;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import java.awt.GridLayout;
+
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import com.jgoodies.forms.layout.FormSpecs;
+
+import general.Project;
+
 import javax.swing.JButton;
-import javax.swing.JFrame;
+
 
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import net.miginfocom.swing.MigLayout;
-import javax.swing.SpringLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import java.awt.CardLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
+
 
 public class StartPanal extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	MainFrame parent;
-	
+	Project proj = new Project();
 	/**
 	 * Create the panel.
 	 */
 	public StartPanal(MainFrame p) {
 		parent = p;
+		final StartPanal me =  this;
 		setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel = new JLabel("Помошник");
+		JLabel lblNewLabel = new JLabel("Помощник");
 		lblNewLabel.setBackground(Color.LIGHT_GRAY);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Liberation Serif", Font.BOLD, 54));
@@ -69,8 +65,12 @@ public class StartPanal extends JPanel {
 		JButton btnNewButton_3 = new JButton("Планировщик");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("me");
-				parent.contentPane.add(new planingGUI(null),BorderLayout.EAST);
+				planingGUI pl = new planingGUI();
+				pl.setVisible(true);
+				me.revalidate();
+				parent.contentPane.remove(me);
+				parent.contentPane.add(pl,BorderLayout.CENTER);
+				
 			}
 		});
 		panel.add(btnNewButton_3, "cell 1 1,grow");
@@ -83,6 +83,30 @@ public class StartPanal extends JPanel {
 		panel.add(btnNewButton_4, "cell 0 2,grow");
 		
 		JButton btnNewButton_5 = new JButton("Журнал приема звонков");
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				parent.progressBar.setVisible(true);
+				parent.progressBar.revalidate();
+				callJornal call;
+				try {
+					call = new callJornal(proj);
+					call.setVisible(true);
+					me.revalidate();
+					
+					
+					parent.contentPane.remove(me);
+					parent.contentPane.add(call,BorderLayout.CENTER);
+				} catch (InterruptedException e1) {
+					
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					
+					e1.printStackTrace();
+				}
+
+			}
+		});
 		panel.add(btnNewButton_5, "cell 1 2,grow");
 
 	}
