@@ -1,6 +1,7 @@
 package table;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -44,6 +46,9 @@ public class ListOsmotra {
 	private EvaluationShfa evaluationShfa;
 	private ExternalEvidence externalEvidence;
 	private Tyazest tyazest;
+	
+	private Card card;
+	private ListOsmotra listOsmotra;
 	
 	@Id	
 	 @Column(name = "id")
@@ -297,4 +302,14 @@ public class ListOsmotra {
 	public void setLiver(Liver liver) {
 		this.liver = liver;
 	}	 
+	
+	@ManyToOne
+	@JoinColumn(name="cardid")
+	public ListOsmotra getListOsmotra(){
+		return listOsmotra;
+	}
+	public void setListOsmotra(ListOsmotra listOsmotra){
+		this.listOsmotra = listOsmotra;	
+	}
+	
 }
