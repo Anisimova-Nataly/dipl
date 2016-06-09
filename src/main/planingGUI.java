@@ -36,7 +36,7 @@ import javax.swing.JTable;
 import java.awt.SystemColor;
 import javax.swing.JToolBar;
 
-public class planingGUI extends JFrame {
+public class planingGUI extends JPanel {
 
 	private JPanel contentPane;
 	private JTable table;
@@ -60,7 +60,8 @@ public class planingGUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					planingGUI frame = new planingGUI();
+					Status st = new Status();
+					planingGUI frame = new planingGUI(st);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -72,13 +73,13 @@ public class planingGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public planingGUI() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public planingGUI(Status status) {
+	//	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 400);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(new FormLayout(new ColumnSpec[] {
+		//contentPane = new JPanel();
+		//contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		//setContentPane(contentPane);
+		this.setLayout(new FormLayout(new ColumnSpec[] {
 				FormSpecs.RELATED_GAP_COLSPEC,
 				FormSpecs.DEFAULT_COLSPEC,
 				FormSpecs.LABEL_COMPONENT_GAP_COLSPEC,
@@ -103,7 +104,7 @@ public class planingGUI extends JFrame {
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 29));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setVerticalAlignment(SwingConstants.BOTTOM);
-		contentPane.add(lblNewLabel, "4, 2");
+		this.add(lblNewLabel, "4, 2");
 		
 
 
@@ -116,7 +117,7 @@ calend.addPropertyChangeListener(new PropertyChangeListener() {
         	  lblNewLabel_1.setText(formatter.format(calend.getDate()));
           }
       });
-contentPane.add(calend, "2, 6");
+this.add(calend, "2, 6");
 JButton btnNewButton = new JButton("<");
 btnNewButton.addActionListener(new ActionListener() {
 	public void actionPerformed(ActionEvent arg0) {
@@ -124,7 +125,7 @@ btnNewButton.addActionListener(new ActionListener() {
 		lblNewLabel_1.setText(formatter.format((cal.getTime())));
 	}
 });
-contentPane.add(btnNewButton, "2, 4");
+this.add(btnNewButton, "2, 4");
 JButton btnNewButton_1 = new JButton(">");
 btnNewButton_1.addActionListener(new ActionListener() {
 	public void actionPerformed(ActionEvent arg0) {
@@ -146,11 +147,11 @@ lblNewLabel_1 = new JLabel(formatter.format((cal.getTime())));
 		lblNewLabel_1.setFont(new Font("Dialog", Font.ITALIC, 17));
 		lblNewLabel_1.setForeground(SystemColor.desktop);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		contentPane.add(lblNewLabel_1, "4, 4");
-contentPane.add(btnNewButton_1, "6, 4");
+		this.add(lblNewLabel_1, "4, 4");
+		this.add(btnNewButton_1, "6, 4");
 
 table = new JTable();
-contentPane.add(table, "4, 6, fill, fill");
+this.add(table, "4, 6, fill, fill");
 
 	}
 

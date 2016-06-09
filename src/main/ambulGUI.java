@@ -8,7 +8,7 @@ import javax.swing.*;
 
 import table.PhoneConsultationsJournal;
 
-public class ambulGUI extends JFrame {
+public class ambulGUI extends JPanel {
 	private JButton ok = new JButton("Сохранить");
 
 	
@@ -37,11 +37,11 @@ public class ambulGUI extends JFrame {
 	public static PhoneConsultationsJournal zurnal = new PhoneConsultationsJournal() ;
 	static boolean isPressed = false;
 	public ambulGUI() {
-	    super("Помощник");
+	 //   super("Помощник");
 	    this.setBounds(100,100,1000,500);
-	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	 //   this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-	    Container container = this.getContentPane();
+	    Container container = this.getRootPane();
 	  //  container.setLayout(new GridLayout(1,1,5,5));
 	    container.setLayout(new GridLayout(6,2,15,15));   
 	    
@@ -83,7 +83,7 @@ public class ambulGUI extends JFrame {
 			TimeUnit.SECONDS.sleep(1);
 		}	
 		 //System.out.println(zurnal.getReason());
-		app.dispose();
+		//app.dispose();
 		return zurnal;
 		
 	}

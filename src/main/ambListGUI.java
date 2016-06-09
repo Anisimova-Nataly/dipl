@@ -15,7 +15,7 @@ import general.Project;
 import main.SimpleGUI.ButtonEventListener;
 import table.PhoneConsultationsJournal;
 
-public class ambListGUI extends JFrame  {
+public class ambListGUI extends JPanel  {
 
     private static final long serialVersionUID = 1L;
    Project proj;
@@ -28,14 +28,14 @@ public class ambListGUI extends JFrame  {
 	static boolean isPressed = false;
     public ambListGUI(Project p) throws InterruptedException, SQLException {
     	
-	    super("Помощник");
+	  //  super("Помощник");
 	    this.setBounds(100,100,1000,500);
-	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	 //   this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    proj = p;
 	    tbldata = proj.listAmb();
 	    JTable tbl = new JTable(tbldata, tblheader);
 	   
-	    Container container = this.getContentPane();
+	    Container container = this.getRootPane();
 	    container.setLayout(new GridLayout(3,1,15,15)); 
 	    container.add(lable);
         container.add(new JScrollPane(tbl));
@@ -63,7 +63,7 @@ public class ambListGUI extends JFrame  {
     			TimeUnit.SECONDS.sleep(1);
     		}	
     		
-    		app.dispose();
+    	//	app.dispose();
     		return rez;
     		
         }}
