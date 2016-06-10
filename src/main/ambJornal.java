@@ -93,7 +93,7 @@ public class ambJornal extends JPanel {
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		//String path = "tel.png";
 		//URL imgURL = TestFrame.class.getResource(path);
-		lblNewLabel_1.setIcon(new ImageIcon("src.img/tel.png"));
+		lblNewLabel_1.setIcon(new ImageIcon("src/img/amb.png"));
 		add(lblNewLabel_1, BorderLayout.CENTER);
 
 		
