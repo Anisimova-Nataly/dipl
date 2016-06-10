@@ -1,3 +1,5 @@
+/*связь с нарк. учетом нужна*/
+
 package table;
 
 import java.sql.Timestamp;
