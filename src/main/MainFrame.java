@@ -48,7 +48,7 @@ public class MainFrame extends JFrame {
 		ImageIcon icon = new ImageIcon("/Bowl_hygeia_darkred.svg");
 		setIconImage(icon.getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 500);
+		setBounds(100, 100, 700, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	//	planingGUI pl = new planingGUI(null);

@@ -145,10 +145,10 @@ public class Project {
 			for(JournalOutpatientReception p : zurnal){
 				//System.out.println(p.getId() +"   "+ p.getReason()+"   "+p.getDate().toString());
 				objs[i][0]= p.getId();
-				//objs[i][1]= p.get;
-				//objs[i][2]= p.getCallerid();
-				//objs[i][3]= p.getDate();
-				//objs[i][4]= p.getReason();
+				objs[i][1]= null;
+				objs[i][2]= p.getInspectionDateTime();
+				objs[i][3]= null;
+				objs[i][4]= p.getContentRenderedServices();
 				//objs[i][5]= p.getSpecialistid();
 				//objs[i][6]= p.getConsultationResultId();
 				

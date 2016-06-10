@@ -6,6 +6,8 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.SwingConstants;
 
 import general.Project;
@@ -17,6 +19,7 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import net.miginfocom.swing.MigLayout;
+import javax.swing.ImageIcon;
 
 
 public class StartPanal extends JPanel {
@@ -60,12 +63,28 @@ public class StartPanal extends JPanel {
 		panel.add(btnNewButton_1, "cell 1 0,grow");
 		
 		JButton btnNewButton_2 = new JButton("Журнал амбулаторного приема");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ambJornal amb;
+				try {
+					amb = new ambJornal(proj,parent);
+					amb.setVisible(true);
+					me.revalidate();
+					parent.contentPane.remove(me);
+					parent.contentPane.add(amb,BorderLayout.CENTER);
+				} catch (InterruptedException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}				
+			}
+		});
 		panel.add(btnNewButton_2, "cell 0 1,grow");
 			
 		JButton btnNewButton_3 = new JButton("Планировщик");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				planingGUI pl = new planingGUI();
+				planingGUI pl = new planingGUI(parent);
 				pl.setVisible(true);
 				me.revalidate();
 				parent.contentPane.remove(me);
@@ -83,14 +102,15 @@ public class StartPanal extends JPanel {
 		panel.add(btnNewButton_4, "cell 0 2,grow");
 		
 		JButton btnNewButton_5 = new JButton("Журнал приема звонков");
+	
+		
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				parent.progressBar.setVisible(true);
-				parent.progressBar.revalidate();
+				
 				callJornal call;
 				try {
-					call = new callJornal(proj);
+					call = new callJornal(proj, parent);
 					call.setVisible(true);
 					me.revalidate();
 					

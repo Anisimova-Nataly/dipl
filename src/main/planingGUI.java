@@ -1,6 +1,7 @@
 package main;
 
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 
@@ -9,6 +10,7 @@ import javax.swing.JPanel;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -30,6 +32,9 @@ import javax.swing.UnsupportedLookAndFeelException;
 import java.awt.Font;
 import javax.swing.JTable;
 import java.awt.SystemColor;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import javax.swing.JToolBar;
 
 
 public class planingGUI extends JPanel {
@@ -45,7 +50,7 @@ public class planingGUI extends JPanel {
 	JLabel lblNewLabel_1;
 	Calendar cal = Calendar.getInstance();
 	SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd");
-
+	final planingGUI me =  this;
 
 	/**
 	 * Launch the application.
@@ -54,7 +59,7 @@ public class planingGUI extends JPanel {
 	 * @throws InstantiationException 
 	 * @throws ClassNotFoundException 
 	 */
-	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
+	/*public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
 	//системный дизайн
 		//	javax.swing.UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		EventQueue.invokeLater(new Runnable() {
@@ -69,11 +74,12 @@ public class planingGUI extends JPanel {
 			}
 		});
 	}
-
+*/
 	/**
 	 * Create the frame.
 	 */
-	public planingGUI() {
+	public planingGUI(final MainFrame p) {
+		
 	//	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 400);
 		//contentPane = new JPanel();
@@ -92,6 +98,8 @@ public class planingGUI extends JPanel {
 				FormSpecs.RELATED_GAP_ROWSPEC,
 				FormSpecs.DEFAULT_ROWSPEC,
 				FormSpecs.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("default:grow"),
+				FormSpecs.RELATED_GAP_ROWSPEC,
 				FormSpecs.DEFAULT_ROWSPEC,
 				FormSpecs.RELATED_GAP_ROWSPEC,
 				FormSpecs.DEFAULT_ROWSPEC,
@@ -99,6 +107,19 @@ public class planingGUI extends JPanel {
 				RowSpec.decode("21px"),
 				RowSpec.decode("219px:grow"),
 				RowSpec.decode("23px"),}));
+		JButton btnNewButton_2 = new JButton("на главную ");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//plan pl = new planingGUI(parent);
+				StartPanal st = new StartPanal(p);
+				st.setVisible(true);
+				me.revalidate();
+				p.contentPane.remove(me);
+				p.contentPane.add(st,BorderLayout.CENTER);
+				
+			}
+		});
+		add(btnNewButton_2, "2, 2");
 		
 		JLabel lblNewLabel = new JLabel("ПЛАНИРОВЩИК");
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 29));
@@ -117,22 +138,11 @@ calend.addPropertyChangeListener(new PropertyChangeListener() {
         	  lblNewLabel_1.setText(formatter.format(calend.getDate()));
           }
       });
-this.add(calend, "2, 6");
+JPanel panel = new JPanel();
+add(panel, "4, 4, fill, fill");
+panel.setLayout(new GridLayout(1, 0, 0, 0));
 JButton btnNewButton = new JButton("<");
-btnNewButton.addActionListener(new ActionListener() {
-	public void actionPerformed(ActionEvent arg0) {
-		cal.add(Calendar.DAY_OF_MONTH, -1);
-		lblNewLabel_1.setText(formatter.format((cal.getTime())));
-	}
-});
-this.add(btnNewButton, "2, 4");
-JButton btnNewButton_1 = new JButton(">");
-btnNewButton_1.addActionListener(new ActionListener() {
-	public void actionPerformed(ActionEvent arg0) {
-		cal.add(Calendar.DAY_OF_MONTH, +1);
-		lblNewLabel_1.setText(formatter.format((cal.getTime())));
-	}
-});
+panel.add(btnNewButton);
 
 
 
@@ -143,15 +153,44 @@ btnNewButton_1.addActionListener(new ActionListener() {
 
 
 lblNewLabel_1 = new JLabel(formatter.format((cal.getTime())));
+panel.add(lblNewLabel_1);
 
 		lblNewLabel_1.setFont(new Font("Dialog", Font.ITALIC, 17));
 		lblNewLabel_1.setForeground(SystemColor.desktop);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		this.add(lblNewLabel_1, "4, 4");
-		this.add(btnNewButton_1, "6, 4");
+JButton btnNewButton_1 = new JButton(">");
+panel.add(btnNewButton_1);
+btnNewButton_1.addActionListener(new ActionListener() {
+	public void actionPerformed(ActionEvent arg0) {
+		cal.add(Calendar.DAY_OF_MONTH, +1);
+		lblNewLabel_1.setText(formatter.format((cal.getTime())));
+	}
+});
+btnNewButton.addActionListener(new ActionListener() {
+	public void actionPerformed(ActionEvent arg0) {
+		cal.add(Calendar.DAY_OF_MONTH, -1);
+		lblNewLabel_1.setText(formatter.format((cal.getTime())));
+	}
+});
+this.add(calend, "2, 8");
 
 table = new JTable();
-this.add(table, "4, 6, fill, fill");
+this.add(table, "4, 8, fill, fill");
+JButton button_1 = new JButton("Карта");
+button_1.addActionListener(new ActionListener() {
+	public void actionPerformed(ActionEvent e) {
+		try {
+			tryMap map = new tryMap();
+			map.setVisible(true);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+});
+add(button_1, "2, 10");
+JButton button = new JButton("Добавить");
+add(button, "4, 10");
 
 	}
 
