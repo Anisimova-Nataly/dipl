@@ -1,10 +1,15 @@
 package table;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /*CREATE TABLE specialist(id integer PRIMARY KEY, 
@@ -19,6 +24,8 @@ import javax.persistence.Table;
 @Table(name = "specialist")
 
 public class Specialist {
+	private List <Position> positions;
+	
 	@Id	
 	 @Column(name = "id")
 	 @GeneratedValue(strategy= GenerationType.AUTO)
@@ -61,4 +68,12 @@ public class Specialist {
 	public void setValue4(long value4) {
 		this.value4 = value4;
 	}
+	@OneToMany(targetEntity=Position.class, mappedBy="position", cascade=CascadeType.ALL,
+		fetch=FetchType.LAZY)
+		public List <Position> getPositions(){
+			return positions;
+		}
+		public void setPositions(List<Position> positions){
+			this.positions = positions;
+		}
 }

@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /*CREATE TABLE position(id integer PRIMARY KEY, 
@@ -14,6 +16,8 @@ import javax.persistence.Table;
 @Table(name = "position")
 
 public class Position {
+	private Specialist specialist;
+	
 	@Id	
 	 @Column(name = "id")
 	 @GeneratedValue(strategy= GenerationType.AUTO)
@@ -31,5 +35,13 @@ public class Position {
 	}
 	public void setValue(String value) {
 		this.value = value;
+	}
+	@ManyToOne
+	@JoinColumn(name="specialistid")
+	public Specialist getSpecialist() {
+		return specialist;
+	}
+	public void setSpecialist(Specialist specialist) {
+		this.specialist = specialist;
 	}
 }
