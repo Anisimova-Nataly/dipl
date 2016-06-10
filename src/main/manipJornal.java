@@ -20,21 +20,21 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
-public class callJornal extends JPanel {
+public class manipJornal extends JPanel {
 	private JTable table;
 	 private Object[][] tbldata =null;
-	 private String[] tblheader = { "ID", "ФИО пациента", "ФИО звонившего", "Дата", "Причина звонка", "ФИО принявшего звонок", "Результат" };
-	 final callJornal me =  this;
+	 private String[] tblheader = { "ID", "ФИО пациента", "Осложнения","Дата","Способ наблюдения за пациентом", "Результат","Диагноз после манипуляции", "ФИО мед работника"};
+	 final manipJornal me =  this;
 
 	/**
 	 * Create the panel.
 	 * @throws SQLException 
 	 * @throws InterruptedException 
 	 */
-	public callJornal(final Project proj, final MainFrame p) throws InterruptedException, SQLException {
+	public manipJornal(final Project proj, final MainFrame p) throws InterruptedException, SQLException {
 		setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel = new JLabel("Журнал приема звонков");
+		JLabel lblNewLabel = new JLabel("Журнал манипуляций");
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 30));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setForeground(Color.DARK_GRAY);
@@ -48,7 +48,7 @@ public class callJornal extends JPanel {
 		JToolBar toolBar = new JToolBar();
 		add(toolBar, BorderLayout.SOUTH);
 		final JLabel lblNewLabel_1 = new JLabel("");
-		JButton btnNewButton = new JButton("Новый звонок");
+		JButton btnNewButton = new JButton("Новая запись");
 		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnNewButton.setForeground(Color.DARK_GRAY);
 		toolBar.add(btnNewButton);
@@ -93,7 +93,7 @@ public class callJornal extends JPanel {
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		//String path = "tel.png";
 		//URL imgURL = TestFrame.class.getResource(path);
-		lblNewLabel_1.setIcon(new ImageIcon("src/img/tel.png"));
+		lblNewLabel_1.setIcon(new ImageIcon("src/img/manip.png"));
 		add(lblNewLabel_1, BorderLayout.CENTER);
 
 		

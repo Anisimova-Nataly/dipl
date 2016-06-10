@@ -20,6 +20,7 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.ImageIcon;
+import java.awt.GridLayout;
 
 
 public class StartPanal extends JPanel {
@@ -52,12 +53,26 @@ public class StartPanal extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		panel.setLayout(new MigLayout("", "[331px][331px]", "[122px][122px][122px]"));
+		panel.setLayout(new MigLayout("", "[333px][333px]", "[111px][111px][111px][111px]"));
 		panel.add(btnNewButton, "cell 0 0,grow");
 		
 		JButton btnNewButton_1 = new JButton("Журнал манипуляций");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				manipJornal man;
+				try {
+					man = new manipJornal(proj,parent);
+					man.setVisible(true);
+					me.revalidate();
+					parent.contentPane.remove(me);
+					parent.contentPane.add(man,BorderLayout.CENTER);
+				} catch (InterruptedException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}	
+				
+				
 			}
 		});
 		panel.add(btnNewButton_1, "cell 1 0,grow");
@@ -128,6 +143,34 @@ public class StartPanal extends JPanel {
 			}
 		});
 		panel.add(btnNewButton_5, "cell 1 2,grow");
+		
+		JButton btnNewButton_6 = new JButton("Журнал сильнодействующих препаратов");
+		btnNewButton_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				hardJornal hard;
+				try {
+					hard = new hardJornal(proj, parent);
+					hard.setVisible(true);
+					me.revalidate();
+					
+					
+					parent.contentPane.remove(me);
+					parent.contentPane.add(hard,BorderLayout.CENTER);
+				} catch (InterruptedException e1) {
+					
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		panel.add(btnNewButton_6, "cell 0 3,grow");
+		
+		JLabel label = new JLabel("");
+		panel.add(label, "cell 1 3,grow");
 
 	}
 }

@@ -1,15 +1,19 @@
 package general;
 
 
+import dao.HeavyNarcoticJournalDao;
 import dao.JournalOutpatientReceptionDao;
 import dao.ListOsmotraDao;
 import dao.PhoneConsultationsJournalDao;
+import dao.TherapeuticDiagnosticManipulationsJournalDao;
 import main.SimpleGUI;
 import main.callListGUI;
 import main.phonecollGUI;
+import table.HeavyNarcoticJournal;
 import table.JournalOutpatientReception;
 import table.ListOsmotra;
 import table.PhoneConsultationsJournal;
+import table.TherapeuticDiagnosticManipulationsJournal;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -157,5 +161,65 @@ public class Project {
 			return objs;
 			
 		}
+	
+	public Object[][] listManip()  throws InterruptedException, SQLException {
+		
+		Factory factory = Factory.getInstance();
+		TherapeuticDiagnosticManipulationsJournalDao zurDao = factory.getTherapeuticDiagnosticManipulationsJournalDao();
+		
 
+		List <TherapeuticDiagnosticManipulationsJournal> zurnal = zurDao.getTherapeuticDiagnosticManipulationsJournals();
+		Object[][] objs = new Object[zurnal.size()][8];
+		int i=0;
+		
+		for(TherapeuticDiagnosticManipulationsJournal p : zurnal){
+			//System.out.println(p.getId() +"   "+ p.getReason()+"   "+p.getDate().toString());
+			objs[i][0]= p.getId();
+			objs[i][1]= null;
+			objs[i][2]= p.getComplication();
+			objs[i][3]= null;
+			objs[i][4]= p.getObservationmethod();
+			objs[i][5]= null;
+			objs[i][6]= null;
+			objs[i][7]= null;
+			
+			
+			//objs[i][5]= p.getSpecialistid();
+			//objs[i][6]= p.getConsultationResultId();
+			
+			i++;
+		}
+		return objs;
+		
+	}
+
+	public Object[][] listDrags()  throws InterruptedException, SQLException {
+		
+		Factory factory = Factory.getInstance();
+		HeavyNarcoticJournalDao zurDao = factory.getHeavyNarcoticJournalDao();
+		
+
+		List <HeavyNarcoticJournal> zurnal = zurDao.getHeavyNarcoticJournals();
+		Object[][] objs = new Object[zurnal.size()][7];
+		int i=0;
+		
+		for(HeavyNarcoticJournal p : zurnal){
+			//System.out.println(p.getId() +"   "+ p.getReason()+"   "+p.getDate().toString());
+			objs[i][0]= p.getId();
+			objs[i][1]= null;
+			objs[i][2]= p.getValue2();
+			objs[i][3]= p.getValue3();
+			objs[i][4]= null;
+			objs[i][5]= null;
+			objs[i][6]= null;
+			
+			
+			
+			//objs[i][5]= p.getSpecialistid();
+			//objs[i][6]= p.getConsultationResultId();
+			
+			i++;
+		}
+		return objs;	
+	}
 }
