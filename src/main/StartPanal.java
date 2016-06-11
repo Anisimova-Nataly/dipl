@@ -51,6 +51,18 @@ public class StartPanal extends JPanel {
 		JButton btnNewButton = new JButton("Амбулаторные карты");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Cards c;
+				try {
+					c = new Cards(proj,parent);
+					c.setVisible(true);
+					me.revalidate();
+					parent.contentPane.remove(me);
+					parent.contentPane.add(c,BorderLayout.CENTER);
+				} catch (InterruptedException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}	
+				
 			}
 		});
 		panel.setLayout(new MigLayout("", "[333px][333px]", "[111px][111px][111px][111px]"));

@@ -6,8 +6,8 @@ import dao.JournalOutpatientReceptionDao;
 import dao.ListOsmotraDao;
 import dao.PhoneConsultationsJournalDao;
 import dao.TherapeuticDiagnosticManipulationsJournalDao;
-import main.SimpleGUI;
-import main.callListGUI;
+//import main.SimpleGUI;
+//import main.callListGUI;
 import main.phonecollGUI;
 import table.HeavyNarcoticJournal;
 import table.JournalOutpatientReception;
@@ -23,7 +23,7 @@ public class Project {
 
 
 
-
+/*
 	public static void main(String[] args) throws SQLException, InterruptedException {
 		
 		while (true){
@@ -63,7 +63,7 @@ public class Project {
 			}
 		}
 		
-	
+	*/
 		
 		//System.out.println("List");
 	//	ListOsmotraDao listDao = factory.getListOsmotraDao();
@@ -90,7 +90,7 @@ public class Project {
 	
 		
 		
-		}
+		//}
 
 	public void newCall() throws InterruptedException, SQLException {
 	
