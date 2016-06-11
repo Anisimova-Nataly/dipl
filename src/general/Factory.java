@@ -3,7 +3,6 @@ package general;
 import dao.ListOsmotraDao;
 import dao.PhoneConsultationsJournalDao;
 import impl.ListOsmotraDaoImpl;
-
 import impl.PhoneConsultationsJournalDaoImpl;
 import dao.AddressDao;
 import dao.CallDayDao;

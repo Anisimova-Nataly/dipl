@@ -71,6 +71,7 @@ public class CardNew extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				Card card = new Card();
 				card.setReasondesease(textField_10.getText());
+				
 				try {
 					proj.newCard(card);
 				} catch (InterruptedException e1) {
@@ -80,7 +81,7 @@ public class CardNew extends JPanel {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
+				System.out.print(card.getReasondesease());
 				
 				
 				
