@@ -2,6 +2,7 @@ package table;
 
 import java.sql.Date;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -14,10 +15,12 @@ CREATE TABLE phoneconsultationsjournal(id integer PRIMARY KEY,
   reason text, date date, UNIQUE(consultationresultid, callerid, specialistid, cardid));
 */
 @Entity
-@Table(name = "zyrnal_ych_kons_po_telefony")
+@Table(name = "phoneconsultationsjournal")
 
 
 public class PhoneConsultationsJournal{
+	private PhoneConsultationsJournal phoneConsultationsJournal;
+	private List <Card> cards;
  @Id	
  @Column(name = "id")
  @GeneratedValue(strategy = GenerationType.AUTO)
@@ -87,7 +90,18 @@ public String getReason() {
 public void setReason(String reason) {
 	this.reason = reason;
 } 
-
-	
-	
+@OneToMany(targetEntity=Card.class, mappedBy="card", cascade=CascadeType.ALL,
+fetch=FetchType.LAZY)
+public List <Card> getCards(){
+return cards;
+}
+public void setCards(List<Card> cards){
+this.cards = cards;
+}
+public PhoneConsultationsJournal getPhoneConsultationsJournal() {
+	return phoneConsultationsJournal;
+}
+public void setPhoneConsultationsJournal(PhoneConsultationsJournal phoneConsultationsJournal) {
+	this.phoneConsultationsJournal = phoneConsultationsJournal;
+}	
 }

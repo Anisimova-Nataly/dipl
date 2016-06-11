@@ -1,10 +1,17 @@
 package table;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /*CREATE TABLE heavynarcoticjournal(id integer PRIMARY KEY,
@@ -23,6 +30,9 @@ import javax.persistence.Table;
 
 
 public class HeavyNarcoticJournal {
+	private HeavyNarcoticJournal heavyNarcoticJournal;
+	private ListOsmotra listOsmotra;
+	private List <Pacient> pacients;
 	@Id	
 	 @Column(name = "id")
 	 @GeneratedValue(strategy= GenerationType.AUTO)
@@ -56,5 +66,27 @@ public class HeavyNarcoticJournal {
 	}
 	public void setValue3(String value3) {
 		this.value3 = value3;
+	}
+	public HeavyNarcoticJournal getHeavyNarcoticJournal() {
+		return heavyNarcoticJournal;
+	}
+	public void setHeavyNarcoticJournal(HeavyNarcoticJournal heavyNarcoticJournal) {
+		this.heavyNarcoticJournal = heavyNarcoticJournal;
 	}	 
+	 @OneToMany(targetEntity=Pacient.class, mappedBy="pacient", cascade=CascadeType.ALL,
+				fetch=FetchType.LAZY)
+		 public List <Pacient> getPacients(){
+			return pacients;
+		}
+		 public void setPacients(List<Pacient> pacients){
+			this.pacients = pacients;
+		}
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="listosmotraid") 
+	public ListOsmotra getListOsmotra() {
+		return listOsmotra;
+		}
+	public void setListOsmotra(ListOsmotra listOsmotra) {
+		this.listOsmotra = listOsmotra;
+		}	 
 }

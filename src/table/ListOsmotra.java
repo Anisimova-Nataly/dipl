@@ -304,7 +304,13 @@ public class ListOsmotra {
 	public void setLiver(Liver liver) {
 		this.liver = liver;
 	}	 
-	
+	@OneToOne(mappedBy="heavynarcoticjournal")
+	public ListOsmotra getListOsmotra1() {
+		return listOsmotra;
+	}
+	public void setListOsmotra1(ListOsmotra listOsmotra) {
+		this.listOsmotra = listOsmotra;
+	}
 	@ManyToOne
 	@JoinColumn(name="cardid")
 	public ListOsmotra getListOsmotra(){
