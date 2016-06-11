@@ -82,7 +82,8 @@ public class CardNew extends JPanel {
 				Card card = new Card();
 				card.setReasondesease(textField_10.getText());
 				card.setDate(cal.getTime());
-				card.setPhonecontact(BigInteger.valueOf(Long.parseLong(textField_9.getText())));
+				if(!textField_9.getText().isEmpty()){
+				card.setPhonecontact(BigInteger.valueOf(Long.parseLong(textField_9.getText())));}
 				try {
 					card.setFirstvisit(formatter1.parse(textField_7.getText()));
 					card.setFirstvisit(formatter1.parse(textField_8.getText()));
@@ -95,8 +96,8 @@ public class CardNew extends JPanel {
 				pac.setSurname(textField.getText());
 				pac.setName(textField_1.getText());
 				pac.setOtchestvo(textField_2.getText());
-				//pac.setRelationdegree(comboBox_1.getSelectedItem());
-				//pac.set
+				pac.setSex(comboBox_1.getSelectedItem().toString());;
+				pac.setSocialpackage(rdbtnNewRadioButton.isSelected());
 				
 				try {
 					pac.setBirthdate(formatter1.parse(textField_6.getText()));
@@ -107,6 +108,7 @@ public class CardNew extends JPanel {
 				
 				try {
 					proj.newCard(card);
+					proj.newPacient(pac);
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

@@ -5,10 +5,19 @@ import javax.swing.JScrollPane;
 
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableCellRenderer;
 
 import general.Project;
+
+import main.tryTable.JTableModel;
 
 import java.awt.Font;
 import java.sql.SQLException;
@@ -17,15 +26,114 @@ import javax.swing.JTable;
 import javax.swing.JToolBar;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
 public class Cards extends JPanel {
 	private JTable table;
-	 private Object[][] tbldata =null;
-	 private String[] tblheader = { "ID", "ФИО пациента", "Дата и время", "ФИО специалиста", "Объем оказанных услуг" };
+	 private static Object[][] tbldata =null;
+	 private static String[] tblheader = { "ID карты", "ФИО пациента", "Год рождения","Просмотр","Листы осмотра","Удалить" };
 	 final Cards me =  this;
+	  static int len;
+	 
+	 public static class JTableModel extends AbstractTableModel {
+			private static final long serialVersionUID = 1L;
+			private static final String[] COLUMN_NAMES = tblheader;
+			private static final Class<?>[] COLUMN_TYPES = new Class<?>[] {Object.class, Object.class,Object.class, JButton.class, JButton.class,  JButton.class};
+			
+			@Override public int getColumnCount() {
+				return COLUMN_NAMES.length;
+			}
 
+			@Override public int getRowCount() {
+				return len;
+			}
+			
+			@Override public String getColumnName(int columnIndex) {
+		        return COLUMN_NAMES[columnIndex];
+		    }
+			
+			@Override public Class<?> getColumnClass(int columnIndex) {
+				return COLUMN_TYPES[columnIndex];
+			}
+
+			@Override public Object getValueAt(final int rowIndex, final int columnIndex) {
+				switch (columnIndex) {
+					case 0: return tbldata[rowIndex][0];
+					case 1: return tbldata[rowIndex][1];
+					case 2: return tbldata[rowIndex][2];
+					case 3: final JButton button1 = new JButton(COLUMN_NAMES[columnIndex]);
+							button1.addActionListener(new ActionListener() {
+								public void actionPerformed(ActionEvent arg0) {
+									JOptionPane.showMessageDialog(JOptionPane.getFrameForComponent(button1), 
+											"Button clicked for row "+rowIndex);
+								}
+							});
+							return button1;
+					case 4: final JButton button2 = new JButton(COLUMN_NAMES[columnIndex]);
+					button2.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent arg0) {
+							JOptionPane.showMessageDialog(JOptionPane.getFrameForComponent(button2), 
+									"Button clicked for row "+rowIndex);
+						}
+					});
+					return button2;
+					case 5: final JButton button3 = new JButton(COLUMN_NAMES[columnIndex]);
+					button3.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent arg0) {
+							JOptionPane.showMessageDialog(JOptionPane.getFrameForComponent(button3), 
+									"Button clicked for row "+rowIndex);
+						}
+					});
+					return button3;
+					default: return "Error";
+				}
+			}	
+		}
+
+	 private static class JTableButtonRenderer implements TableCellRenderer {		
+			@Override public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+				JButton button = (JButton)value;
+				if (isSelected) {
+					button.setForeground(table.getSelectionForeground());
+					button.setBackground(table.getSelectionBackground());
+			    } else {
+			    	button.setForeground(table.getForeground());
+			    	button.setBackground(UIManager.getColor("Button.background"));
+			    }
+				return button;	
+			}
+		}
+	 
+		private static class JTableButtonMouseListener extends MouseAdapter {
+			private final JTable table;
+			
+			public JTableButtonMouseListener(JTable table) {
+				this.table = table;
+			}
+
+			public void mouseClicked(MouseEvent e) {
+				int column = table.getColumnModel().getColumnIndexAtX(e.getX());
+				int row    = e.getY()/table.getRowHeight(); 
+
+				if (row < table.getRowCount() && row >= 0 && column < table.getColumnCount() && column >= 0) {
+				    Object value = table.getValueAt(row, column);
+				    if (value instanceof JButton) {
+				    	((JButton)value).doClick();
+				    }
+				}
+			}
+		}
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 	/**
 	 * Create the panel.
 	 * @throws SQLException 
@@ -78,24 +186,37 @@ public class Cards extends JPanel {
 		toolBar.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Загрузить список");
-		/*btnNewButton_2.addActionListener(new ActionListener() {
+		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//p.progressBar.setVisible(true);
 				p.progressBar.revalidate();
 				p.revalidate();
 				p.repaint();
 				try {
-					tbldata = proj.listAmb();
+					tbldata = proj.listCards();
+					
+					System.out.print(tbldata.length);
 				} catch (InterruptedException | SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				
+				len = tbldata.length;
+				table = new JTable(new JTableModel()); 
+				JScrollPane scrollPane = new JScrollPane(table);
+				table.setFillsViewportHeight(true);	
 
-			    JTable tbl = new JTable(tbldata, tblheader);
-				me.add(new JScrollPane(tbl), BorderLayout.CENTER);
-				me.remove(lblNewLabel_1);
+				TableCellRenderer buttonRenderer = new JTableButtonRenderer();
+				table.getColumn("Просмотр").setCellRenderer(buttonRenderer);
+				table.getColumn("Листы осмотра").setCellRenderer(buttonRenderer);
+				table.getColumn("Удалить").setCellRenderer(buttonRenderer);
+				table.addMouseListener(new JTableButtonMouseListener(table));
+			    //JTable tbl = new JTable(tbldata, tblheader);
+			    me.remove(lblNewLabel_1);
+				me.add(new JScrollPane(table), BorderLayout.CENTER);
+				me.repaint();
+				
 			}
-		});*/
+		});
 		btnNewButton_2.setFont(new Font("Dialog", Font.BOLD, 14));
 		toolBar.add(btnNewButton_2);
 		

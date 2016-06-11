@@ -23,6 +23,7 @@ import dao.EvaluationXbsShvoDao;
 import dao.HeavyNarcoticJournalDao;
 import impl.HeavyNarcoticJournalDaoImpl;
 import dao.LiverDao;
+import dao.PacientDao;
 import dao.PalpationDao;
 import dao.PulseDao;
 import dao.SwallowingActDao;
@@ -33,11 +34,13 @@ import dao.SpecialistDao;
 import impl.SpecialistDaoImpl;
 import impl.PositionDaoImpl;
 import impl.TherapeuticDiagnosticManipulationsJournalDaoImpl;
+import table.Pacient;
 import impl.TheartDaoImpl;
 import impl.SwallowingActDaoImpl;
 import impl.PulseDaoImpl;
 import impl.PalpationDaoImpl;
 import impl.LiverDaoImpl;
+import impl.PacientDaoImpl;
 
 public class Factory {
 
@@ -63,6 +66,7 @@ public class Factory {
 	public TherapeuticDiagnosticManipulationsJournalDao therapeuticDiagnosticManipulationsJournalDao;
 	public PositionDao positionDao;
 	public SpecialistDao specialistDao;
+	public PacientDao pacientDao;
 	private Factory(){};
 	public static Factory getInstance(){
 		return Factory.instance;
@@ -153,5 +157,9 @@ public class Factory {
 		if(cardDao==null)cardDao = new CardDaoImpl();
 		return cardDao;
 		}
-
+	public PacientDao getPacientDao(){
+		if(pacientDao==null)pacientDao = new PacientDaoImpl();
+		return pacientDao;
+		}
+	
 }

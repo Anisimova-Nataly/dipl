@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 11.06.2016 20:53:19 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 11.06.2016 22:18:50 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="table.Pacient" table="PACIENT">
         <id name="id" type="int">
@@ -35,8 +35,8 @@
         <property name="birthdate" type="java.util.Date">
             <column name="BIRTHDATE" />
         </property>
-        <property name="relationdegree" type="boolean">
-            <column name="RELATIONDEGREE" />
+        <property name="sex" type="java.lang.String">
+            <column name="SEX" />
         </property>
         <property name="phonenumber" type="java.math.BigInteger">
             <column name="PHONENUMBER" />
@@ -46,6 +46,9 @@
         </property>
         <property name="maritalstatus" type="java.lang.String">
             <column name="MARITALSTATUS" />
+        </property>
+        <property name="socialpackage" type="boolean">
+            <column name="SOCIALPACKAGE" />
         </property>
         <property name="otherdiseases" type="java.lang.String">
             <column name="OTHERDISEASES" />

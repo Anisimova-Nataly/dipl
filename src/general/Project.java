@@ -5,6 +5,7 @@ import dao.CardDao;
 import dao.HeavyNarcoticJournalDao;
 import dao.JournalOutpatientReceptionDao;
 import dao.ListOsmotraDao;
+import dao.PacientDao;
 import dao.PhoneConsultationsJournalDao;
 import dao.TherapeuticDiagnosticManipulationsJournalDao;
 //import main.SimpleGUI;
@@ -14,10 +15,12 @@ import table.Card;
 import table.HeavyNarcoticJournal;
 import table.JournalOutpatientReception;
 import table.ListOsmotra;
+import table.Pacient;
 import table.PhoneConsultationsJournal;
 import table.TherapeuticDiagnosticManipulationsJournal;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -98,16 +101,14 @@ public class Project {
 		
 		Factory factory = Factory.getInstance();
 		CardDao cardDao = factory.getCardDao();
-		cardDao.addCard(card);;
-		
-	//	callListGUI c = new callListGUI.start(this);
-	//	List <PhoneConsultationsJournal> zurnal = zurDao.getPhoneConsultationsJournals();
-	//	for(PhoneConsultationsJournal p : zurnal){
-	//		System.out.println(p.getId() +"   "+ p.getReason()+"   "+p.getDate().toString());
-	//	}
-		
+		cardDao.addCard(card);;	
 	}
-	
+	public void newPacient(Pacient pac) throws InterruptedException, SQLException {
+		
+		Factory factory = Factory.getInstance();
+		PacientDao pDao = factory.getPacientDao();
+		pDao.addPacient(pac);
+	}	
 	
 	
 	
@@ -155,6 +156,29 @@ public class Project {
 		
 	}
 
+	public Object[][] listCards()  throws InterruptedException, SQLException {
+		
+		Factory factory = Factory.getInstance();
+		CardDao zurDao = factory.getCardDao();
+		List <Card> zurnal = zurDao.getCard();
+		Object[][] objs = new Object[zurnal.size()][6];
+		int i=0;
+		SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd");
+		for(Card p : zurnal){
+			
+			objs[i][0]= p.getId();
+			objs[i][1]= p.getPacient().getSurname()+ " "+p.getPacient().getName()+" "+p.getPacient().getOtchestvo();
+			objs[i][2]= formatter.format(p.getDate().getTime());
+			objs[i][3]=null;
+			objs[i][4]=null;
+			objs[i][5]=null;
+			i++;
+		}
+		return objs;
+		
+	}
+	
+	
 	public Object[][] listAmb()  throws InterruptedException, SQLException {
 			
 			Factory factory = Factory.getInstance();
