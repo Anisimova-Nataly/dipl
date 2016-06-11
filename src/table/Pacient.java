@@ -45,13 +45,15 @@ public class Pacient {
 	 @Column(name = "birthdate")
 	 	private java.util.Date birthdate;
 	 @Column(name = "sex")
-	 	private boolean relationdegree;
+	 	private String sex;
 	 @Column(name = "phonenumber")
 	 	private java.math.BigInteger phonenumber;
 	 @Column(name = "livingwith")
 	 	private String livingwith;
 	 @Column(name = "maritalstatus")
 	 	private String maritalstatus;
+	 @Column(name = "socialpackage")
+	 	private boolean socialpackage;
 	 @Column(name = "otherdiseases")
 	 	private String otherdiseases;
 	 @Column(name = "familytree")
@@ -128,12 +130,6 @@ public class Pacient {
 	public void setBirthdate(java.util.Date birthdate) {
 		this.birthdate = birthdate;
 	}
-	public boolean isRelationdegree() {
-		return relationdegree;
-	}
-	public void setRelationdegree(boolean relationdegree) {
-		this.relationdegree = relationdegree;
-	}
 	public java.math.BigInteger getPhonenumber() {
 		return phonenumber;
 	}
@@ -193,6 +189,18 @@ public class Pacient {
 	}
 	public void setResearch(String research) {
 		this.research = research;
+	}
+	public boolean isSocialpackage() {
+		return socialpackage;
+	}
+	public void setSocialpackage(boolean socialpackage) {
+		this.socialpackage = socialpackage;
+	}
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 	
 }
