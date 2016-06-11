@@ -17,8 +17,6 @@ import javax.persistence.Table;
 
 public class Pulse {
 	private ListOsmotra listOsmotra;
-
-	private Pulse pulseid;
 	
 	@OneToOne(mappedBy="pulse")
 	public ListOsmotra getListOsmotra() {
@@ -29,14 +27,15 @@ public class Pulse {
 	}
 	
 	@Id	
-	 @GeneratedValue(strategy= GenerationType.AUTO)
-	 @Column(name = "pulseid")
-		public Pulse getpulseId() {
-			return pulseid;
-		}
-		public void setpulseId(int id) {
-			this.pulseid = pulseid;
-		}
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 @Column(name = "id")
+	private Integer id;
+	public Integer getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	 @Column(name = "value1")
 	 	private boolean value1;
 	 @Column(name = "value2")

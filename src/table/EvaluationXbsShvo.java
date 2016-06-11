@@ -17,8 +17,6 @@ import javax.persistence.Table;
 
 public class EvaluationXbsShvo {
 	
-	private EvaluationXbsShvo evaluationXbsShvoId;
-	
 	private ListOsmotra listOsmotra;
 	
 	@OneToOne(mappedBy="evaluationXbsShvo")
@@ -30,12 +28,14 @@ public class EvaluationXbsShvo {
 	}
 	
 	@Id	
-	@Column(name = "evaluationXbsShvoid")
-	public EvaluationXbsShvo getevaluationXbsShvoId() {
-		return evaluationXbsShvoId;
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 @Column(name = "id")
+	private Integer id;
+	public Integer getId() {
+		return id;
 	}
-	public void setevaluationXbsShvoId(int id) {
-		this.evaluationXbsShvoId = evaluationXbsShvoId;
+	public void setId(int id) {
+		this.id = id;
 	}
 	 @Column(name = "value1")
 	 	private boolean value1;

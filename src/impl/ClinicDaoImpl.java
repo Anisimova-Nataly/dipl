@@ -24,7 +24,7 @@ public class ClinicDaoImpl implements ClinicDao {
 		}finally{
 			if((session != null) && (session.isOpen()))session.close();
 		}
-		session.close();
+		//session.close();
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class ClinicDaoImpl implements ClinicDao {
 		}finally{
 			if((session != null) && (session.isOpen()))session.close();
 		}
-		session.close();
+		//session.close();
 		
 	}
 

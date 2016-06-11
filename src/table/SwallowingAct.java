@@ -19,8 +19,6 @@ public class SwallowingAct {
 	
 	private ListOsmotra listOsmotra;
 	
-	private SwallowingAct swallowingactid;
-	
 	@OneToOne(mappedBy="swallowingact")
 	public ListOsmotra getListOsmotra() {
 		return listOsmotra;
@@ -30,13 +28,14 @@ public class SwallowingAct {
 	}
 	
 	@Id	
-	 @GeneratedValue(strategy= GenerationType.AUTO)
-	@Column(name = "swallowingactid")
-	public SwallowingAct getSwallowingActId() {
-		return swallowingactid;
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 @Column(name = "id")
+	private Integer id;
+	public Integer getId() {
+		return id;
 	}
-	public void setliverId(int id) {
-		this.swallowingactid = swallowingactid;
+	public void setId(int id) {
+		this.id = id;
 	}
 	 @Column(name = "value1")
 	 	private boolean value1;

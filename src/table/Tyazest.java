@@ -12,9 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tyazest")
-public class Tyazest {
-	private Tyazest tyazestid;
-	
+public class Tyazest {	
 	private ListOsmotra listOsmotra;
 	
 	@OneToOne(mappedBy="tyazest")
@@ -25,13 +23,14 @@ public class Tyazest {
 		this.listOsmotra = listOsmotra;
 	}
 	@Id	
-	 @GeneratedValue(strategy= GenerationType.AUTO)
-	 @Column(name = "tyazestid")
-	public Tyazest getTyazestId() {
-		return tyazestid;
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 @Column(name = "id")
+	private Integer id;
+	public Integer getId() {
+		return id;
 	}
-	public void setTyazestId(int id) {
-		this.tyazestid = tyazestid;
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	@Column(name = "value")

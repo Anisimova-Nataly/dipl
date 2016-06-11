@@ -29,14 +29,15 @@ public class CallDay {
 	public void setListOsmotra(ListOsmotra listOsmotra) {
 		this.listOsmotra = listOsmotra;
 	}
-		@Id	
+	@Id	
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 @Column(name = "id")
-	public CallDay getCallDayId() {
-		return calldayid;
+	private Integer id;
+	public Integer getId() {
+		return id;
 	}
-	public void setliverId(int id) {
-		this.calldayid = calldayid;
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	@Column(name = "value1")

@@ -101,27 +101,27 @@ public class Card {
 		this.signature = signature;
 	}	
 	@ManyToOne
-	@JoinColumn(name="callplanningjournalid")
-	public Card getCard(){
+	@JoinColumn(name="phoneconsultationsjournalid")
+	public Card getphoneconsultationsjournal(){
 		return card;
 	}
-	public void setCard(Card card){
+	public void setphoneconsultationsjournal(Card card){
 		this.card = card;	
 	}
 	@ManyToOne
 	@JoinColumn(name="callplanningjournalid")
-	public Card getCard1(){
+	public Card getcallplanningjournalid(){
 		return card;
 	}
-	public void setCard1(Card card){
+	public void setcallplanningjournalid(Card card){
 		this.card = card;	
 	}
 	@ManyToOne
-	@JoinColumn(name="journaloutpatientreception")
-	public Card getCard2(){
+	@JoinColumn(name="journaloutpatientreceptionid")
+	public Card getCardjournaloutpatientreceptionid(){
 		return card;
 	}
-	public void setCard2(Card card){
+	public void setCardjournaloutpatientreceptionid(Card card){
 		this.card = card;	
 	}
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)

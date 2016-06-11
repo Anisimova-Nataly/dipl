@@ -18,7 +18,6 @@ import javax.persistence.Table;
 
 
 public class Theart {
-private Theart theartid;
 private ListOsmotra listOsmotra;
 
 @OneToOne(mappedBy="theart")
@@ -29,15 +28,16 @@ public void setListOsmotra(ListOsmotra listOsmotra) {
 	this.listOsmotra = listOsmotra;
 }
 
-	@Id	
-	 @GeneratedValue(strategy= GenerationType.AUTO)
-	 @Column(name = "theartid")
-	public Theart gettheartId() {
-		return theartid;
-	}
-	public void setliverId(int id) {
-		this.theartid = theartid;
-	}
+@Id	
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Column(name = "id")
+private Integer id;
+public Integer getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
+}
 		 @Column(name = "value1")
 	 	private boolean value1;
 	 @Column(name = "value2")
