@@ -35,7 +35,7 @@ public class Card {
 	private List <ListOsmotra> listOsmotras;
 	
 	@Id	
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 @GeneratedValue(strategy = GenerationType.AUTO)
 	 @Column(name = "id")
 	public Card getcardId() {
 		return cardid;

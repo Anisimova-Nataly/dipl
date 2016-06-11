@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import general.Project;
+import table.Card;
 
 import java.awt.Font;
 import java.awt.Color;
@@ -68,6 +69,20 @@ public class CardNew extends JPanel {
 		JButton btnNewButton = new JButton("Сохранить");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Card card = new Card();
+				card.setReasondesease(textField_10.getText());
+				try {
+					proj.newCard(card);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
+				
 				
 				
 				

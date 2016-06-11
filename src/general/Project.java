@@ -1,6 +1,7 @@
 package general;
 
 
+import dao.CardDao;
 import dao.HeavyNarcoticJournalDao;
 import dao.JournalOutpatientReceptionDao;
 import dao.ListOsmotraDao;
@@ -9,6 +10,7 @@ import dao.TherapeuticDiagnosticManipulationsJournalDao;
 //import main.SimpleGUI;
 //import main.callListGUI;
 import main.phonecollGUI;
+import table.Card;
 import table.HeavyNarcoticJournal;
 import table.JournalOutpatientReception;
 import table.ListOsmotra;
@@ -92,6 +94,23 @@ public class Project {
 		
 		//}
 
+	public void newCard(Card card) throws InterruptedException, SQLException {
+		
+		Factory factory = Factory.getInstance();
+		CardDao cardDao = factory.getCardDao();
+		cardDao.addCard(card);;
+		
+	//	callListGUI c = new callListGUI.start(this);
+	//	List <PhoneConsultationsJournal> zurnal = zurDao.getPhoneConsultationsJournals();
+	//	for(PhoneConsultationsJournal p : zurnal){
+	//		System.out.println(p.getId() +"   "+ p.getReason()+"   "+p.getDate().toString());
+	//	}
+		
+	}
+	
+	
+	
+	
 	public void newCall() throws InterruptedException, SQLException {
 	
 		Factory factory = Factory.getInstance();

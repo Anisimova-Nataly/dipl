@@ -7,11 +7,13 @@ import impl.ListOsmotraDaoImpl;
 import impl.PhoneConsultationsJournalDaoImpl;
 import dao.CallDayDao;
 import dao.CallPlanningJournalDao;
+import dao.CardDao;
 import dao.DiuresisDao;
 import dao.JournalOutpatientReceptionDao;
 import impl.CallDayDaoImpl;
 import impl.JournalOutpatientReceptionDaoImpl;
 import impl.CallPlanningJournalDaoImpl;
+import impl.CardDaoImpl;
 import impl.DiuresisDaoImpl;
 import impl.EvaluationXbsShvoDaoImpl;
 import dao.EvaluationXbsShvoDao;
@@ -42,6 +44,7 @@ public class Factory {
 	public CallDayDao callDayDao;
 	public JournalOutpatientReceptionDao journalOutpatientReceptionDao;
 	public CallPlanningJournalDao callPlanningJournalDao;
+	public CardDao cardDao;
 	public DiuresisDao diuresisDao;
 	public EvaluationXbsShvoDao evaluationXbsShvoDao;
 	public HeavyNarcoticJournalDao heavyNarcoticJournalDao;
@@ -138,6 +141,10 @@ public class Factory {
 	public CallDayDao getCallDayDao(){
 		if(callDayDao==null)callDayDao = new CallDayDaoImpl();
 		return callDayDao;
+		}
+	public CardDao getCardDao(){
+		if(cardDao==null)cardDao = new CardDaoImpl();
+		return cardDao;
 		}
 
 }
