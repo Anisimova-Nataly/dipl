@@ -1,13 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 07.06.2016 22:33:36 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 11.06.2016 11:25:46 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="table.PhoneConsultationsJournal" table="PHONECONSULTATIONSJOURNAL">
         <id name="id" type="int">
             <column name="ID" />
             <generator class="increment" />
         </id>
+        <one-to-one name="phoneConsultationsJournal" class="table.PhoneConsultationsJournal"></one-to-one>
+        <list name="cards" inverse="false" table="CARD" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="table.Card" />
+        </list>
         <property name="consultationResultId" type="int">
             <column name="CONSULTATIONRESULTID" />
         </property>

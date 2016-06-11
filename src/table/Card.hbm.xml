@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11.06.2016 11:25:46 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="table.Card" table="CARD">
+        <id name="cardid" type="Integer" access="field">
+            <column name="CARDID" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="card" class="table.Card" fetch="join">
+            <column name="CARD" />
+        </many-to-one>
+        <one-to-one name="pacient" class="table.Pacient"></one-to-one>
+        <list name="listOsmotras" inverse="false" table="LISTOSMOTRA" lazy="true">
+            <key>
+                <column name="CARDID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="table.ListOsmotra" />
+        </list>
+        <property name="datereferral" type="java.util.Date">
+            <column name="DATEREFERRAL" />
+        </property>
+        <property name="phonecontact" type="java.math.BigInteger">
+            <column name="PHONECONTACT" />
+        </property>
+        <property name="firstvisit" type="java.util.Date">
+            <column name="FIRSTVISIT" />
+        </property>
+        <property name="reasondesease" type="java.lang.String">
+            <column name="REASONDESEASE" />
+        </property>
+        <property name="date" type="java.util.Date">
+            <column name="DATE" />
+        </property>
+        <property name="signature" type="java.lang.String">
+            <column name="SIGNATURE" />
+        </property>
+    </class>
+</hibernate-mapping>

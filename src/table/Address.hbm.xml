@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11.06.2016 11:25:46 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="table.Address" table="ADDRESS">
+        <id name="id" type="Integer">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <one-to-one name="address" class="table.Address"></one-to-one>
+        <many-to-one name="pacient" class="table.Pacient" fetch="join">
+            <column name="PACIENT" />
+        </many-to-one>
+        <one-to-one name="clinic" class="table.Clinic"></one-to-one>
+        <property name="region" type="java.lang.String">
+            <column name="REGION" />
+        </property>
+        <property name="city" type="java.lang.String">
+            <column name="CITY" />
+        </property>
+        <property name="district" type="java.lang.String">
+            <column name="DISTRICT" />
+        </property>
+        <property name="street" type="java.lang.String">
+            <column name="STREET" />
+        </property>
+        <property name="house" type="java.lang.String">
+            <column name="HOUSE" />
+        </property>
+        <property name="corps" type="java.lang.String">
+            <column name="CORPS" />
+        </property>
+        <property name="flat" type="int">
+            <column name="FLAT" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -10,8 +10,14 @@
 		<property name="hibernate.connection.password">15101995</property>
 		
 		<mapping resource="ListOsmotra.hbm.xml"/>
-		
-
+		<mapping resource="CallDay.hbm.xml" />
+		<mapping resource="Address.hbm.xml" />
+		<mapping resource="Diuresis.hbm.xml" />
+		<mapping resource="Card.hbm.xml" />
+		<mapping resource="Clinic.hbm.xml" />
+		<mapping resource="ConsultationResult.hbm.xml" />
+		<mapping resource="Contact.hbm.xml" />
+		<mapping resource="Diuresis.hbm.xml" />
 		<mapping resource="PhoneConsultationsJournal.hbm.xml" />
 		<mapping resource="Diuresis.hbm.xml" />
 		<mapping resource="EvaluationXbsShvo.hbm.xml" />
@@ -20,6 +26,7 @@
 		<mapping resource="HeavyNarcoticJournal.hbm.xml" />
 		<mapping resource="JournalOutpatientReception.hbm.xml" />
 		<mapping resource="Liver.hbm.xml" />
+		<mapping resource="Pacient.hbm.xml" />
 		<mapping resource="Palpation.hbm.xml" />
 		<mapping resource="Position.hbm.xml" />
 		<mapping resource="Pulse.hbm.xml" />

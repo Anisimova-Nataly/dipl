@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11.06.2016 11:25:46 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="table.Clinic" table="CLINIC">
+        <id name="id" type="java.lang.Integer" access="field">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <one-to-one name="clinic" class="table.Clinic"></one-to-one>
+        <list name="pacients" inverse="false" table="PACIENT" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="table.Pacient" />
+        </list>
+        <list name="specialists" inverse="false" table="SPECIALIST" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="table.Specialist" />
+        </list>
+        <property name="number" type="java.lang.String" access="field">
+            <column name="NUMBER" />
+        </property>
+    </class>
+</hibernate-mapping>
