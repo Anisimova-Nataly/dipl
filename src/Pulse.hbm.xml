@@ -4,7 +4,7 @@
 <!-- Generated 11.06.2016 11:25:46 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="table.Pulse" table="PULSE">
-        <id name="listOsmotra" type="Integer">
+        <id name="listOsmotra" type="integer">
             <column name="LISTOSMOTRA" />
             <generator class="increment" />
         </id>

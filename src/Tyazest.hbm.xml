@@ -3,9 +3,9 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 11.06.2016 11:25:46 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="table.EvaluationShfa" table="EVALUATIONSHFA">
-        <id name="evaluationshfaid" type="Integer" access="field">
-            <column name="EVALUATIONSHFAID" />
+    <class name="table.Tyazest" table="TYAZEST">
+        <id name="tyazestid" type="integer" access="field">
+            <column name="TYAZESTID" />
             <generator class="increment" />
         </id>
         <one-to-one name="listOsmotra" class="table.ListOsmotra"></one-to-one>

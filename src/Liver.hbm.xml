@@ -3,14 +3,17 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 11.06.2016 11:25:46 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="table.Tyazest" table="TYAZEST">
-        <id name="tyazestid" type="Integer" access="field">
-            <column name="TYAZESTID" />
+    <class name="table.Liver" table="LIVER">
+        <id name="liverid" type="integer" access="field">
+            <column name="LIVERID" />
             <generator class="increment" />
         </id>
         <one-to-one name="listOsmotra" class="table.ListOsmotra"></one-to-one>
-        <property name="value" type="char" access="field">
-            <column name="VALUE" />
+        <property name="value1" type="boolean">
+            <column name="VALUE1" />
+        </property>
+        <property name="value2" type="boolean">
+            <column name="VALUE2" />
         </property>
     </class>
 </hibernate-mapping>
