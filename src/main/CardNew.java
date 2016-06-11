@@ -8,13 +8,18 @@ import javax.swing.SwingConstants;
 
 import general.Project;
 import table.Card;
+import table.Pacient;
 
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JToolBar;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.math.BigInteger;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.awt.event.ActionEvent;
 import java.awt.GridLayout;
 import com.jgoodies.forms.layout.FormLayout;
@@ -51,6 +56,11 @@ public class CardNew extends JPanel {
 	private JTextField textField_17;
 	private JTextField textField_18;
 	private JTextField textField_19;
+	JComboBox comboBox_1;
+	JRadioButton rdbtnNewRadioButton;
+	Calendar cal = Calendar.getInstance();
+	SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd");
+	SimpleDateFormat formatter1 = new SimpleDateFormat ("dd.mm.yyyy");
 	/**
 	 * Create the panel.
 	 */
@@ -71,6 +81,29 @@ public class CardNew extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				Card card = new Card();
 				card.setReasondesease(textField_10.getText());
+				card.setDate(cal.getTime());
+				card.setPhonecontact(BigInteger.valueOf(Long.parseLong(textField_9.getText())));
+				try {
+					card.setFirstvisit(formatter1.parse(textField_7.getText()));
+					card.setFirstvisit(formatter1.parse(textField_8.getText()));
+				} catch (ParseException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				
+				Pacient pac = new Pacient();
+				pac.setSurname(textField.getText());
+				pac.setName(textField_1.getText());
+				pac.setOtchestvo(textField_2.getText());
+				//pac.setRelationdegree(comboBox_1.getSelectedItem());
+				//pac.set
+				
+				try {
+					pac.setBirthdate(formatter1.parse(textField_6.getText()));
+				} catch (ParseException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
 				
 				try {
 					proj.newCard(card);
@@ -81,8 +114,21 @@ public class CardNew extends JPanel {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				System.out.print(card.getReasondesease());
-				
+				System.out.print(card.getDate().getTime());
+				Cards c;
+				try {
+					c = new Cards(proj, p);
+					c.setVisible(true);
+					me.revalidate();
+					p.contentPane.remove(me);
+					p.contentPane.add(c,BorderLayout.CENTER);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 				
 				
@@ -235,18 +281,18 @@ public class CardNew extends JPanel {
 		JLabel label_1 = new JLabel("Пол");
 		panel.add(label_1, "2, 16, right, default");
 		
-		JComboBox comboBox_1 = new JComboBox();
+		 comboBox_1 = new JComboBox();
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Мужской", "Женский"}));
 		panel.add(comboBox_1, "4, 16, fill, default");
 		
 		JLabel lblNewLabel_11 = new JLabel("Дата рождения");
 		panel.add(lblNewLabel_11, "2, 18, right, default");
 		
-		textField_6 = new JTextField();
+		textField_6 = new JFormattedTextField(new SimpleDateFormat("dd.mm.yyyy"));
 		panel.add(textField_6, "4, 18, fill, default");
 		textField_6.setColumns(10);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Социальный пакет");
+		 rdbtnNewRadioButton = new JRadioButton("Социальный пакет");
 		panel.add(rdbtnNewRadioButton, "4, 20");
 		
 		JSeparator separator_1 = new JSeparator();
@@ -400,14 +446,15 @@ public class CardNew extends JPanel {
 		JLabel lblNewLabel_7 = new JLabel("Дата направления");
 		panel.add(lblNewLabel_7, "2, 58, right, default");
 		
-		textField_7 = new JTextField();
+		
+		textField_7 = new JFormattedTextField(new SimpleDateFormat("dd.mm.yyyy"));
 		panel.add(textField_7, "4, 58, fill, default");
 		textField_7.setColumns(10);
 		
 		JLabel label_4 = new JLabel("Дата первого посещения");
 		panel.add(label_4, "2, 60, right, default");
 		
-		textField_8 = new JTextField();
+		textField_8 = new JFormattedTextField(new SimpleDateFormat("dd.mm.yyyy"));
 		panel.add(textField_8, "4, 60, fill, default");
 		textField_8.setColumns(10);
 		

@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 11.06.2016 11:25:46 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 11.06.2016 20:53:19 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="table.Pulse" table="PULSE">
-        <id name="listOsmotra" type="integer">
-            <column name="LISTOSMOTRA" />
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
             <generator class="increment" />
         </id>
-        <one-to-one name="pulseid" class="table.Pulse" access="field"></one-to-one>
+        <one-to-one name="listOsmotra" class="table.ListOsmotra"></one-to-one>
         <property name="value1" type="boolean">
             <column name="VALUE1" />
         </property>

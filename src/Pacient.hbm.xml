@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 11.06.2016 11:25:46 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 11.06.2016 20:53:19 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="table.Pacient" table="PACIENT">
-        <id name="id" type="int" access="field">
+        <id name="id" type="int">
             <column name="ID" />
             <generator class="increment" />
         </id>
@@ -23,49 +23,49 @@
             <one-to-many class="table.Contact" />
         </list>
         <one-to-one name="pacient" class="table.Pacient"></one-to-one>
-        <property name="surname" type="java.lang.String" access="field">
+        <property name="surname" type="java.lang.String">
             <column name="SURNAME" />
         </property>
-        <property name="name" type="java.lang.String" access="field">
+        <property name="name" type="java.lang.String">
             <column name="NAME" />
         </property>
-        <property name="otchestvo" type="java.lang.String" access="field">
+        <property name="otchestvo" type="java.lang.String">
             <column name="OTCHESTVO" />
         </property>
-        <property name="birthdate" type="java.util.Date" access="field">
+        <property name="birthdate" type="java.util.Date">
             <column name="BIRTHDATE" />
         </property>
-        <property name="relationdegree" type="boolean" access="field">
+        <property name="relationdegree" type="boolean">
             <column name="RELATIONDEGREE" />
         </property>
-        <property name="phonenumber" type="java.math.BigInteger" access="field">
+        <property name="phonenumber" type="java.math.BigInteger">
             <column name="PHONENUMBER" />
         </property>
-        <property name="livingwith" type="java.lang.String" access="field">
+        <property name="livingwith" type="java.lang.String">
             <column name="LIVINGWITH" />
         </property>
-        <property name="maritalstatus" type="java.lang.String" access="field">
+        <property name="maritalstatus" type="java.lang.String">
             <column name="MARITALSTATUS" />
         </property>
-        <property name="otherdiseases" type="java.lang.String" access="field">
+        <property name="otherdiseases" type="java.lang.String">
             <column name="OTHERDISEASES" />
         </property>
-        <property name="familytree" type="java.lang.String" access="field">
+        <property name="familytree" type="java.lang.String">
             <column name="FAMILYTREE" />
         </property>
-        <property name="diseasehistory" type="java.lang.String" access="field">
+        <property name="diseasehistory" type="java.lang.String">
             <column name="DISEASEHISTORY" />
         </property>
-        <property name="operations" type="java.lang.String" access="field">
+        <property name="operations" type="java.lang.String">
             <column name="OPERATIONS" />
         </property>
-        <property name="xt" type="java.lang.String" access="field">
+        <property name="xt" type="java.lang.String">
             <column name="XT" />
         </property>
-        <property name="lt" type="java.lang.String" access="field">
+        <property name="lt" type="java.lang.String">
             <column name="LT" />
         </property>
-        <property name="research" type="java.lang.String" access="field">
+        <property name="research" type="java.lang.String">
             <column name="RESEARCH" />
         </property>
     </class>
