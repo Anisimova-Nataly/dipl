@@ -29,7 +29,6 @@ import javax.persistence.Table;
 @Table(name = "card")
 
 public class Card {
-	private Card cardid;
 	private Card card;
 	private Pacient pacient;
 	private List <ListOsmotra> listOsmotras;
@@ -37,11 +36,12 @@ public class Card {
 	@Id	
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 @Column(name = "id")
-	public Card getcardId() {
-		return cardid;
+	private Integer id;
+	public Integer getId() {
+		return id;
 	}
-	public void setcardId(int id) {
-		this.cardid = cardid;
+	public void setId(int id) {
+		this.id = id;
 	}
 	@Column(name = "datereferral")
  	private java.util.Date datereferral;
