@@ -1,3 +1,5 @@
+/*не дописан(связи + дао +даоимпл*/
+
 package table;
 
 import javax.persistence.Column;

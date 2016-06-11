@@ -16,8 +16,6 @@ import javax.persistence.Table;
 @Table(name = "palpation")
 
 public class Palpation {
-	
-	private Palpation palpationid;
 	private ListOsmotra listOsmotra;
 	
 	@OneToOne(mappedBy="palpation")
@@ -29,13 +27,14 @@ public class Palpation {
 	}
 	
 	@Id	
-	 @GeneratedValue(strategy= GenerationType.AUTO)
-	@Column(name = "palpationid")
-	public Palpation getpalpationId() {
-		return palpationid;
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 @Column(name = "id")
+	private Integer id;
+	public Integer getId() {
+		return id;
 	}
-	public void setpalpationId(int id) {
-		this.palpationid = palpationid;
+	public void setId(int id) {
+		this.id = id;
 	}
 	 @Column(name = "value1")
 	 	private boolean value1;

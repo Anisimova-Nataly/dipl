@@ -26,14 +26,15 @@ public class EvaluationShfa {
 		this.listOsmotra = listOsmotra;	
 }
 	@Id	
-	 @GeneratedValue(strategy= GenerationType.AUTO)
-	 @Column(name = "evaluationshfaid")
-		public EvaluationShfa getEvaluationShfaId() {
-			return evaluationshfaid;
-		}
-		public void setEvaluationShfaId(int id) {
-			this.evaluationshfaid = evaluationshfaid;
-		}	
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 @Column(name = "id")
+	private Integer id;
+	public Integer getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}	
 	 @Column(name = "value")
 	 	private char value;
 

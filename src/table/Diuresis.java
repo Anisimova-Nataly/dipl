@@ -29,14 +29,15 @@ public class Diuresis {
 	
 	
 	@Id	
-	 @GeneratedValue(strategy= GenerationType.AUTO)
-	 @Column(name = "diuresisid")
-		public Diuresis getdiuresisId() {
-			return diuresisid;
-		}
-		public void setdiuresisId(int id) {
-			this.diuresisid = diuresisid;
-		}
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 @Column(name = "id")
+	private Integer id;
+	public Integer getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	 @Column(name = "value1")
 	 	private boolean value1;
 	 @Column(name = "value2")

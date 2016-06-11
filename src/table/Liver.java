@@ -18,9 +18,6 @@ import javax.persistence.Table;
 @Table(name = "liver")
 
 public class Liver {
-	
-	private Liver liverid;
-	
 	private ListOsmotra listOsmotra;
 	
 	@OneToOne(mappedBy="liver")
@@ -30,14 +27,15 @@ public class Liver {
 	public void setListOsmotra(ListOsmotra listOsmotra) {
 		this.listOsmotra = listOsmotra;
 	}
-		@Id	
+	@Id	
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 @Column(name = "id")
-	public Liver getliverId() {
-		return liverid;
+	private Integer id;
+	public Integer getId() {
+		return id;
 	}
-	public void setliverId(int id) {
-		this.liverid = liverid;
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	@Column(name = "value1")

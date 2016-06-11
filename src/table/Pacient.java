@@ -98,5 +98,101 @@ public class Pacient {
 	public void setPacient2(Pacient pacient){
 		this.pacient = pacient;	
 	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getSurname() {
+		return surname;
+	}
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getOtchestvo() {
+		return otchestvo;
+	}
+	public void setOtchestvo(String otchestvo) {
+		this.otchestvo = otchestvo;
+	}
+	public java.util.Date getBirthdate() {
+		return birthdate;
+	}
+	public void setBirthdate(java.util.Date birthdate) {
+		this.birthdate = birthdate;
+	}
+	public boolean isRelationdegree() {
+		return relationdegree;
+	}
+	public void setRelationdegree(boolean relationdegree) {
+		this.relationdegree = relationdegree;
+	}
+	public java.math.BigInteger getPhonenumber() {
+		return phonenumber;
+	}
+	public void setPhonenumber(java.math.BigInteger phonenumber) {
+		this.phonenumber = phonenumber;
+	}
+	public String getLivingwith() {
+		return livingwith;
+	}
+	public void setLivingwith(String livingwith) {
+		this.livingwith = livingwith;
+	}
+	public String getMaritalstatus() {
+		return maritalstatus;
+	}
+	public void setMaritalstatus(String maritalstatus) {
+		this.maritalstatus = maritalstatus;
+	}
+	public String getOtherdiseases() {
+		return otherdiseases;
+	}
+	public void setOtherdiseases(String otherdiseases) {
+		this.otherdiseases = otherdiseases;
+	}
+	public String getFamilytree() {
+		return familytree;
+	}
+	public void setFamilytree(String familytree) {
+		this.familytree = familytree;
+	}
+	public String getDiseasehistory() {
+		return diseasehistory;
+	}
+	public void setDiseasehistory(String diseasehistory) {
+		this.diseasehistory = diseasehistory;
+	}
+	public String getOperations() {
+		return operations;
+	}
+	public void setOperations(String operations) {
+		this.operations = operations;
+	}
+	public String getXt() {
+		return xt;
+	}
+	public void setXt(String xt) {
+		this.xt = xt;
+	}
+	public String getLt() {
+		return lt;
+	}
+	public void setLt(String lt) {
+		this.lt = lt;
+	}
+	public String getResearch() {
+		return research;
+	}
+	public void setResearch(String research) {
+		this.research = research;
+	}
 	
 }

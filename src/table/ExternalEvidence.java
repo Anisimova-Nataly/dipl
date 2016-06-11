@@ -15,7 +15,6 @@ import javax.persistence.Table;
 @Table(name = "externalevidence")
 
 public class ExternalEvidence {
-	private ExternalEvidence externalevidenceid;
 	private ListOsmotra listOsmotra;
 	
 	@OneToOne(mappedBy="externalevidence")
@@ -26,15 +25,15 @@ public class ExternalEvidence {
 		this.listOsmotra = listOsmotra;
 	}
 	@Id	
-	 @GeneratedValue(strategy= GenerationType.AUTO)
-	 @Column(name = "externalevidenceid")
-		public ExternalEvidence getexternalevidenceId() {
-			return externalevidenceid;
-		}
-		public void setdiuresisId(int id) {
-			this.externalevidenceid = externalevidenceid;
-		}
-	 @Column(name = "value")
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 @Column(name = "id")
+	private Integer id;
+	public Integer getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}	 @Column(name = "value")
 	 	private char value;
 
 	public char getValue() {
