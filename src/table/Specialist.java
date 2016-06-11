@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -25,7 +27,7 @@ import javax.persistence.Table;
 
 public class Specialist {
 	private List <Position> positions;
-	
+	private Specialist specialist;
 	@Id	
 	 @Column(name = "id")
 	 @GeneratedValue(strategy= GenerationType.AUTO)
@@ -76,4 +78,20 @@ public class Specialist {
 		public void setPositions(List<Position> positions){
 			this.positions = positions;
 		}
+	@ManyToOne
+	@JoinColumn(name="journaloutpatientreceptionid")
+	public Specialist getSpecialist(){
+		return specialist;
+	}
+	public void setSpecialist(Specialist specialist){
+		this.specialist = specialist;	
+	}
+	@ManyToOne
+	@JoinColumn(name="clinic")
+	public Specialist getSpecialist1(){
+		return specialist;
+	}
+	public void setSpecialist1(Specialist specialist){
+		this.specialist = specialist;	
+	}
 }

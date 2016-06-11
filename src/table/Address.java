@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /*CREATE TABLE address(id integer PRIMARY KEY, region text, city text, district text,
@@ -18,7 +19,7 @@ import javax.persistence.Table;
 public class Address {
 	private Address address;
 	private Pacient pacient;
-	
+	private Clinic clinic;
 	@Id	
 	 @Column(name = "id")
 	 @GeneratedValue(strategy= GenerationType.AUTO)
@@ -98,5 +99,12 @@ public class Address {
 	}
 	public void setPacient(Pacient pacient) {
 		this.pacient = pacient;
+	}
+	@OneToOne(mappedBy="address")
+	public Clinic getClinic() {
+		return clinic;
+	}
+	public void setClinic(Clinic clinic) {
+		this.clinic = clinic;
 	}
 }

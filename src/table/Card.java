@@ -1,6 +1,3 @@
-/*Связь с pacient будет позже!*/
-
-
 package table;
 
 import java.util.List;
@@ -12,7 +9,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /*CREATE TABLE card(id integer PRIMARY KEY,
@@ -30,6 +30,8 @@ import javax.persistence.Table;
 
 public class Card {
 	private Card cardid;
+	private Card card;
+	private Pacient pacient;
 	private List <ListOsmotra> listOsmotras;
 	
 	@Id	
@@ -38,7 +40,7 @@ public class Card {
 	public Card getcardId() {
 		return cardid;
 	}
-	public void setliverId(int id) {
+	public void setcardId(int id) {
 		this.cardid = cardid;
 	}
 	@Column(name = "datereferral")
@@ -53,9 +55,7 @@ public class Card {
  	private java.util.Date date;
 	@Column(name = "signature")
  	private String signature;
-	
-	
-	
+
 	@OneToMany(targetEntity=ListOsmotra.class, mappedBy="listOsmotra", cascade=CascadeType.ALL,
 	fetch=FetchType.LAZY)
 	public List <ListOsmotra> getListOsmotras(){
@@ -100,5 +100,36 @@ public class Card {
 	public void setSignature(String signature) {
 		this.signature = signature;
 	}	
-	
+	@ManyToOne
+	@JoinColumn(name="callplanningjournalid")
+	public Card getCard(){
+		return card;
+	}
+	public void setCard(Card card){
+		this.card = card;	
+	}
+	@ManyToOne
+	@JoinColumn(name="callplanningjournalid")
+	public Card getCard1(){
+		return card;
+	}
+	public void setCard1(Card card){
+		this.card = card;	
+	}
+	@ManyToOne
+	@JoinColumn(name="journaloutpatientreception")
+	public Card getCard2(){
+		return card;
+	}
+	public void setCard2(Card card){
+		this.card = card;	
+	}
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="pacientid") 
+	public Pacient getPacient() {
+		return pacient;
+	}
+	public void setPacient(Pacient pacient) {
+		this.pacient = pacient;
+	}
 }

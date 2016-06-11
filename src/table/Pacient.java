@@ -8,7 +8,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /*CREATE TABLE pacient(id integer PRIMARY KEY, contactid integer REFERENCES contact(id),
  *  addresid integer REFERENCES addres(id), surname text, name text, otchestvo text, birthdate date,
@@ -20,6 +23,15 @@ import javax.persistence.OneToMany;
 public class Pacient {
 	private List <Address> addresses;
 	private List <Contact> contacts;
+	private Pacient pacient;
+	@OneToOne(mappedBy="pacient")
+	public Pacient getPacient() {
+		return pacient;
+	}
+	public void setPacient(Pacient pacient) {
+		this.pacient = pacient;
+	}
+	
 	@Id	
 	 @Column(name = "id")
 	 @GeneratedValue(strategy= GenerationType.AUTO)
@@ -70,4 +82,21 @@ public class Pacient {
 		public void setContacts(List<Contact> contact){
 			this.contacts = contacts;
 		}
+	@ManyToOne
+	@JoinColumn(name="heavynarcoticjournal")
+	public Pacient getPacient1(){
+		return pacient;
+	}
+	public void setPacient1(Pacient pacient){
+		this.pacient = pacient;	
+	}
+	@ManyToOne
+	@JoinColumn(name="clinic")
+	public Pacient getPacient2(){
+		return pacient;
+	}
+	public void setPacient2(Pacient pacient){
+		this.pacient = pacient;	
+	}
+	
 }

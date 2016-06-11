@@ -1,11 +1,16 @@
 package table;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 //import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /*CREATE TABLE journaloutpatientreception(id integer PRIMARY KEY,
@@ -21,6 +26,8 @@ import javax.persistence.Table;
 
 
 public class JournalOutpatientReception {
+	private List <Specialist> specialists;
+	private List <Card> cards;
 	@Id	
 	 @Column(name = "id")
 	 @GeneratedValue(strategy= GenerationType.AUTO)
@@ -54,5 +61,21 @@ public class JournalOutpatientReception {
 	}
 	public void setContentRenderedServices(String contentRenderedServices) {
 		this.contentRenderedServices = contentRenderedServices;
+	}
+	@OneToMany(targetEntity=Specialist.class, mappedBy="specialist", cascade=CascadeType.ALL,
+			fetch=FetchType.LAZY)
+	public List <Specialist> getSpecialists(){
+		return specialists;
+	}
+	public void setSpecialists(List<Specialist> specialist){
+		this.specialists = specialists;
+	}
+	@OneToMany(targetEntity=Card.class, mappedBy="card", cascade=CascadeType.ALL,
+			fetch=FetchType.LAZY)
+	public List <Card> getCards(){
+		return cards;
+	}
+	public void setCards(List<Card> card){
+		this.cards = cards;
 	}
 }
