@@ -5,9 +5,13 @@ import dao.PhoneConsultationsJournalDao;
 import impl.ListOsmotraDaoImpl;
 
 import impl.PhoneConsultationsJournalDaoImpl;
+import dao.AddressDao;
 import dao.CallDayDao;
 import dao.CallPlanningJournalDao;
 import dao.CardDao;
+import dao.ClinicDao;
+import dao.ConsultationResultDao;
+import dao.ContactDao;
 import dao.DiuresisDao;
 import dao.JournalOutpatientReceptionDao;
 import impl.CallDayDaoImpl;
@@ -39,6 +43,10 @@ import impl.LiverDaoImpl;
 public class Factory {
 
 	public static Factory instance = new Factory();
+	public AddressDao addressDao;
+	public ClinicDao clinicDao;
+	public ConsultationResultDao consultationResultDao;
+	public ContactDao contactDao;
 	public PhoneConsultationsJournalDao zyrnalDao;
 	public ListOsmotraDao listDao;
 	public CallDayDao callDayDao;
