@@ -8,7 +8,7 @@
 		<property name="hibernate.connection.username">postgres</property>
 
 		<property name="hibernate.connection.password">15101995</property>
-		
+		<property name="hibernate.enable_lazy_load_no_trans">true</property>
 		<mapping resource="ListOsmotra.hbm.xml"/>
 		<mapping resource="CallDay.hbm.xml" />
 		<mapping resource="Address.hbm.xml" />

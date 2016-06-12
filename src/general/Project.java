@@ -7,6 +7,7 @@ import dao.JournalOutpatientReceptionDao;
 import dao.ListOsmotraDao;
 import dao.PacientDao;
 import dao.PhoneConsultationsJournalDao;
+import dao.SpecialistDao;
 import dao.TherapeuticDiagnosticManipulationsJournalDao;
 //import main.SimpleGUI;
 //import main.callListGUI;
@@ -17,6 +18,7 @@ import table.JournalOutpatientReception;
 import table.ListOsmotra;
 import table.Pacient;
 import table.PhoneConsultationsJournal;
+import table.Specialist;
 import table.TherapeuticDiagnosticManipulationsJournal;
 
 import java.sql.SQLException;
@@ -117,6 +119,8 @@ public class Project {
 		cardDao.deleteCard(cardDao.getCard(id));	
 	}
 	
+	
+	
 	public void newCall() throws InterruptedException, SQLException {
 	
 		Factory factory = Factory.getInstance();
@@ -161,6 +165,26 @@ public class Project {
 		
 	}
 
+public String[] listSpec()  throws InterruptedException, SQLException {
+		
+		Factory factory = Factory.getInstance();
+		SpecialistDao zurDao = factory.getSpecialistDao();
+	//	List<Specialist> zurnal = zurDao.getSpecialist();
+		Specialist s = zurDao.getSpecialist(4);
+		System.out.println(s.getValue1());
+		int i = 0;
+		
+		String str[]=new String[1];
+				str[0] = s.getValue1()+" "+s.getValue2()+s.getValue3();
+		//String str[]=new String[zurnal.size()];
+		//for(Specialist p : zurnal){
+		//	str[i] = p.getValue1()+" "+p.getValue2()+p.getValue3();
+		//	i++;
+		//}
+		return str;
+		
+	}
+	
 	public Object[][] listCards()  throws InterruptedException, SQLException {
 		
 		Factory factory = Factory.getInstance();

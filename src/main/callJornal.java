@@ -49,6 +49,27 @@ public class callJornal extends JPanel {
 		add(toolBar, BorderLayout.SOUTH);
 		final JLabel lblNewLabel_1 = new JLabel("");
 		JButton btnNewButton = new JButton("Новый звонок");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				callNew n;
+				try {
+					n = new callNew(proj,p);
+					n.setVisible(true);
+					me.revalidate();
+					p.contentPane.remove(me);
+					p.contentPane.add(n,BorderLayout.CENTER);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
+				
+			}
+		});
 		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnNewButton.setForeground(Color.DARK_GRAY);
 		toolBar.add(btnNewButton);
