@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 12.06.2016 14:50:12 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="table.Exit" table="EXIT">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <one-to-one name="consultationResult" class="table.ConsultationResult"></one-to-one>
+        <one-to-one name="exit" class="table.Exit"></one-to-one>
+        <property name="date" type="java.util.Date" access="field">
+            <column name="DATE" />
+        </property>
+        <property name="timeofarrival" type="java.sql.Time" access="field">
+            <column name="TIMEOFARRIVAL" />
+        </property>
+        <property name="timeaway" type="java.sql.Timestamp" access="field">
+            <column name="TIMEAWAY" />
+        </property>
+        <property name="traveltime" type="java.sql.Timestamp" access="field">
+            <column name="TRAVELTIME" />
+        </property>
+        <property name="kilometers" type="java.lang.Integer" access="field">
+            <column name="KILOMETERS" />
+        </property>
+        <property name="reasoncall" type="java.lang.String" access="field">
+            <column name="REASONCALL" />
+        </property>
+        <property name="number" type="java.lang.Integer" access="field">
+            <column name="NUMBER" />
+        </property>
+        <property name="appointmentnarcotic" type="boolean" access="field">
+            <column name="APPOINTMENTNARCOTIC" />
+        </property>
+    </class>
+</hibernate-mapping>

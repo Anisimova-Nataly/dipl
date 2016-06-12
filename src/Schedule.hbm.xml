@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 12.06.2016 14:50:12 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="table.Schedule" table="SCHEDULE">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <one-to-one name="schedule" class="table.Schedule"></one-to-one>
+        <list name="exits" inverse="false" table="EXIT" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="table.Exit" />
+        </list>
+        <property name="numbervizov" type="java.lang.Integer">
+            <column name="NUMBERVIZOV" />
+        </property>
+        <property name="date" type="java.util.Date">
+            <column name="DATE" />
+        </property>
+    </class>
+</hibernate-mapping>

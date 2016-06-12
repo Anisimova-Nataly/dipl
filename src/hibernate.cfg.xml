@@ -18,6 +18,8 @@
 		<mapping resource="ConsultationResult.hbm.xml" />
 		<mapping resource="Contact.hbm.xml" />
 		<mapping resource="Diuresis.hbm.xml" />
+		<mapping resource="Date.hbm.xml" />
+		<mapping resource="Exit.hbm.xml" />
 		<mapping resource="PhoneConsultationsJournal.hbm.xml" />
 		<mapping resource="Diuresis.hbm.xml" />
 		<mapping resource="EvaluationXbsShvo.hbm.xml" />
@@ -26,10 +28,12 @@
 		<mapping resource="HeavyNarcoticJournal.hbm.xml" />
 		<mapping resource="JournalOutpatientReception.hbm.xml" />
 		<mapping resource="Liver.hbm.xml" />
+		<mapping resource="Manipulation.hbm.xml" />
 		<mapping resource="Pacient.hbm.xml" />
 		<mapping resource="Palpation.hbm.xml" />
 		<mapping resource="Position.hbm.xml" />
 		<mapping resource="Pulse.hbm.xml" />
+		<mapping resource="Schedule.hbm.xml" />
 		<mapping resource="Specialist.hbm.xml" />
 		<mapping resource="SwallowingAct.hbm.xml" />
 		<mapping resource="Theart.hbm.xml" />

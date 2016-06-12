@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 11.06.2016 20:53:19 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 12.06.2016 14:50:12 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="table.CallPlanningJournal" table="CALLPLANNINGJOURNAL">
         <id name="id" type="int">
@@ -15,6 +15,20 @@
             </key>
             <list-index></list-index>
             <one-to-many class="table.Card" />
+        </list>
+        <list name="dates" inverse="false" table="DATE" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="table.Date" />
+        </list>
+        <list name="exits" inverse="false" table="EXIT" lazy="true" access="field">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="table.Exit" />
         </list>
         <property name="number" type="int">
             <column name="NUMBER" />
