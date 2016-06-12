@@ -17,12 +17,9 @@ import dao.JournalOutpatientReceptionDao;
 import impl.CallDayDaoImpl;
 import impl.JournalOutpatientReceptionDaoImpl;
 import impl.CallPlanningJournalDaoImpl;
-<<<<<<< HEAD
 import impl.CardDaoImpl;
-=======
 import impl.ClinicDaoImpl;
 import impl.DateDaoImpl;
->>>>>>> 06cbce8e22c93d27ff6e32cf3232128fe81e63b7
 import impl.DiuresisDaoImpl;
 import impl.EvaluationXbsShvoDaoImpl;
 import dao.EvaluationXbsShvoDao;
