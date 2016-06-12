@@ -63,8 +63,10 @@ public class CardNew extends JPanel {
 	SimpleDateFormat formatter1 = new SimpleDateFormat ("dd.mm.yyyy");
 	/**
 	 * Create the panel.
+	 * @throws SQLException 
+	 * @throws InterruptedException 
 	 */
-	public CardNew(final Project proj, final MainFrame p) {
+	public CardNew(final Project proj, final MainFrame p) throws InterruptedException, SQLException {
 		setLayout(new BorderLayout(0, 0));
 		
 		JLabel label = new JLabel("Новая амбулаторная карта");
@@ -87,6 +89,7 @@ public class CardNew extends JPanel {
 				try {
 					card.setFirstvisit(formatter1.parse(textField_7.getText()));
 					card.setFirstvisit(formatter1.parse(textField_8.getText()));
+				
 				} catch (ParseException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
@@ -98,6 +101,7 @@ public class CardNew extends JPanel {
 				pac.setOtchestvo(textField_2.getText());
 				pac.setSex(comboBox_1.getSelectedItem().toString());;
 				pac.setSocialpackage(rdbtnNewRadioButton.isSelected());
+				
 				
 				try {
 					pac.setBirthdate(formatter1.parse(textField_6.getText()));
@@ -242,6 +246,7 @@ public class CardNew extends JPanel {
 		panel.add(label_7, "2, 2, right, default");
 		
 		JComboBox comboBox_4 = new JComboBox();
+		comboBox_4.setModel(new DefaultComboBoxModel(proj.listSpec()));
 		panel.add(comboBox_4, "4, 2, fill, default");
 		
 		JLabel label_8 = new JLabel("Вставить сюда запись даты");

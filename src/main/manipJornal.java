@@ -49,6 +49,26 @@ public class manipJornal extends JPanel {
 		add(toolBar, BorderLayout.SOUTH);
 		final JLabel lblNewLabel_1 = new JLabel("");
 		JButton btnNewButton = new JButton("Новая запись");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				manipNew n;
+				try {
+					n = new manipNew(proj,p);
+					n.setVisible(true);
+					me.revalidate();
+					p.contentPane.remove(me);
+					p.contentPane.add(n,BorderLayout.CENTER);
+				} catch (InterruptedException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				
+				
+
+			}
+		});
+		
 		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnNewButton.setForeground(Color.DARK_GRAY);
 		toolBar.add(btnNewButton);

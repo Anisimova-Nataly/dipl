@@ -105,6 +105,12 @@ public class Project {
 		CardDao cardDao = factory.getCardDao();
 		cardDao.addCard(card);;	
 	}
+	public void newAmb(JournalOutpatientReception amb) throws InterruptedException, SQLException {
+		
+		Factory factory = Factory.getInstance();
+		JournalOutpatientReceptionDao ambDao = factory.getJournalOutpatientReceptionDao();
+		ambDao.addJournalOutpatientReception(amb);
+	}
 	public void newPacient(Pacient pac) throws InterruptedException, SQLException {
 		
 		Factory factory = Factory.getInstance();

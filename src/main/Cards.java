@@ -171,11 +171,18 @@ public class Cards extends JPanel {
 		JButton btnNewButton = new JButton("Новая карта");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CardNew n = new CardNew(proj,p);
-				n.setVisible(true);
-				me.revalidate();
-				p.contentPane.remove(me);
-				p.contentPane.add(n,BorderLayout.CENTER);
+				CardNew n;
+				try {
+					n = new CardNew(proj,p);
+					n.setVisible(true);
+					me.revalidate();
+					p.contentPane.remove(me);
+					p.contentPane.add(n,BorderLayout.CENTER);
+				} catch (InterruptedException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
 			}
 		});
 		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 14));

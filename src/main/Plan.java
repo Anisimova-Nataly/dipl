@@ -31,7 +31,6 @@ import com.toedter.calendar.JCalendar;
 import general.Project;
 
 public class Plan extends JPanel {
-	private JTextField textField;
 	private JTable table;
 	JLabel label_2;
 	JLabel label_1;
@@ -41,6 +40,7 @@ public class Plan extends JPanel {
 	Calendar cal = Calendar.getInstance();
 	SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd");
 	final Plan me =  this;
+	private JTextField textField;
 
 	/**
 	 * Create the panel.
@@ -123,6 +123,19 @@ public class Plan extends JPanel {
 		});
 		toolBar_2.add(button_4);
 		
+		JPanel panel_4 = new JPanel();
+		panel_6.add(panel_4, BorderLayout.SOUTH);
+		
+		JLabel label_3 = new JLabel("Километраж:");
+		panel_4.add(label_3);
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		panel_4.add(textField);
+		
+		JButton button_5 = new JButton("Сохранить");
+		panel_4.add(button_5);
+		
 		JPanel panel_7 = new JPanel();
 		tabbedPane.addTab("Дата", null, panel_7, null);
 		panel_7.setLayout(new BorderLayout(0, 0));
@@ -187,19 +200,6 @@ public class Plan extends JPanel {
 		JPanel panel_3 = new JPanel();
 		panel.add(panel_3, BorderLayout.SOUTH);
 		panel_3.setLayout(new BoxLayout(panel_3, BoxLayout.X_AXIS));
-		
-		JPanel panel_5 = new JPanel();
-		panel_3.add(panel_5);
-		
-		JLabel label_3 = new JLabel("Километраж:");
-		panel_5.add(label_3);
-		
-		textField = new JTextField();
-		panel_5.add(textField);
-		textField.setColumns(10);
-		
-		JButton btnNewButton = new JButton("Сохранить");
-		panel_5.add(btnNewButton);
 
 	}
 
