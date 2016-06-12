@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -67,12 +68,6 @@ public class CallPlanningJournal {
 	 public void setDates(List<Date> dates){
 		this.dates = dates;
 	} 
-	public CallPlanningJournal getCallPlanningJournal() {
-		return callPlanningJournal;
-	}
-	public void setCallPlanningJournal(CallPlanningJournal callPlanningJournal) {
-		this.callPlanningJournal = callPlanningJournal;
-	}
 	@OneToMany(targetEntity=Exit.class, mappedBy="exit", cascade=CascadeType.ALL,
 		fetch=FetchType.LAZY)
 	public List <Exit> getExit(){
@@ -89,4 +84,12 @@ public class CallPlanningJournal {
 	public void setCallPlanningJournalconsultationresultid(CallPlanningJournal callPlanningJournal) {
 		this.callPlanningJournal = callPlanningJournal;
 	}	 
+	@ManyToOne
+	@JoinColumn(name="cardid")
+	public CallPlanningJournal getCallPlanningJournal(){
+		return callPlanningJournal;
+	}
+	public void setCallPlanningJournal(CallPlanningJournal callPlanningJournal){
+		this.callPlanningJournal = callPlanningJournal;	
+	}
 }

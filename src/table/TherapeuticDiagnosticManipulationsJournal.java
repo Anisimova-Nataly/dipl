@@ -1,7 +1,5 @@
 package table;
 
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +7,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,7 +22,7 @@ import javax.persistence.Table;
  *    UNIQUE(cardid, manipulationid));*/
 
 public class TherapeuticDiagnosticManipulationsJournal {
-	private List <Manipulation> manipulations;
+	private Manipulation manipulation;
 	@Id	
 	 @Column(name = "id")
 	 @GeneratedValue(strategy= GenerationType.AUTO)
@@ -33,7 +32,7 @@ public class TherapeuticDiagnosticManipulationsJournal {
 	 @Column(name = "complication")
 	 	private String complication;
 	 @Column(name = "observationmethod")
-	 	private Boolean observationmethod;
+	 	private String observationmethod;
 	public int getId() {
 		return id;
 	}
@@ -52,18 +51,18 @@ public class TherapeuticDiagnosticManipulationsJournal {
 	public void setComplication(String complication) {
 		this.complication = complication;
 	}
-	public Boolean getObservationmethod() {
+	public String getObservationmethod() {
 		return observationmethod;
 	}
-	public void setObservationmethod(Boolean observationmethod) {
+	public void setObservationmethod(String observationmethod) {
 		this.observationmethod = observationmethod;
 	}
-	@OneToMany(targetEntity=Manipulation.class, mappedBy="manipulation", cascade=CascadeType.ALL,
-			fetch=FetchType.LAZY)
-	public List <Manipulation> getManipulations(){
-		return manipulations;
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="manipulationid") 
+	public Manipulation getManipulation() {
+		return manipulation;
 	}
-	public void setManipulations(List<Manipulation> manipulations){
-		this.manipulations = manipulations;
-	}
+	public void setManipulation(Manipulation manipulation) {
+		this.manipulation = manipulation;
+	}	 
 }

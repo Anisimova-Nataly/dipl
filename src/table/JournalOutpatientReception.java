@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -27,7 +29,7 @@ import javax.persistence.Table;
 
 public class JournalOutpatientReception {
 	private List <Specialist> specialists;
-	private List <Card> cards;
+	private JournalOutpatientReception journalOutpatientReception;
 	@Id	
 	 @Column(name = "id")
 	 @GeneratedValue(strategy= GenerationType.AUTO)
@@ -70,12 +72,12 @@ public class JournalOutpatientReception {
 	public void setSpecialists(List<Specialist> specialist){
 		this.specialists = specialists;
 	}
-	@OneToMany(targetEntity=Card.class, mappedBy="card", cascade=CascadeType.ALL,
-			fetch=FetchType.LAZY)
-	public List <Card> getCards(){
-		return cards;
+	@ManyToOne
+	@JoinColumn(name="cardid")
+	public JournalOutpatientReception getJournalOutpatientReception(){
+		return journalOutpatientReception;
 	}
-	public void setCards(List<Card> card){
-		this.cards = cards;
+	public void setJournalOutpatientReception(JournalOutpatientReception journalOutpatientReception){
+		this.journalOutpatientReception = journalOutpatientReception;	
 	}
 }

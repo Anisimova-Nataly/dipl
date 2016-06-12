@@ -28,6 +28,9 @@ import javax.persistence.Table;
 public class Specialist {
 	private List <Position> positions;
 	private Specialist specialist;
+	private List <JournalOutpatientReception> journalOutpatientReceptions;
+	private List <PhoneConsultationsJournal> phoneConsultationsJournals;
+	private List <TherapeuticDiagnosticManipulationsJournal> therapeuticDiagnosticManipulationsJournals;
 	@Id	
 	 @Column(name = "id")
 	 @GeneratedValue(strategy= GenerationType.AUTO)
@@ -72,19 +75,35 @@ public class Specialist {
 	}
 	@OneToMany(targetEntity=Position.class, mappedBy="position", cascade=CascadeType.ALL,
 		fetch=FetchType.LAZY)
-		public List <Position> getPositions(){
-			return positions;
-		}
-		public void setPositions(List<Position> positions){
-			this.positions = positions;
-		}
-	@ManyToOne
-	@JoinColumn(name="journaloutpatientreceptionid")
-	public Specialist getSpecialist(){
-		return specialist;
+	public List <Position> getPositions(){
+		return positions;
 	}
-	public void setSpecialist(Specialist specialist){
-		this.specialist = specialist;	
+	public void setPositions(List<Position> positions){
+		this.positions = positions;
+	}
+	@OneToMany(targetEntity=TherapeuticDiagnosticManipulationsJournal.class, mappedBy="therapeuticDiagnosticManipulationsJournal", cascade=CascadeType.ALL,
+			fetch=FetchType.LAZY)
+	public List <TherapeuticDiagnosticManipulationsJournal> getTherapeuticDiagnosticManipulationsJournals(){
+		return therapeuticDiagnosticManipulationsJournals;
+	}
+	public void seTherapeuticDiagnosticManipulationsJournals(List<TherapeuticDiagnosticManipulationsJournal> therapeuticDiagnosticManipulationsJournals){
+		this.therapeuticDiagnosticManipulationsJournals = therapeuticDiagnosticManipulationsJournals;
+	}
+	@OneToMany(targetEntity=JournalOutpatientReception.class, mappedBy="journalOutpatientReception", cascade=CascadeType.ALL,
+			fetch=FetchType.LAZY)
+	public List <PhoneConsultationsJournal> getPhoneConsultationsJournals(){
+		return phoneConsultationsJournals;
+	}
+	public void setPhoneConsultationsJournals(List<PhoneConsultationsJournal> phoneConsultationsJournals){
+		this.phoneConsultationsJournals = phoneConsultationsJournals;
+	}
+	@OneToMany(targetEntity=JournalOutpatientReception.class, mappedBy="journalOutpatientReception", cascade=CascadeType.ALL,
+			fetch=FetchType.LAZY)
+	public List <JournalOutpatientReception> getJournalOutpatientReceptions(){
+		return journalOutpatientReceptions;
+	}
+	public void setJournalOutpatientReceptions(List<JournalOutpatientReception> journalOutpatientReceptions){
+		this.journalOutpatientReceptions = journalOutpatientReceptions;
 	}
 	@ManyToOne
 	@JoinColumn(name="clinic")

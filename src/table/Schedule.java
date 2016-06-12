@@ -14,8 +14,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /*CREATE TABLE schedule(id integer PRIMARY KEY, exitid integer REFERENCES exit(id),
- *  value1 timestamp with time zone, numbervizov integer, date date,
- *   calldayid integer REFERENCES callday(id), UNIQUE(exitid));*/
+ *  value1 timestamp with time zone, numbervizov integer, kmperday integer,
+ *   date date calldayid integer REFERENCES callday(id), UNIQUE(exitid));*/
 
 @Entity
 @Table(name = "schedule")
@@ -38,6 +38,8 @@ public class Schedule {
 	private Integer numbervizov;
 	@Column(name="date")
 	private java.util.Date date;
+	@Column(name="kmperday")
+	private Integer kmperday;
 	@OneToOne(mappedBy="callday")
 	public Schedule getSchedule() {
 		return schedule;
@@ -64,5 +66,11 @@ public class Schedule {
 	}
 	public void setExits(List<Exit> exits){
 		this.exits = exits;
+	}
+	public Integer getKmperday() {
+		return kmperday;
+	}
+	public void setKmperday(Integer kmperday) {
+		this.kmperday = kmperday;
 	}
 }

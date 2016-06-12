@@ -58,10 +58,10 @@ public class Exit {
 	}
 	@ManyToOne
 	@JoinColumn(name="scheduleid")
-	public Exit getExit(){
+	public Exit getExitscheduleid(){
 		return exit;
 	}
-	public void setExit(Exit exit){
+	public void setExitscheduleid(Exit exit){
 		this.exit = exit;	
 	}
 	@OneToOne(mappedBy="exit")
@@ -70,5 +70,21 @@ public class Exit {
 	}
 	public void setConsultationResult(ConsultationResult consultationResult) {
 		this.consultationResult = consultationResult;
+	}
+	@ManyToOne
+	@JoinColumn(name="brigadeid")
+	public Exit getExitBrigadeid(){
+		return exit;
+	}
+	public void setExitBrigadeid(Exit exit){
+		this.exit = exit;	
+	}
+	@ManyToOne
+	@JoinColumn(name="cardid")
+	public Exit getExitCardid(){
+		return exit;
+	}
+	public void setExitCardid(Exit exit){
+		this.exit = exit;	
 	}
 }

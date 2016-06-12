@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -32,7 +31,10 @@ public class Card {
 	private Card card;
 	private Pacient pacient;
 	private List <ListOsmotra> listOsmotras;
-	
+	private List <Exit> exits;
+	private List <JournalOutpatientReception> journalOutpatientReceptions;
+	private List <CallPlanningJournal> callPlanningJournals;
+	private List <PhoneConsultationsJournal> phoneConsultationsJournals;
 	@Id	
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 @Column(name = "id")
@@ -63,6 +65,14 @@ public class Card {
 	}
 	public void setListOsmotras(List<ListOsmotra> listOsmotras){
 		this.listOsmotras = listOsmotras;
+	}
+	@OneToMany(targetEntity=Exit.class, mappedBy="exit", cascade=CascadeType.ALL,
+			fetch=FetchType.LAZY)
+	public List <Exit> getExits(){
+		return exits;
+	}
+	public void setExits(List<Exit> exits){
+		this.exits = exits;
 	}
 	public java.util.Date getDatereferral() {
 		return datereferral;
@@ -100,29 +110,29 @@ public class Card {
 	public void setSignature(String signature) {
 		this.signature = signature;
 	}	
-	@ManyToOne
-	@JoinColumn(name="phoneconsultationsjournalid")
-	public Card getphoneconsultationsjournal(){
-		return card;
+	@OneToMany(targetEntity=PhoneConsultationsJournal.class, mappedBy="phoneconsultationsjournal", cascade=CascadeType.ALL,
+			fetch=FetchType.LAZY)
+	public List <PhoneConsultationsJournal> getJPhoneConsultationsJournals(){
+		return phoneConsultationsJournals;
 	}
-	public void setphoneconsultationsjournal(Card card){
-		this.card = card;	
+	public void setPhoneConsultationsJournals(List<PhoneConsultationsJournal> phoneConsultationsJournals){
+		this.phoneConsultationsJournals = phoneConsultationsJournals;
 	}
-	@ManyToOne
-	@JoinColumn(name="callplanningjournalid")
-	public Card getcallplanningjournalid(){
-		return card;
+	@OneToMany(targetEntity=CallPlanningJournal.class, mappedBy="callplanningjournal", cascade=CascadeType.ALL,
+			fetch=FetchType.LAZY)
+	public List <CallPlanningJournal> getJCallPlanningJournals(){
+		return callPlanningJournals;
 	}
-	public void setcallplanningjournalid(Card card){
-		this.card = card;	
+	public void setJCallPlanningJournals(List<CallPlanningJournal> callPlanningJournals){
+		this.callPlanningJournals = callPlanningJournals;
 	}
-	@ManyToOne
-	@JoinColumn(name="journaloutpatientreceptionid")
-	public Card getCardjournaloutpatientreceptionid(){
-		return card;
+	@OneToMany(targetEntity=JournalOutpatientReception.class, mappedBy="journaloutpatientreception", cascade=CascadeType.ALL,
+			fetch=FetchType.LAZY)
+	public List <JournalOutpatientReception> getJournalOutpatientReceptions(){
+		return journalOutpatientReceptions;
 	}
-	public void setCardjournaloutpatientreceptionid(Card card){
-		this.card = card;	
+	public void setJournalOutpatientReceptions(List<JournalOutpatientReception> journalOutpatientReceptions){
+		this.journalOutpatientReceptions = journalOutpatientReceptions;
 	}
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="pacientid") 
