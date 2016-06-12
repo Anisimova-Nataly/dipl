@@ -121,14 +121,12 @@ public class Project {
 	
 	
 	
-	public void newCall() throws InterruptedException, SQLException {
+	public void newCall(PhoneConsultationsJournal ph) throws InterruptedException, SQLException {
 	
 		Factory factory = Factory.getInstance();
 		PhoneConsultationsJournalDao zurDao = factory.getPhoneConsultationsJournalDao();
-		phonecollGUI ph = new phonecollGUI();
-		PhoneConsultationsJournal j =  ph.start();
-		System.out.println(j.getReason());
-		zurDao.addPhoneConsultationsJournal(j);
+		System.out.println(ph.getReason());
+		zurDao.addPhoneConsultationsJournal(ph);
 		
 	//	callListGUI c = new callListGUI.start(this);
 	//	List <PhoneConsultationsJournal> zurnal = zurDao.getPhoneConsultationsJournals();

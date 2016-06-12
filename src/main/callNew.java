@@ -35,8 +35,9 @@ public class callNew extends JPanel {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-	private JTextField textField_3;
-
+	JComboBox comboBox;
+	JComboBox comboBox_1;
+	Object[][] cards;
 	/**
 	 * Create the panel.
 	 * @throws SQLException 
@@ -57,9 +58,6 @@ public class callNew extends JPanel {
 		
 		JToolBar toolBar = new JToolBar();
 		panel.add(toolBar, BorderLayout.SOUTH);
-		
-		JButton btnNewButton = new JButton("Сохранить");
-		toolBar.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Отмена");
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -83,6 +81,53 @@ public class callNew extends JPanel {
 			}
 		});
 		toolBar.add(btnNewButton_1);
+		
+		JButton btnNewButton = new JButton("Сохранить");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				PhoneConsultationsJournal ph = new PhoneConsultationsJournal();
+				ph.setCardid( Integer.parseInt(cards[comboBox.getSelectedIndex()][0].toString()));
+				ph.setReason((String) comboBox_1.getSelectedItem());
+				try {
+					proj.newCall(ph);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				callJornal c;
+				try {
+					c = new callJornal(proj, p);
+					c.setVisible(true);
+					me.revalidate();
+					p.contentPane.remove(me);
+					p.contentPane.add(c,BorderLayout.CENTER);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		toolBar.add(btnNewButton);
+		
+		JButton button = new JButton("Сохранить и назначить выезд");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				//вписать сохранение сюда
+				
+				
+				
+			}
+		});
+		toolBar.add(button);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		panel.add(scrollPane, BorderLayout.CENTER);
@@ -125,8 +170,8 @@ public class callNew extends JPanel {
 		JLabel label = new JLabel("Пациент");
 		panel_1.add(label, "2, 2, right, default");
 		
-		JComboBox comboBox = new JComboBox();
-		Object[][] cards =proj.listCards();
+		 comboBox = new JComboBox();
+		cards =proj.listCards();
 		String[] str = new String[cards.length];
 		for(int i =0;i<cards.length;i++){
 			str[i] = (String) cards[i][1];
@@ -165,7 +210,7 @@ public class callNew extends JPanel {
 		JLabel lblNewLabel_1 = new JLabel("Причина звонка");
 		panel_1.add(lblNewLabel_1, "2, 14, right, default");
 		
-		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1 = new JComboBox();
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Изменение даты выезда", "Отмена выезда", "Усиление боли", "Ухудшение общего состояния", "Усиление отдышки", "Даны рекомендации"}));
 		panel_1.add(comboBox_1, "4, 14, fill, default");
 		
@@ -183,17 +228,6 @@ public class callNew extends JPanel {
 		
 		JRadioButton radioButton = new JRadioButton("Оказана психологическая поддержка");
 		panel_1.add(radioButton, "4, 20");
-		
-		JPanel panel_2 = new JPanel();
-		panel_1.add(panel_2, "4, 22, fill, fill");
-		panel_2.setLayout(new MigLayout("", "[225px][225px]", "[39px]"));
-		
-		JLabel label_3 = new JLabel("Дата выезда");
-		panel_2.add(label_3, "cell 0 0,grow");
-		
-		textField_3 = new JTextField();
-		panel_2.add(textField_3, "cell 1 0,grow");
-		textField_3.setColumns(10);
 		
 		JSeparator separator_7 = new JSeparator();
 		panel_1.add(separator_7, "2, 24");

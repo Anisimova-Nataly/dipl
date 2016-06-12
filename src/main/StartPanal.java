@@ -114,7 +114,7 @@ public class StartPanal extends JPanel {
 		JButton btnNewButton_3 = new JButton("Планировщик");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				planingGUI pl = new planingGUI(parent);
+				Plan pl = new Plan(parent,proj);
 				pl.setVisible(true);
 				me.revalidate();
 				parent.contentPane.remove(me);
