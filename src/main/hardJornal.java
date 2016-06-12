@@ -57,11 +57,21 @@ public class hardJornal extends JPanel {
 		JButton btnNewButton_1 = new JButton("На главную");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StartPanal st = new StartPanal(p);
-				st.setVisible(true);
-				me.revalidate();
-				p.contentPane.remove(me);
-				p.contentPane.add(st,BorderLayout.CENTER);
+				StartPanal st;
+				try {
+					st = new StartPanal(p);
+					st.setVisible(true);
+					me.revalidate();
+					p.contentPane.remove(me);
+					p.contentPane.add(st,BorderLayout.CENTER);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
 				
 			}
 		});

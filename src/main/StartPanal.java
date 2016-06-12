@@ -32,8 +32,11 @@ public class StartPanal extends JPanel {
 	Project proj = new Project();
 	/**
 	 * Create the panel.
+	 * @throws SQLException 
+	 * @throws InterruptedException 
 	 */
-	public StartPanal(MainFrame p) {
+	public StartPanal(MainFrame p) throws InterruptedException, SQLException {
+		proj.listCards();
 		parent = p;
 		final StartPanal me =  this;
 		setLayout(new BorderLayout(0, 0));

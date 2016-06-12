@@ -3,6 +3,7 @@ package main;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Image;
+import java.sql.SQLException;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.ImageIcon;
@@ -37,13 +38,14 @@ public class MainFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 * @throws InterruptedException 
+	 * @throws SQLException 
 	 */
 	
 	
 
 	
 	
-	public MainFrame() throws InterruptedException {
+	public MainFrame() throws InterruptedException, SQLException {
 		super("Помощник");
 		ImageIcon icon = new ImageIcon("/Bowl_hygeia_darkred.svg");
 		setIconImage(icon.getImage());

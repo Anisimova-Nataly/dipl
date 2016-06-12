@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -111,11 +112,21 @@ public class planingGUI extends JPanel {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//plan pl = new planingGUI(parent);
-				StartPanal st = new StartPanal(p);
-				st.setVisible(true);
-				me.revalidate();
-				p.contentPane.remove(me);
-				p.contentPane.add(st,BorderLayout.CENTER);
+				StartPanal st;
+				try {
+					st = new StartPanal(p);
+					st.setVisible(true);
+					me.revalidate();
+					p.contentPane.remove(me);
+					p.contentPane.add(st,BorderLayout.CENTER);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 				
 			}
 		});
