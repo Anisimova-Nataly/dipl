@@ -124,12 +124,6 @@ public class Pacient {
 	public void setOtchestvo(String otchestvo) {
 		this.otchestvo = otchestvo;
 	}
-	public java.util.Date getBirthdate() {
-		return birthdate;
-	}
-	public void setBirthdate(java.util.Date birthdate) {
-		this.birthdate = birthdate;
-	}
 	public java.math.BigInteger getPhonenumber() {
 		return phonenumber;
 	}
@@ -202,5 +196,10 @@ public class Pacient {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-	
+	public java.util.Date getBirthdate() {
+		return birthdate;
+	}
+	public void setBirthdate(java.util.Date birthdate) {
+		this.birthdate = birthdate;
+	}
 }

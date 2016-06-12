@@ -1,10 +1,14 @@
 package table;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /*CREATE TABLE consultationresult(id integer PRIMARY KEY, reccommendations text,
@@ -14,6 +18,8 @@ import javax.persistence.Table;
 @Table(name = "consultationresult")
 
 public class ConsultationResult {
+	private Exit exit;
+	private CallPlanningJournal callPlanningJournal;
 	@Id	
 	 @Column(name = "id")
 	 @GeneratedValue(strategy= GenerationType.AUTO)
@@ -47,5 +53,20 @@ public class ConsultationResult {
 	}
 	public void setLeavingteam(java.util.Date leavingteam) {
 		this.leavingteam = leavingteam;
+	}
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="exitid") 
+	public Exit getExit() {
+		return exit;
+	}
+	public void setExit(Exit exit) {
+		this.exit = exit;
+	}	 
+	@OneToOne(mappedBy="liver")
+	public CallPlanningJournal getCallPlanningJournal() {
+		return callPlanningJournal;
+	}
+	public void callPlanningJournal(CallPlanningJournal callPlanningJournal) {
+		this.callPlanningJournal = callPlanningJournal;
 	}
 }

@@ -11,12 +11,18 @@ import dao.CardDao;
 import dao.ClinicDao;
 import dao.ConsultationResultDao;
 import dao.ContactDao;
+import dao.DateDao;
 import dao.DiuresisDao;
 import dao.JournalOutpatientReceptionDao;
 import impl.CallDayDaoImpl;
 import impl.JournalOutpatientReceptionDaoImpl;
 import impl.CallPlanningJournalDaoImpl;
+<<<<<<< HEAD
 import impl.CardDaoImpl;
+=======
+import impl.ClinicDaoImpl;
+import impl.DateDaoImpl;
+>>>>>>> 06cbce8e22c93d27ff6e32cf3232128fe81e63b7
 import impl.DiuresisDaoImpl;
 import impl.EvaluationXbsShvoDaoImpl;
 import dao.EvaluationXbsShvoDao;
@@ -26,6 +32,7 @@ import dao.LiverDao;
 import dao.PacientDao;
 import dao.PalpationDao;
 import dao.PulseDao;
+import dao.ScheduleDao;
 import dao.SwallowingActDao;
 import dao.TheartDao;
 import dao.TherapeuticDiagnosticManipulationsJournalDao;
@@ -38,6 +45,7 @@ import table.Pacient;
 import impl.TheartDaoImpl;
 import impl.SwallowingActDaoImpl;
 import impl.PulseDaoImpl;
+import impl.ScheduleDaoImpl;
 import impl.PalpationDaoImpl;
 import impl.LiverDaoImpl;
 import impl.PacientDaoImpl;
@@ -45,6 +53,7 @@ import impl.PacientDaoImpl;
 public class Factory {
 
 	public static Factory instance = new Factory();
+	public DateDao dateDao;
 	public AddressDao addressDao;
 	public ClinicDao clinicDao;
 	public ConsultationResultDao consultationResultDao;
@@ -67,6 +76,7 @@ public class Factory {
 	public PositionDao positionDao;
 	public SpecialistDao specialistDao;
 	public PacientDao pacientDao;
+	public ScheduleDao  scheduleDao;
 	private Factory(){};
 	public static Factory getInstance(){
 		return Factory.instance;
@@ -153,6 +163,7 @@ public class Factory {
 		if(callDayDao==null)callDayDao = new CallDayDaoImpl();
 		return callDayDao;
 		}
+
 	public CardDao getCardDao(){
 		if(cardDao==null)cardDao = new CardDaoImpl();
 		return cardDao;
@@ -162,4 +173,18 @@ public class Factory {
 		return pacientDao;
 		}
 	
+
+	public DateDao getDateDao(){
+		if(dateDao==null)dateDao = new DateDaoImpl();
+		return dateDao;
+		}
+	public ScheduleDao getScheduleDao(){
+		if(scheduleDao==null)scheduleDao = new ScheduleDaoImpl();
+		return scheduleDao;
+		}
+	public ClinicDao getClinicDao(){
+		if(clinicDao==null)clinicDao = new ClinicDaoImpl();
+		return clinicDao;
+		}
+
 }

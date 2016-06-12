@@ -9,7 +9,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -29,13 +31,14 @@ import javax.persistence.Table;
 public class CallPlanningJournal {
 	private CallPlanningJournal callPlanningJournal;
 	private List <Card> cards;
+	private List <Date> dates;
+	private List <Exit> exits;
 	@Id	
 	 @Column(name = "id")
 	 @GeneratedValue(strategy= GenerationType.AUTO)
 		private int id;	
 	 @Column(name = "number")
 	 	private int number;
-
 	 public int getId() {
 		 return id;
 }
@@ -56,10 +59,34 @@ public class CallPlanningJournal {
 	 public void setCards(List<Card> cards){
 		this.cards = cards;
 	}
+	 @OneToMany(targetEntity=Date.class, mappedBy="date", cascade=CascadeType.ALL,
+			fetch=FetchType.LAZY)
+	 public List <Date> getDates(){
+		return dates;
+	}
+	 public void setDates(List<Date> dates){
+		this.dates = dates;
+	} 
 	public CallPlanningJournal getCallPlanningJournal() {
 		return callPlanningJournal;
 	}
 	public void setCallPlanningJournal(CallPlanningJournal callPlanningJournal) {
 		this.callPlanningJournal = callPlanningJournal;
 	}
+	@OneToMany(targetEntity=Exit.class, mappedBy="exit", cascade=CascadeType.ALL,
+		fetch=FetchType.LAZY)
+	public List <Exit> getExit(){
+		return exits;
+	}
+	public void setExits(List<Exit> exits){
+		this.exits = exits;
+	}
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="consultationresultid") 
+	public CallPlanningJournal getCallPlanningJournalconsultationresultid() {
+		return callPlanningJournal;
+	}
+	public void setCallPlanningJournalconsultationresultid(CallPlanningJournal callPlanningJournal) {
+		this.callPlanningJournal = callPlanningJournal;
+	}	 
 }
