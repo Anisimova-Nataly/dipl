@@ -110,7 +110,12 @@ public class Project {
 		pDao.addPacient(pac);
 	}	
 	
-	
+	public void delCard(int id) throws InterruptedException, SQLException {
+		
+		Factory factory = Factory.getInstance();
+		CardDao cardDao = factory.getCardDao();
+		cardDao.deleteCard(cardDao.getCard(id));	
+	}
 	
 	public void newCall() throws InterruptedException, SQLException {
 	

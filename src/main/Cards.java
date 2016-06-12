@@ -37,6 +37,7 @@ public class Cards extends JPanel {
 	 private static String[] tblheader = { "ID карты", "ФИО пациента", "Год рождения","Просмотр","Листы осмотра","Удалить" };
 	 final Cards me =  this;
 	  static int len;
+	  static Project pr;
 	 
 	 public static class JTableModel extends AbstractTableModel {
 			private static final long serialVersionUID = 1L;
@@ -83,8 +84,18 @@ public class Cards extends JPanel {
 					case 5: final JButton button3 = new JButton(COLUMN_NAMES[columnIndex]);
 					button3.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent arg0) {
-							JOptionPane.showMessageDialog(JOptionPane.getFrameForComponent(button3), 
-									"Button clicked for row "+rowIndex);
+						
+							try {
+								pr.delCard(Integer.parseInt(tbldata[rowIndex][0].toString()));
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							} catch (SQLException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							
+							
 						}
 					});
 					return button3;
@@ -142,7 +153,7 @@ public class Cards extends JPanel {
 	public Cards(final Project proj, final MainFrame p) throws InterruptedException, SQLException {
 		//System.out.print("hey!");
 		setLayout(new BorderLayout(0, 0));
-		
+		pr = proj;
 		JLabel lblNewLabel = new JLabel("Амбулаторные карты");
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 30));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
