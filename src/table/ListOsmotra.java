@@ -303,10 +303,10 @@ public class ListOsmotra {
 		this.liver = liver;
 	}	 
 	@OneToOne(mappedBy="heavynarcoticjournal")
-	public ListOsmotra getListOsmotra1() {
+	public ListOsmotra getListOsmotraHeavyNarcoticJournal() {
 		return listOsmotra;
 	}
-	public void setListOsmotra1(ListOsmotra listOsmotra) {
+	public void setListOsmotraHeavyNarcoticJournal(ListOsmotra listOsmotra) {
 		this.listOsmotra = listOsmotra;
 	}
 	@ManyToOne

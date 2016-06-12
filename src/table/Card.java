@@ -56,7 +56,7 @@ public class Card {
 	@Column(name = "signature")
  	private String signature;
 
-	@OneToMany(targetEntity=ListOsmotra.class, mappedBy="listOsmotra", cascade=CascadeType.ALL,
+	@OneToMany(targetEntity=ListOsmotra.class, mappedBy="listosmotra", cascade=CascadeType.ALL,
 	fetch=FetchType.LAZY)
 	public List <ListOsmotra> getListOsmotras(){
 		return listOsmotras;

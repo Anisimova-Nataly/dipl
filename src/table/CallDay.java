@@ -18,16 +18,14 @@ import javax.persistence.Table;
 @Table(name = "callday")
 
 public class CallDay {
-	private CallDay calldayid;
-	
-	private ListOsmotra listOsmotra;
+	private Schedule schedule;
 	
 	@OneToOne(mappedBy="callday")
-	public ListOsmotra getCallDay() {
-		return listOsmotra;
+	public Schedule getSchedule() {
+		return schedule;
 	}
-	public void setListOsmotra(ListOsmotra listOsmotra) {
-		this.listOsmotra = listOsmotra;
+	public void setShedule(Schedule schedule) {
+		this.schedule = schedule;
 	}
 	@Id	
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -11,11 +11,14 @@ import dao.CallPlanningJournalDao;
 import dao.ClinicDao;
 import dao.ConsultationResultDao;
 import dao.ContactDao;
+import dao.DateDao;
 import dao.DiuresisDao;
 import dao.JournalOutpatientReceptionDao;
 import impl.CallDayDaoImpl;
 import impl.JournalOutpatientReceptionDaoImpl;
 import impl.CallPlanningJournalDaoImpl;
+import impl.ClinicDaoImpl;
+import impl.DateDaoImpl;
 import impl.DiuresisDaoImpl;
 import impl.EvaluationXbsShvoDaoImpl;
 import dao.EvaluationXbsShvoDao;
@@ -24,6 +27,7 @@ import impl.HeavyNarcoticJournalDaoImpl;
 import dao.LiverDao;
 import dao.PalpationDao;
 import dao.PulseDao;
+import dao.ScheduleDao;
 import dao.SwallowingActDao;
 import dao.TheartDao;
 import dao.TherapeuticDiagnosticManipulationsJournalDao;
@@ -35,12 +39,14 @@ import impl.TherapeuticDiagnosticManipulationsJournalDaoImpl;
 import impl.TheartDaoImpl;
 import impl.SwallowingActDaoImpl;
 import impl.PulseDaoImpl;
+import impl.ScheduleDaoImpl;
 import impl.PalpationDaoImpl;
 import impl.LiverDaoImpl;
 
 public class Factory {
 
 	public static Factory instance = new Factory();
+	public DateDao dateDao;
 	public AddressDao addressDao;
 	public ClinicDao clinicDao;
 	public ConsultationResultDao consultationResultDao;
@@ -61,6 +67,7 @@ public class Factory {
 	public TherapeuticDiagnosticManipulationsJournalDao therapeuticDiagnosticManipulationsJournalDao;
 	public PositionDao positionDao;
 	public SpecialistDao specialistDao;
+	public ScheduleDao  scheduleDao;
 	private Factory(){};
 	public static Factory getInstance(){
 		return Factory.instance;
@@ -147,5 +154,16 @@ public class Factory {
 		if(callDayDao==null)callDayDao = new CallDayDaoImpl();
 		return callDayDao;
 		}
-
+	public DateDao getDateDao(){
+		if(dateDao==null)dateDao = new DateDaoImpl();
+		return dateDao;
+		}
+	public ScheduleDao getScheduleDao(){
+		if(scheduleDao==null)scheduleDao = new ScheduleDaoImpl();
+		return scheduleDao;
+		}
+	public ClinicDao getClinicDao(){
+		if(clinicDao==null)clinicDao = new ClinicDaoImpl();
+		return clinicDao;
+		}
 }
