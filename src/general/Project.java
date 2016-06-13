@@ -112,7 +112,7 @@ public class Project {
 		PhoneConsultationsJournalDao zurDao = factory.getPhoneConsultationsJournalDao();
 		
 
-		List <PhoneConsultationsJournal> zurnal = zurDao.getPhoneConsultationsJournals();
+		List <PhoneConsultationsJournal> zurnal = zurDao.getPhoneConsultationsJournal();
 		Object[][] objs = new Object[zurnal.size()][7];
 		int i=0;
 		
@@ -138,7 +138,7 @@ public class Project {
 			JournalOutpatientReceptionDao zurDao = factory.getJournalOutpatientReceptionDao();
 			
 
-			List <JournalOutpatientReception> zurnal = zurDao.getJournalOutpatientReceptions();
+			List <JournalOutpatientReception> zurnal = zurDao.getJournalOutpatientReception();
 			Object[][] objs = new Object[zurnal.size()][5];
 			int i=0;
 			

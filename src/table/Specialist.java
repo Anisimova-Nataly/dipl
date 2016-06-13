@@ -90,7 +90,7 @@ public class Specialist {
 	public void seTherapeuticDiagnosticManipulationsJournals(List<TherapeuticDiagnosticManipulationsJournal> therapeuticDiagnosticManipulationsJournals){
 		this.therapeuticDiagnosticManipulationsJournals = therapeuticDiagnosticManipulationsJournals;
 	}
-	@OneToMany(targetEntity=JournalOutpatientReception.class, mappedBy="journalOutpatientReception", cascade=CascadeType.ALL,
+	@OneToMany(targetEntity=PhoneConsultationsJournal.class, mappedBy="phoneConsultationsJournal", cascade=CascadeType.ALL,
 			fetch=FetchType.LAZY)
 	public List <PhoneConsultationsJournal> getPhoneConsultationsJournals(){
 		return phoneConsultationsJournals;

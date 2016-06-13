@@ -20,6 +20,7 @@ import javax.persistence.Table;
 public class ConsultationResult {
 	private Exit exit;
 	private CallPlanningJournal callPlanningJournal;
+	private ConsultationResult consultationResult;
 	@Id	
 	 @Column(name = "id")
 	 @GeneratedValue(strategy= GenerationType.AUTO)
@@ -62,11 +63,18 @@ public class ConsultationResult {
 	public void setExit(Exit exit) {
 		this.exit = exit;
 	}	 
-	@OneToOne(mappedBy="liver")
+	@OneToOne(mappedBy="callplanningjournal")
 	public CallPlanningJournal getCallPlanningJournal() {
 		return callPlanningJournal;
 	}
 	public void callPlanningJournal(CallPlanningJournal callPlanningJournal) {
 		this.callPlanningJournal = callPlanningJournal;
+	}
+	@OneToOne(mappedBy="consultationresult")
+	public ConsultationResult getConsultationResult() {
+		return consultationResult;
+	}
+	public void setConsultationResult(ConsultationResult consultationResult) {
+		this.consultationResult = consultationResult;
 	}
 }
