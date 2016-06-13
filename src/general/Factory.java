@@ -7,6 +7,7 @@ import impl.PhoneConsultationsJournalDaoImpl;
 import dao.AddressDao;
 import dao.CallDayDao;
 import dao.CallPlanningJournalDao;
+import dao.CallerDao;
 import dao.CardDao;
 import dao.ClinicDao;
 import dao.ConsultationResultDao;
@@ -17,8 +18,10 @@ import dao.JournalOutpatientReceptionDao;
 import impl.CallDayDaoImpl;
 import impl.JournalOutpatientReceptionDaoImpl;
 import impl.CallPlanningJournalDaoImpl;
+import impl.CallerDaoImpl;
 import impl.CardDaoImpl;
 import impl.ClinicDaoImpl;
+import impl.ConsultationResultDaoImpl;
 import impl.DateDaoImpl;
 import impl.DiuresisDaoImpl;
 import impl.EvaluationXbsShvoDaoImpl;
@@ -26,6 +29,7 @@ import dao.EvaluationXbsShvoDao;
 import dao.HeavyNarcoticJournalDao;
 import impl.HeavyNarcoticJournalDaoImpl;
 import dao.LiverDao;
+import dao.ManipulationDao;
 import dao.PacientDao;
 import dao.PalpationDao;
 import dao.PulseDao;
@@ -38,6 +42,7 @@ import dao.SpecialistDao;
 import impl.SpecialistDaoImpl;
 import impl.PositionDaoImpl;
 import impl.TherapeuticDiagnosticManipulationsJournalDaoImpl;
+import table.Manipulation;
 import table.Pacient;
 import impl.TheartDaoImpl;
 import impl.SwallowingActDaoImpl;
@@ -45,12 +50,14 @@ import impl.PulseDaoImpl;
 import impl.ScheduleDaoImpl;
 import impl.PalpationDaoImpl;
 import impl.LiverDaoImpl;
+import impl.ManipulationDaoImpl;
 import impl.PacientDaoImpl;
 
 public class Factory {
 
 	public static Factory instance = new Factory();
 	public DateDao dateDao;
+	public ManipulationDao manipDao;
 	public AddressDao addressDao;
 	public ClinicDao clinicDao;
 	public ConsultationResultDao consultationResultDao;
@@ -74,6 +81,8 @@ public class Factory {
 	public SpecialistDao specialistDao;
 	public PacientDao pacientDao;
 	public ScheduleDao  scheduleDao;
+	public ConsultationResultDao consultationResuilDao;
+	public CallerDao callerDao;
 	private Factory(){};
 	public static Factory getInstance(){
 		return Factory.instance;
@@ -89,6 +98,18 @@ public class Factory {
 		return positionDao;
 		}
 	
+	public ConsultationResultDao getConsultationResult(){
+		if(consultationResultDao==null)consultationResultDao = new ConsultationResultDaoImpl();
+		return consultationResultDao;
+		}
+	public ManipulationDao getManipulationDao(){
+		if(manipDao==null)manipDao = new ManipulationDaoImpl();
+		return manipDao;
+		}
+	public CallerDao getCallerDao(){
+		if(callerDao==null)callerDao = new CallerDaoImpl();
+		return callerDao;
+		}
 	public TherapeuticDiagnosticManipulationsJournalDao getTherapeuticDiagnosticManipulationsJournalDao(){
 		if(therapeuticDiagnosticManipulationsJournalDao==null)therapeuticDiagnosticManipulationsJournalDao = new TherapeuticDiagnosticManipulationsJournalDaoImpl();
 		return therapeuticDiagnosticManipulationsJournalDao;

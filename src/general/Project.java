@@ -1,10 +1,13 @@
 package general;
 
 
+import dao.CallerDao;
 import dao.CardDao;
+import dao.ConsultationResultDao;
 import dao.HeavyNarcoticJournalDao;
 import dao.JournalOutpatientReceptionDao;
 import dao.ListOsmotraDao;
+import dao.ManipulationDao;
 import dao.PacientDao;
 import dao.PhoneConsultationsJournalDao;
 import dao.SpecialistDao;
@@ -12,10 +15,13 @@ import dao.TherapeuticDiagnosticManipulationsJournalDao;
 //import main.SimpleGUI;
 //import main.callListGUI;
 import main.phonecollGUI;
+import table.Caller;
 import table.Card;
+import table.ConsultationResult;
 import table.HeavyNarcoticJournal;
 import table.JournalOutpatientReception;
 import table.ListOsmotra;
+import table.Manipulation;
 import table.Pacient;
 import table.PhoneConsultationsJournal;
 import table.Specialist;
@@ -111,6 +117,20 @@ public class Project {
 		JournalOutpatientReceptionDao ambDao = factory.getJournalOutpatientReceptionDao();
 		ambDao.addJournalOutpatientReception(amb);
 	}
+	
+public void newManip(TherapeuticDiagnosticManipulationsJournal manip) throws InterruptedException, SQLException {
+		
+		Factory factory = Factory.getInstance();
+		TherapeuticDiagnosticManipulationsJournalDao ambDao = factory.getTherapeuticDiagnosticManipulationsJournalDao();
+		ambDao.addTherapeuticDiagnosticManipulationsJournal(manip);
+	}
+public void newMan(Manipulation man) throws InterruptedException, SQLException {
+	
+	Factory factory = Factory.getInstance();
+	ManipulationDao ambDao = factory.getManipulationDao();
+	ambDao.addManipulation(man);;
+}
+	
 	public void newPacient(Pacient pac) throws InterruptedException, SQLException {
 		
 		Factory factory = Factory.getInstance();
@@ -118,6 +138,18 @@ public class Project {
 		pDao.addPacient(pac);
 	}	
 	
+	public void newResult(ConsultationResult res) throws InterruptedException, SQLException {
+		
+		Factory factory = Factory.getInstance();
+		ConsultationResultDao resDao = factory.getConsultationResult();
+		resDao.addConsultationResult(res);
+	}
+	public void newCaller(Caller cal) throws InterruptedException, SQLException {
+		
+		Factory factory = Factory.getInstance();
+		CallerDao resDao = factory.getCallerDao();
+		resDao.addCaller(cal);
+	}
 	public void delCard(int id) throws InterruptedException, SQLException {
 		
 		Factory factory = Factory.getInstance();
@@ -125,8 +157,36 @@ public class Project {
 		cardDao.deleteCard(cardDao.getCard(id));	
 	}
 	
+public Card getCard(int id) throws InterruptedException, SQLException {
+		
+		Factory factory = Factory.getInstance();
+		CardDao cardDao = factory.getCardDao();
+		return cardDao.getCard(id);
+		 
+	}
+public Caller getCaller(int id) throws InterruptedException, SQLException {
 	
+	Factory factory = Factory.getInstance();
+	CallerDao cDao = factory.getCallerDao();
+	return cDao.getCaller(id);
+	 
+}
+
+public Specialist getSpec(int id) throws InterruptedException, SQLException {
 	
+	Factory factory = Factory.getInstance();
+	SpecialistDao cDao = factory.getSpecialistDao();
+	return cDao.getSpecialist(id);
+	 
+}
+	
+public ConsultationResult getResult(int id) throws InterruptedException, SQLException {
+	
+	Factory factory = Factory.getInstance();
+	ConsultationResultDao cDao = factory.getConsultationResult();
+	return cDao.getConsultationResult(id);
+	 
+}
 	public void newCall(PhoneConsultationsJournal ph) throws InterruptedException, SQLException {
 	
 		Factory factory = Factory.getInstance();
@@ -149,18 +209,18 @@ public class Project {
 		PhoneConsultationsJournalDao zurDao = factory.getPhoneConsultationsJournalDao();
 		
 
-		List <PhoneConsultationsJournal> zurnal = zurDao.getPhoneConsultationsJournals();
+		List <PhoneConsultationsJournal> zurnal = zurDao.getPhoneConsultationsJournal();
 		Object[][] objs = new Object[zurnal.size()][7];
 		int i=0;
 		
 		for(PhoneConsultationsJournal p : zurnal){
 			//System.out.println(p.getId() +"   "+ p.getReason()+"   "+p.getDate().toString());
 			objs[i][0]= p.getId();
-			objs[i][1]= p.getCardid();
-			objs[i][2]= p.getCallerid();
+			objs[i][1]= this.getCard(p.getCardid()).getPacient().getSurname()+" "+this.getCard(p.getCardid()).getPacient().getName()+ " "+this.getCard(p.getCardid()).getPacient().getOtchestvo() ;
+			objs[i][2]= this.getCaller(p.getCallerid()).getSurname()+ " " +this.getCaller(p.getCallerid()).getName()+ " "+ this.getCaller(p.getCallerid()).getOtchestvo();
 			objs[i][3]= p.getDate();
 			objs[i][4]= p.getReason();
-			objs[i][5]= p.getSpecialistid();
+			objs[i][5]= this.getSpec(p.getSpecialistid()).getValue1();
 			objs[i][6]= p.getConsultationResultId();
 			
 			i++;
@@ -217,7 +277,7 @@ public Object[][] listLists()  throws InterruptedException, SQLException {
 		
 		Factory factory = Factory.getInstance();
 		ListOsmotraDao zurDao = factory.getListOsmotraDao();
-		List <ListOsmotra> zurnal = zurDao.getListOsmotras();
+		List <ListOsmotra> zurnal = zurDao.getListOsmotra();
 		Object[][] objs = new Object[zurnal.size()][4];
 		int i=0;
 		SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd");
@@ -239,7 +299,7 @@ public Object[][] listLists()  throws InterruptedException, SQLException {
 			JournalOutpatientReceptionDao zurDao = factory.getJournalOutpatientReceptionDao();
 			
 
-			List <JournalOutpatientReception> zurnal = zurDao.getJournalOutpatientReceptions();
+			List <JournalOutpatientReception> zurnal = zurDao.getJournalOutpatientReception();
 			Object[][] objs = new Object[zurnal.size()][5];
 			int i=0;
 			
@@ -265,17 +325,17 @@ public Object[][] listLists()  throws InterruptedException, SQLException {
 		TherapeuticDiagnosticManipulationsJournalDao zurDao = factory.getTherapeuticDiagnosticManipulationsJournalDao();
 		
 
-		List <TherapeuticDiagnosticManipulationsJournal> zurnal = zurDao.getTherapeuticDiagnosticManipulationsJournals();
+		List <TherapeuticDiagnosticManipulationsJournal> zurnal = zurDao.getTherapeuticDiagnosticManipulationsJournal();
 		Object[][] objs = new Object[zurnal.size()][8];
 		int i=0;
 		
 		for(TherapeuticDiagnosticManipulationsJournal p : zurnal){
 			//System.out.println(p.getId() +"   "+ p.getReason()+"   "+p.getDate().toString());
-			objs[i][0]= p.getId();
+			objs[i][0]= null;
 			objs[i][1]= null;
-			objs[i][2]= p.getComplication();
+			objs[i][2]= null;
 			objs[i][3]= null;
-			objs[i][4]= p.getObservationmethod();
+			objs[i][4]= null;
 			objs[i][5]= null;
 			objs[i][6]= null;
 			objs[i][7]= null;
@@ -296,8 +356,8 @@ public Object[][] listLists()  throws InterruptedException, SQLException {
 		HeavyNarcoticJournalDao zurDao = factory.getHeavyNarcoticJournalDao();
 		
 
-		List <HeavyNarcoticJournal> zurnal = zurDao.getHeavyNarcoticJournals();
-		Object[][] objs = new Object[zurnal.size()][7];
+		List <HeavyNarcoticJournal> zurnal = zurDao.getHeavyNarcoticJournal();
+	  	Object[][] objs = new Object[zurnal.size()][7];
 		int i=0;
 		
 		for(HeavyNarcoticJournal p : zurnal){

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 12.06.2016 14:50:12 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 13.06.2016 18:50:25 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="table.ConsultationResult" table="CONSULTATIONRESULT">
         <id name="id" type="int">

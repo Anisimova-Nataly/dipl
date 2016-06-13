@@ -3,15 +3,12 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 13.06.2016 18:50:25 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="table.Contact" table="CONTACT">
-        <id name="id" type="int">
+    <class name="table.Caller" table="CALLER">
+        <id name="id" type="java.lang.Integer">
             <column name="ID" />
             <generator class="increment" />
         </id>
-        <one-to-one name="contact" class="table.Contact"></one-to-one>
-        <many-to-one name="pacient" class="table.Pacient" fetch="join">
-            <column name="PACIENT" />
-        </many-to-one>
+        <one-to-one name="phoneConsultationsJournal" class="table.PhoneConsultationsJournal"></one-to-one>
         <property name="surname" type="java.lang.String">
             <column name="SURNAME" />
         </property>
@@ -20,12 +17,6 @@
         </property>
         <property name="otchestvo" type="java.lang.String">
             <column name="OTCHESTVO" />
-        </property>
-        <property name="phonenumber" type="java.math.BigInteger">
-            <column name="PHONENUMBER" />
-        </property>
-        <property name="relationdegree" type="java.lang.String">
-            <column name="RELATIONDEGREE" />
         </property>
     </class>
 </hibernate-mapping>

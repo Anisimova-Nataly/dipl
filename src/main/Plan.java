@@ -45,7 +45,7 @@ public class Plan extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public Plan(final MainFrame p,Project proj) {
+	public Plan(final MainFrame p,final Project proj) {
 		setLayout(new BorderLayout(0, 0));
 		
 		JToolBar toolBar = new JToolBar();
@@ -119,6 +119,20 @@ public class Plan extends JPanel {
 		JButton button_4 = new JButton("Добавить выезд");
 		button_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				viezdNew st;
+				try {
+					st = new viezdNew(p,proj);
+					st.setVisible(true);
+					me.revalidate();
+					p.contentPane.remove(me);
+					p.contentPane.add(st,BorderLayout.CENTER);
+				} catch (InterruptedException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+	
+				
 			}
 		});
 		toolBar_2.add(button_4);
@@ -187,19 +201,6 @@ public class Plan extends JPanel {
 
 	      });
 		panel_7.add(calendar, BorderLayout.CENTER);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setToolTipText("");
-		tabbedPane.addTab("Бригада", null, panel_1, null);
-		panel_1.setLayout(new BorderLayout(0, 0));
-		
-		JPanel panel = new JPanel();
-		panel_1.add(panel, BorderLayout.CENTER);
-		panel.setLayout(new BorderLayout(0, 0));
-		
-		JPanel panel_3 = new JPanel();
-		panel.add(panel_3, BorderLayout.SOUTH);
-		panel_3.setLayout(new BoxLayout(panel_3, BoxLayout.X_AXIS));
 
 	}
 

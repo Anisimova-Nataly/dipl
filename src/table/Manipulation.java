@@ -41,4 +41,22 @@ public class Manipulation {
 	public void setTherapeuticDiagnosticManipulationsJournal(TherapeuticDiagnosticManipulationsJournal therapeuticDiagnosticManipulationsJournal) {
 		this.therapeuticDiagnosticManipulationsJournal = therapeuticDiagnosticManipulationsJournal;
 	}
+	public java.sql.Timestamp getDatetime() {
+		return datetime;
+	}
+	public void setDatetime(java.sql.Timestamp datetime) {
+		this.datetime = datetime;
+	}
+	public String getResult() {
+		return result;
+	}
+	public void setResult(String result) {
+		this.result = result;
+	}
+	public String getDiagnosisafter() {
+		return diagnosisafter;
+	}
+	public void setDiagnosisafter(String diagnosisafter) {
+		this.diagnosisafter = diagnosisafter;
+	}
 }

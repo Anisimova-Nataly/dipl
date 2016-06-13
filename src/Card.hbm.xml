@@ -1,13 +1,20 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 12.06.2016 14:50:12 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 13.06.2016 18:50:25 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="table.Card" table="CARD">
         <id name="id" type="java.lang.Integer">
             <column name="ID" />
             <generator class="increment" />
         </id>
+        <list name="specialists" inverse="false" table="SPECIALIST" lazy="true" access="field">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="table.Specialist" />
+        </list>
         <one-to-one name="card" class="table.Card" access="field"></one-to-one>
         <one-to-one name="pacient" class="table.Pacient"></one-to-one>
         <list name="listOsmotras" inverse="false" table="LISTOSMOTRA" lazy="true">
@@ -16,6 +23,34 @@
             </key>
             <list-index></list-index>
             <one-to-many class="table.ListOsmotra" />
+        </list>
+        <list name="exits" inverse="false" table="EXIT" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="table.Exit" />
+        </list>
+        <list name="journalOutpatientReceptions" inverse="false" table="JOURNALOUTPATIENTRECEPTION" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="table.JournalOutpatientReception" />
+        </list>
+        <list name="callPlanningJournals" inverse="false" table="CALLPLANNINGJOURNAL" lazy="true" access="field">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="table.CallPlanningJournal" />
+        </list>
+        <list name="phoneConsultationsJournals" inverse="false" table="PHONECONSULTATIONSJOURNAL" lazy="true" access="field">
+            <key>
+                <column name="ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="table.PhoneConsultationsJournal" />
         </list>
         <property name="datereferral" type="java.util.Date">
             <column name="DATEREFERRAL" />

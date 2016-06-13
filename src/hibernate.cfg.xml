@@ -12,6 +12,7 @@
 		<mapping resource="ListOsmotra.hbm.xml"/>
 		<mapping resource="CallDay.hbm.xml" />
 		<mapping resource="Address.hbm.xml" />
+		<mapping resource="Caller.hbm.xml" />
 		<mapping resource="Diuresis.hbm.xml" />
 		<mapping resource="Card.hbm.xml" />
 		<mapping resource="Clinic.hbm.xml" />

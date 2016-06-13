@@ -124,65 +124,33 @@ public class StartPanal extends JPanel {
 		});
 		panel.add(btnNewButton_3, "cell 1 1,grow");
 		
-		JButton btnNewButton_4 = new JButton("Статистика");
-		btnNewButton_4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		panel.add(btnNewButton_4, "cell 0 2,grow");
-		
 		JButton btnNewButton_5 = new JButton("Журнал приема звонков");
-	
 		
-		btnNewButton_5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				
-				callJornal call;
-				try {
-					call = new callJornal(proj, parent);
-					call.setVisible(true);
-					me.revalidate();
+			
+			btnNewButton_5.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
 					
 					
-					parent.contentPane.remove(me);
-					parent.contentPane.add(call,BorderLayout.CENTER);
-				} catch (InterruptedException e1) {
-					
-					e1.printStackTrace();
-				} catch (SQLException e1) {
-					
-					e1.printStackTrace();
-				}
+					callJornal call;
+					try {
+						call = new callJornal(proj, parent);
+						call.setVisible(true);
+						me.revalidate();
+						
+						
+						parent.contentPane.remove(me);
+						parent.contentPane.add(call,BorderLayout.CENTER);
+					} catch (InterruptedException e1) {
+						
+						e1.printStackTrace();
+					} catch (SQLException e1) {
+						
+						e1.printStackTrace();
+					}
 
-			}
-		});
-		panel.add(btnNewButton_5, "cell 1 2,grow");
-		
-		JButton btnNewButton_6 = new JButton("Журнал сильнодействующих препаратов");
-		btnNewButton_6.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				hardJornal hard;
-				try {
-					hard = new hardJornal(proj, parent);
-					hard.setVisible(true);
-					me.revalidate();
-					
-					
-					parent.contentPane.remove(me);
-					parent.contentPane.add(hard,BorderLayout.CENTER);
-				} catch (InterruptedException e1) {
-					
-					e1.printStackTrace();
-				} catch (SQLException e1) {
-					
-					e1.printStackTrace();
 				}
-				
-			}
-		});
-		panel.add(btnNewButton_6, "cell 0 3,grow");
+			});
+			panel.add(btnNewButton_5, "cell 0 2,grow");
 		
 		JLabel label = new JLabel("");
 		panel.add(label, "cell 1 3,grow");

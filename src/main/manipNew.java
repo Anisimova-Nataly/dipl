@@ -10,12 +10,15 @@ import javax.swing.JToolBar;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.awt.event.ActionEvent;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 
 import general.Project;
+import table.Manipulation;
+import table.TherapeuticDiagnosticManipulationsJournal;
 
 import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JTextField;
@@ -29,6 +32,7 @@ public class manipNew extends JPanel {
 	private JTextField textField_3;
 	JComboBox comboBox_2;
 	JComboBox comboBox_3;
+	JComboBox comboBox;
 	Object[][] cards;
 	final manipNew me =  this;
 	/**
@@ -132,7 +136,7 @@ public class manipNew extends JPanel {
 		JLabel lblNewLabel = new JLabel("Способ наблюдения за пациентом");
 		panel_1.add(lblNewLabel, "2, 16, right, default");
 		
-		JComboBox comboBox = new JComboBox();
+		 comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"амбулаторно", "стационарно"}));
 		panel_1.add(comboBox, "4, 16, fill, default");
 		
@@ -176,6 +180,49 @@ public class manipNew extends JPanel {
 		toolBar.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Сохранить");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TherapeuticDiagnosticManipulationsJournal j = new TherapeuticDiagnosticManipulationsJournal();
+				j.setComplication(textField_1.getText());
+				//j.setObservationmethod(comboBox.getSelectedItem().toString());
+				Manipulation manip= new Manipulation();
+				manip.setDatetime(new Timestamp(System.currentTimeMillis()));
+				manip.setDiagnosisafter(textField_2.getText());
+				manip.setResult(textField_3.getText());
+				j.setManipulation(manip);
+				try {
+					proj.newMan(manip);
+				} catch (InterruptedException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				try {
+					proj.newManip(j);
+				} catch (InterruptedException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+
+				manipJornal c;
+				try {
+					c = new manipJornal(proj, p);
+					c.setVisible(true);
+					me.revalidate();
+					p.contentPane.remove(me);
+					p.contentPane.add(c,BorderLayout.CENTER);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			
+		
+				
+			}
+		});
 		toolBar.add(btnNewButton_1);
 
 	}

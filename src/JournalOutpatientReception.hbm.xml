@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 12.06.2016 14:50:12 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 13.06.2016 18:50:25 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="table.JournalOutpatientReception" table="JOURNALOUTPATIENTRECEPTION">
         <id name="id" type="int">
@@ -15,13 +15,7 @@
             <list-index></list-index>
             <one-to-many class="table.Specialist" />
         </list>
-        <list name="cards" inverse="false" table="CARD" lazy="true">
-            <key>
-                <column name="ID" />
-            </key>
-            <list-index></list-index>
-            <one-to-many class="table.Card" />
-        </list>
+        <one-to-one name="journalOutpatientReception" class="table.JournalOutpatientReception"></one-to-one>
         <property name="number" type="int">
             <column name="NUMBER" />
         </property>

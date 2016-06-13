@@ -104,12 +104,12 @@ public class manipJornal extends JPanel {
 				p.progressBar.revalidate();
 				p.revalidate();
 				p.repaint();
-				try {
-					tbldata = proj.listCall();
-				} catch (InterruptedException | SQLException e1) {
+			//	try {
+			//		tbldata = proj.listCall();
+			//	} catch (InterruptedException | SQLException e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+			//		e1.printStackTrace();
+			//	}
 
 			    JTable tbl = new JTable(tbldata, tblheader);
 				me.add(new JScrollPane(tbl), BorderLayout.CENTER);
