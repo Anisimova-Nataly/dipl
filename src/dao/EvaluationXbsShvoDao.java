@@ -10,4 +10,5 @@ public interface EvaluationXbsShvoDao {
 	public void deleteEvaluationXbsShvo(EvaluationXbsShvo li) throws SQLException;	
 	public EvaluationXbsShvo getEvaluationXbsShvo (int id) throws SQLException;
 	public List<EvaluationXbsShvo> getEvaluationXbsShvo () throws SQLException;
+	public void updateEvaluationXbsShvo(Long id, EvaluationXbsShvo evaluationXbsShvo) throws SQLException;
 }

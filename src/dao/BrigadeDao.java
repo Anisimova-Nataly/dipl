@@ -10,4 +10,5 @@ public interface BrigadeDao {
 	public void deleteBrigade(Brigade li) throws SQLException;	
 	public Brigade getBrigade (int id) throws SQLException;
 	public List<Brigade> getBrigade () throws SQLException;
+	public void updateBrigade(Long id, Brigade brigade) throws SQLException;
 }

@@ -10,4 +10,5 @@ public interface DiuresisDao {
 	public void deleteDiuresis(Diuresis li) throws SQLException;	
 	public Diuresis getDiuresis (int id) throws SQLException;
 	public List<Diuresis> getDiuresis () throws SQLException;
+	public void updateDiuresis(Long id, Diuresis diuresis) throws SQLException;
 }

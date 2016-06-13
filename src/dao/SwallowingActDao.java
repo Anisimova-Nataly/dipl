@@ -10,4 +10,5 @@ public interface SwallowingActDao {
 	public void deleteSwallowingAct(SwallowingAct li) throws SQLException;	
 	public SwallowingAct getSwallowingAct (int id) throws SQLException;
 	public List<SwallowingAct> getSwallowingAct () throws SQLException;
+	public void updateSwallowingAct(Long id, SwallowingAct swallowingAct) throws SQLException;
 }

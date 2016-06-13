@@ -10,4 +10,5 @@ public interface PulseDao {
 	public void deletePulse(Pulse li) throws SQLException;	
 	public Pulse getPulse (int id) throws SQLException;
 	public List<Pulse> getPulse () throws SQLException;
+	public void updatePulse(Long id, Pulse pulse) throws SQLException;
 }

@@ -10,4 +10,5 @@ public interface ConsultationResultDao {
 	public void deleteConsultationResult(ConsultationResult li) throws SQLException;	
 	public ConsultationResult getConsultationResult (int id) throws SQLException;
 	public List<ConsultationResult> getConsultationResult () throws SQLException;
+	public void updateConsultationResult(Long id, ConsultationResult consultationResult) throws SQLException;
 }

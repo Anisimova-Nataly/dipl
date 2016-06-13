@@ -10,4 +10,5 @@ public interface SpecialistDao {
 	public void deleteSpecialist(Specialist li) throws SQLException;	
 	public Specialist getSpecialist (int id) throws SQLException;
 	public List<Specialist> getSpecialist () throws SQLException;
+	public void updateSpecialist(Long id, Specialist specialist) throws SQLException;
 }

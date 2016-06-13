@@ -10,4 +10,5 @@ public interface ExternalEvidenceDao {
 	public void deleteExternalEvidence(ExternalEvidence li) throws SQLException;	
 	public ExternalEvidence getExternalEvidence (int id) throws SQLException;
 	public List<ExternalEvidence> getExternalEvidence () throws SQLException;
+	public void updateExternalEvidence(Long id, ExternalEvidence ExternalEvidence) throws SQLException;
 }

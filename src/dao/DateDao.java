@@ -10,4 +10,5 @@ public interface DateDao {
 	public void deleteDate(Date li) throws SQLException;	
 	public Date getDate (int id) throws SQLException;
 	public List<Date> getDate () throws SQLException;
+	public void updateDate(Long id, Date date) throws SQLException;
 }

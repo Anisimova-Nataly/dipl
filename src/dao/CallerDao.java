@@ -10,4 +10,5 @@ public interface CallerDao {
 	public void deleteCaller(Caller li) throws SQLException;	
 	public Caller getCaller (int id) throws SQLException;
 	public List<Caller> getCaller () throws SQLException;
+	public void updateCaller(Long id, Caller caller) throws SQLException;
 }

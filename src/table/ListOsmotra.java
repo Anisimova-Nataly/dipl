@@ -47,7 +47,7 @@ public class ListOsmotra {
 	private ExternalEvidence externalEvidence;
 	private Tyazest tyazest;
 	
-	private Card card;
+	//private Card card;
 	private ListOsmotra listOsmotra;
 	
 	@Id	
@@ -317,10 +317,10 @@ public class ListOsmotra {
 	public void setListOsmotra(ListOsmotra listOsmotra){
 		this.listOsmotra = listOsmotra;	
 	}
-	public Card getCard() {
+	/*public Card getCard() {
 		return card;
 	}
 	public void setCard(Card card) {
 		this.card = card;
-	}	
+	}*/	
 }

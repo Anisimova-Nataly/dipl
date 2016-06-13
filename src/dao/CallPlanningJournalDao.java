@@ -10,4 +10,5 @@ public interface CallPlanningJournalDao {
 	public void deleteCallPlanningJournal(CallPlanningJournal li) throws SQLException;	
 	public CallPlanningJournal getCallPlanningJournal (int id) throws SQLException;
 	public List<CallPlanningJournal> getCallPlanningJournal () throws SQLException;
+	public void updateCallPlanningJournal(Long id, CallPlanningJournal callPlanningJournal) throws SQLException;
 }

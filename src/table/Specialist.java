@@ -31,6 +31,7 @@ public class Specialist {
 	private List <JournalOutpatientReception> journalOutpatientReceptions;
 	private List <PhoneConsultationsJournal> phoneConsultationsJournals;
 	private List <TherapeuticDiagnosticManipulationsJournal> therapeuticDiagnosticManipulationsJournals;
+	private List <Card> cards;
 	@Id	
 	 @Column(name = "id")
 	 @GeneratedValue(strategy= GenerationType.AUTO)

@@ -10,4 +10,5 @@ public interface CallDayDao {
 	public void deleteCallDay(CallDay li) throws SQLException;	
 	public CallDay getCallDay (int id) throws SQLException;
 	public List<CallDay> getCallDay () throws SQLException;
+	public void updateCallDay(Long id, CallDay callDay) throws SQLException;
 }

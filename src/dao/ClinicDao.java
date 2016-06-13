@@ -10,4 +10,5 @@ public interface ClinicDao {
 	public void deleteClinic(Clinic li) throws SQLException;	
 	public Clinic getClinic (int id) throws SQLException;
 	public List<Clinic> getClinic () throws SQLException;
+	public void updateClinic(Long id, Clinic clinic) throws SQLException;
 }

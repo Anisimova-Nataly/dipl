@@ -10,4 +10,5 @@ public interface EvaluationShfaDao {
 	public void deleteEvaluationShfa(EvaluationShfa li) throws SQLException;	
 	public EvaluationShfa getEvaluationShfa (int id) throws SQLException;
 	public List<EvaluationShfa> getEvaluationShfa () throws SQLException;
+	public void updateEvaluationShfa(Long id, EvaluationShfa evaluationShfa) throws SQLException;
 }

@@ -28,6 +28,7 @@ import javax.persistence.Table;
 @Table(name = "card")
 
 public class Card {
+	private List <Specialist> specialists;
 	private Card card;
 	private Pacient pacient;
 	private List <ListOsmotra> listOsmotras;
