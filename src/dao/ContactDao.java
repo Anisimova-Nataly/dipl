@@ -10,4 +10,5 @@ public interface ContactDao {
 	public void deleteContact(Contact li) throws SQLException;	
 	public Contact getContact (int id) throws SQLException;
 	public List<Contact> getContact () throws SQLException;
+	public void updateContact(Long id, Contact contact) throws SQLException;
 }

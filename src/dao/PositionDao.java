@@ -10,4 +10,5 @@ public interface PositionDao {
 	public void deletePosition(Position li) throws SQLException;	
 	public Position getPosition (int id) throws SQLException;
 	public List<Position> getPosition () throws SQLException;
+	public void updatePosition(Long id, Position position) throws SQLException;
 }

@@ -10,4 +10,5 @@ public interface TheartDao {
 	public void deleteTheart(Theart li) throws SQLException;	
 	public Theart getTheart (int id) throws SQLException;
 	public List<Theart> getTheart () throws SQLException;
+	public void updateTheart(Long id, Theart theart) throws SQLException;
 }

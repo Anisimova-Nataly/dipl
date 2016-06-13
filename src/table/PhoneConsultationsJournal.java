@@ -21,7 +21,6 @@ CREATE TABLE phoneconsultationsjournal(id integer PRIMARY KEY,
 public class PhoneConsultationsJournal{
 	private PhoneConsultationsJournal phoneConsultationsJournal;
 	private List <Card> cards;
-	private List <Caller> callers;
  @Id	
  @Column(name = "id")
  @GeneratedValue(strategy = GenerationType.AUTO)
@@ -98,19 +97,20 @@ return cards;
 }
 public void setCards(List<Card> cards){
 this.cards = cards;
-}
-public PhoneConsultationsJournal getPhoneConsultationsJournal() {
+}	
+@OneToOne(mappedBy="caller")
+public PhoneConsultationsJournal getPhoneConsultationsJournalCaller() {
 	return phoneConsultationsJournal;
 }
-public void setPhoneConsultationsJournal(PhoneConsultationsJournal phoneConsultationsJournal) {
+public void setPhoneConsultationsJournalCaller(PhoneConsultationsJournal phoneConsultationsJournal) {
 	this.phoneConsultationsJournal = phoneConsultationsJournal;
-}	
-@OneToMany(targetEntity=Caller.class, mappedBy="caller", cascade=CascadeType.ALL,
-fetch=FetchType.LAZY)
-public List <Caller> getCallers(){
-	return callers;
 }
-public void setCallers(List<Caller> callers){
-	this.callers = callers;
+@ManyToOne
+@JoinColumn(name="cardid")
+public PhoneConsultationsJournal getPhoneConsultationsJournal(){
+	return phoneConsultationsJournal;
+}
+public void setPhoneConsultationsJournal(PhoneConsultationsJournal phoneConsultationsJournal){
+	this.phoneConsultationsJournal = phoneConsultationsJournal;	
 }
 }

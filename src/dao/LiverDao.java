@@ -10,4 +10,5 @@ public interface LiverDao {
 	public void deleteLiver(Liver li) throws SQLException;	
 	public Liver getLiver (int id) throws SQLException;
 	public List<Liver> getLiver () throws SQLException;
+	public void updateLiver(Long id, Liver liver) throws SQLException;
 }

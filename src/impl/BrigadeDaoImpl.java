@@ -7,14 +7,14 @@ import javax.swing.JOptionPane;
 
 import org.hibernate.Session;
 
-import dao.EvaluationShfaDao;
-import table.EvaluationShfa;
+import dao.BrigadeDao;
+import table.Brigade;
 import util.HibernateUtil;
 
-public class EvaluationShfaDaoImpl implements EvaluationShfaDao {
+public class BrigadeDaoImpl implements BrigadeDao {
 
 	@Override
-	public void addEvaluationShfa(EvaluationShfa journal) throws SQLException {
+	public void addBrigade(Brigade journal) throws SQLException {
 		Session session = null;
 		try{
 			session = HibernateUtil.getSessionFactory().openSession();
@@ -30,7 +30,7 @@ public class EvaluationShfaDaoImpl implements EvaluationShfaDao {
 	}
 
 	@Override
-	public void deleteEvaluationShfa(EvaluationShfa journal) throws SQLException {
+	public void deleteBrigade(Brigade journal) throws SQLException {
 		Session session = null;
 		try{
 			session = HibernateUtil.getSessionFactory().openSession();
@@ -47,13 +47,13 @@ public class EvaluationShfaDaoImpl implements EvaluationShfaDao {
 	}
 
 	@Override
-	public EvaluationShfa getEvaluationShfa(int id) throws SQLException {
-		EvaluationShfa result = null;
+	public Brigade getBrigade(int id) throws SQLException {
+		Brigade result = null;
 		
 		Session session = null;
 		try{
 			session = HibernateUtil.getSessionFactory().openSession();
-			result = (EvaluationShfa) session.load(EvaluationShfa.class, id);
+			result = (Brigade) session.load(Brigade.class, id);
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
@@ -63,13 +63,13 @@ public class EvaluationShfaDaoImpl implements EvaluationShfaDao {
 	}
 
 	@Override
-	public List<EvaluationShfa> getEvaluationShfa() throws SQLException {
-		List<EvaluationShfa> Journals = null;
+	public List<Brigade> getBrigade() throws SQLException {
+		List<Brigade> Journals = null;
 		
 		Session session = null;
 		try{
 			session = HibernateUtil.getSessionFactory().openSession();
-			Journals = session.createCriteria(EvaluationShfa.class).list();
+			Journals = session.createCriteria(Brigade.class).list();
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
@@ -79,12 +79,12 @@ public class EvaluationShfaDaoImpl implements EvaluationShfaDao {
 	}
 
 	@Override
-	public void updateEvaluationShfa(Long id, EvaluationShfa evaluationShfa) throws SQLException {
+	public void updateBrigade(Long id, Brigade brigade) throws SQLException {
 		 Session session = null;
 		    try {
 		      session = HibernateUtil.getSessionFactory().openSession();
 		      session.beginTransaction();
-		      session.update(evaluationShfa);
+		      session.update(brigade);
 		      session.getTransaction().commit();
 		    } catch (Exception e) {
 		      JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка при вставке", JOptionPane.OK_OPTION);

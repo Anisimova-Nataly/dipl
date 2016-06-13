@@ -10,4 +10,5 @@ public interface PacientDao {
 	public void deletePacient(Pacient li) throws SQLException;	
 	public Pacient getPacient (int id) throws SQLException;
 	public List<Pacient> getPacient () throws SQLException;
+	public void updatePacient(Long id, Pacient pacient) throws SQLException;
 }

@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /*CREATE TABLE caller(id integer PRIMARY KEY, surname text, name text, otchestvo text);*/
@@ -15,7 +16,7 @@ import javax.persistence.Table;
 @Table(name = "caller")
 
 public class Caller {
-	private Caller caller;
+	private PhoneConsultationsJournal phoneConsultationsJournal;
 	@Id	
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 @Column(name = "id")
@@ -32,12 +33,11 @@ public class Caller {
 	private String name;
 	@Column(name="otchestvo")
 	private String otchestvo;
-	@ManyToOne
-	@JoinColumn(name="phoneconsultationsjournalid")
-	public Caller getCaller(){
-		return caller;
+	@OneToOne(mappedBy="caller")
+	public PhoneConsultationsJournal getPhoneConsultationsJournal() {
+		return phoneConsultationsJournal;
 	}
-	public void setCaller(Caller caller){
-		this.caller = caller;	
+	public void setPhoneConsultationsJournal(PhoneConsultationsJournal phoneConsultationsJournal) {
+		this.phoneConsultationsJournal = phoneConsultationsJournal;
 	}
 }

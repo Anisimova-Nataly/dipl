@@ -3,6 +3,8 @@ package impl;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import org.hibernate.Session;
 
 import dao.JournalOutpatientReceptionDao;
@@ -61,7 +63,7 @@ public class JournalOutpatientReceptionDaoImpl implements JournalOutpatientRecep
 	}
 
 	@Override
-	public List<JournalOutpatientReception> getJournalOutpatientReceptions() throws SQLException {
+	public List<JournalOutpatientReception> getJournalOutpatientReception() throws SQLException {
 		List<JournalOutpatientReception> Journals = null;
 		
 		Session session = null;
@@ -74,6 +76,24 @@ public class JournalOutpatientReceptionDaoImpl implements JournalOutpatientRecep
 			if((session != null) && (session.isOpen()))session.close();
 		}
 		return Journals;
+	}
+
+	@Override
+	public void updateJournalOutpatientReception(Long id, JournalOutpatientReception journalOutpatientReception) throws SQLException {
+		 Session session = null;
+		    try {
+		      session = HibernateUtil.getSessionFactory().openSession();
+		      session.beginTransaction();
+		      session.update(journalOutpatientReception);
+		      session.getTransaction().commit();
+		    } catch (Exception e) {
+		      JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка при вставке", JOptionPane.OK_OPTION);
+		    } finally {
+		      if (session != null && session.isOpen()) {
+		        session.close();
+		      }
+		    }
+		
 	}
 
 }

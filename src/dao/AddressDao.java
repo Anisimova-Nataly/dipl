@@ -10,4 +10,5 @@ public interface AddressDao {
 	public void deleteAddress(Address li) throws SQLException;	
 	public Address getAddress (int id) throws SQLException;
 	public List<Address> getAddress () throws SQLException;
+	public void updateAddress(Long id, Address address) throws SQLException;
 }

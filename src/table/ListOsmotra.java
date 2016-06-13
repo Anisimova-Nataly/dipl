@@ -318,10 +318,12 @@ public class ListOsmotra {
 	public void setListOsmotra(ListOsmotra listOsmotra){
 		this.listOsmotra = listOsmotra;	
 	}
-	//public Card getCard() {
-	//	return card;
-	//}
-	//public void setCard(Card card) {
-	//	this.card = card;
-	//}	
+
+	/*public Card getCard() {
+		return card;
+	}
+	public void setCard(Card card) {
+		this.card = card;
+	}*/	
+
 }

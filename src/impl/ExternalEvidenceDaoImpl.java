@@ -3,6 +3,8 @@ package impl;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import org.hibernate.Session;
 
 import dao.ExternalEvidenceDao;
@@ -75,4 +77,23 @@ public class ExternalEvidenceDaoImpl implements ExternalEvidenceDao {
 		}
 		return Journals;
 	}
+
+	@Override
+	public void updateExternalEvidence(Long id, ExternalEvidence externalEvidence) throws SQLException {
+		 Session session = null;
+		    try {
+		      session = HibernateUtil.getSessionFactory().openSession();
+		      session.beginTransaction();
+		      session.update(externalEvidence);
+		      session.getTransaction().commit();
+		    } catch (Exception e) {
+		      JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка при вставке", JOptionPane.OK_OPTION);
+		    } finally {
+		      if (session != null && session.isOpen()) {
+		        session.close();
+		      }
+		    }
+		
+	}
+
 }

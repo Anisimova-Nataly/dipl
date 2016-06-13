@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /*CREATE TABLE manipulation(id integer PRIMARY KEY, datetime timestamp with time zone,
@@ -16,7 +17,7 @@ import javax.persistence.Table;
 @Table(name = "manipulation")
 
 public class Manipulation {
-	private Manipulation manipulation;
+	private TherapeuticDiagnosticManipulationsJournal therapeuticDiagnosticManipulationsJournal;
 	@Id	
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 @Column(name = "id")
@@ -33,12 +34,11 @@ public class Manipulation {
 	 private String result;
 	 @Column(name = "diagnosisafter")
 	 private String diagnosisafter;
-	 @ManyToOne
-		@JoinColumn(name="therapeuticdiagnosticmanipulationsjournalid")
-	public Manipulation getManipulation(){
-		return manipulation;
+	 @OneToOne(mappedBy="manipulation")
+	 public TherapeuticDiagnosticManipulationsJournal getTherapeuticDiagnosticManipulationsJournal() {
+		return therapeuticDiagnosticManipulationsJournal;
 	}
-	public void setManipulation(Manipulation manipulation){
-		this.manipulation = manipulation;	
+	public void setTherapeuticDiagnosticManipulationsJournal(TherapeuticDiagnosticManipulationsJournal therapeuticDiagnosticManipulationsJournal) {
+		this.therapeuticDiagnosticManipulationsJournal = therapeuticDiagnosticManipulationsJournal;
 	}
 }

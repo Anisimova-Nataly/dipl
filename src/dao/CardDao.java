@@ -10,4 +10,5 @@ public interface CardDao {
 	public void deleteCard(Card li) throws SQLException;	
 	public Card getCard (int id) throws SQLException;
 	public List<Card> getCard () throws SQLException;
+	public void updateCard(Long id, Card card) throws SQLException;
 }
