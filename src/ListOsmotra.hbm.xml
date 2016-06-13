@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 12.06.2016 14:50:12 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 13.06.2016 3:24:41 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="table.ListOsmotra" table="LISTOSMOTRA">
         <id name="id" type="int">
             <column name="ID" />
-            <generator class="increment" />
+            <generator class="assigned" />
         </id>
         <one-to-one name="liver" class="table.Liver"></one-to-one>
         <one-to-one name="theart" class="table.Theart"></one-to-one>
@@ -18,9 +18,6 @@
         <one-to-one name="evaluationShfa" class="table.EvaluationShfa"></one-to-one>
         <one-to-one name="externalEvidence" class="table.ExternalEvidence"></one-to-one>
         <one-to-one name="tyazest" class="table.Tyazest"></one-to-one>
-        <many-to-one name="card" class="table.Card" fetch="join">
-            <column name="CARD" />
-        </many-to-one>
         <one-to-one name="listOsmotra" class="table.ListOsmotra"></one-to-one>
         <property name="dateTime" type="java.sql.Timestamp">
             <column name="DATETIME" />

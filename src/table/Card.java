@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.IndexColumn;
+
 /*CREATE TABLE card(id integer PRIMARY KEY,
  *  listosmotraid integer REFERENCES listosmotra(id),
  *   pacientid integer REFERENCES pacient(id),

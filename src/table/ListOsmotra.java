@@ -47,7 +47,7 @@ public class ListOsmotra {
 	private ExternalEvidence externalEvidence;
 	private Tyazest tyazest;
 	
-	private Card card;
+	//private Card card;
 	private ListOsmotra listOsmotra;
 	
 	@Id	
@@ -302,13 +302,13 @@ public class ListOsmotra {
 	public void setLiver(Liver liver) {
 		this.liver = liver;
 	}	 
-	@OneToOne(mappedBy="heavynarcoticjournal")
-	public ListOsmotra getListOsmotraHeavyNarcoticJournal() {
-		return listOsmotra;
-	}
-	public void setListOsmotraHeavyNarcoticJournal(ListOsmotra listOsmotra) {
-		this.listOsmotra = listOsmotra;
-	}
+	//@OneToOne(mappedBy="heavynarcoticjournal")
+	//public ListOsmotra getListOsmotraHeavyNarcoticJournal() {
+	//	return listOsmotra;
+	//}
+	//public void setListOsmotraHeavyNarcoticJournal(ListOsmotra listOsmotra) {
+	//	this.listOsmotra = listOsmotra;
+	//}
 	@ManyToOne
 	@JoinColumn(name="cardid")
 	public ListOsmotra getListOsmotra(){
@@ -317,10 +317,10 @@ public class ListOsmotra {
 	public void setListOsmotra(ListOsmotra listOsmotra){
 		this.listOsmotra = listOsmotra;	
 	}
-	public Card getCard() {
-		return card;
-	}
-	public void setCard(Card card) {
-		this.card = card;
-	}	
+	//public Card getCard() {
+	//	return card;
+	//}
+	//public void setCard(Card card) {
+	//	this.card = card;
+	//}	
 }

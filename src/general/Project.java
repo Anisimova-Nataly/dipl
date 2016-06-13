@@ -212,6 +212,27 @@ public String[] listSpec()  throws InterruptedException, SQLException {
 	}
 	
 	
+	
+public Object[][] listLists()  throws InterruptedException, SQLException {
+		
+		Factory factory = Factory.getInstance();
+		ListOsmotraDao zurDao = factory.getListOsmotraDao();
+		List <ListOsmotra> zurnal = zurDao.getListOsmotras();
+		Object[][] objs = new Object[zurnal.size()][4];
+		int i=0;
+		SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd");
+		for(ListOsmotra p : zurnal){
+			
+			objs[i][0]= p.getId();
+			objs[i][2]= formatter.format(new java.sql.Date(p.getDateTime().getTime()).toString());
+			objs[i][3]=null;
+			objs[i][4]=null;
+			i++;
+		}
+		return objs;
+		
+	}
+	
 	public Object[][] listAmb()  throws InterruptedException, SQLException {
 			
 			Factory factory = Factory.getInstance();

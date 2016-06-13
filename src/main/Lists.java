@@ -15,15 +15,17 @@ import javax.swing.UIManager;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 
-import dao.CardDao;
-import dao.ListOsmotraDao;
-import general.Factory;
+import java.util.List;
+
 import general.Project;
 
 import main.tryTable.JTableModel;
+import table.Card;
+import table.ListOsmotra;
 
 import java.awt.Font;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 import javax.swing.JTable;
 import javax.swing.JToolBar;
@@ -34,19 +36,18 @@ import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
-public class Cards extends JPanel {
+public class Lists extends JPanel {
 	private JTable table;
 	 private static Object[][] tbldata =null;
-	 private static String[] tblheader = { "ID карты", "ФИО пациента", "Год рождения","Просмотр","Листы осмотра","Удалить" };
-	 final    Cards me =  this;
+	 private static String[] tblheader = { "ID листа", "Дата заполнения", "Просмотр","Удалить" };
+	 final Lists me =  this;
 	  static int len;
 	  static Project pr;
-	   static MainFrame par;
 	 
 	 public static class JTableModel extends AbstractTableModel {
 			private static final long serialVersionUID = 1L;
 			private static final String[] COLUMN_NAMES = tblheader;
-			private static final Class<?>[] COLUMN_TYPES = new Class<?>[] {Object.class, Object.class,Object.class, JButton.class, JButton.class,  JButton.class};
+			private static final Class<?>[] COLUMN_TYPES = new Class<?>[] {Object.class, Object.class, JButton.class,  JButton.class};
 			
 			@Override public int getColumnCount() {
 				return COLUMN_NAMES.length;
@@ -68,8 +69,7 @@ public class Cards extends JPanel {
 				switch (columnIndex) {
 					case 0: return tbldata[rowIndex][0];
 					case 1: return tbldata[rowIndex][1];
-					case 2: return tbldata[rowIndex][2];
-					case 3: final JButton button1 = new JButton(COLUMN_NAMES[columnIndex]);
+					case 2: final JButton button1 = new JButton(COLUMN_NAMES[columnIndex]);
 							button1.addActionListener(new ActionListener() {
 								public void actionPerformed(ActionEvent arg0) {
 									JOptionPane.showMessageDialog(JOptionPane.getFrameForComponent(button1), 
@@ -77,31 +77,8 @@ public class Cards extends JPanel {
 								}
 							});
 							return button1;
-					case 4: final JButton button2 = new JButton(COLUMN_NAMES[columnIndex]);
-					button2.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent arg0) {
-							Lists li;
-							try {
-								Factory factory = Factory.getInstance();
-								CardDao zurDao = factory.getCardDao();
-								
-								li = new Lists(pr, par,zurDao.getCard(Integer.parseInt(tbldata[rowIndex][0].toString())));
-								li.setVisible(true);
-								
-								par.contentPane.removeAll();
-								par.contentPane.revalidate();
-								par.contentPane.add(li,BorderLayout.CENTER);
-							} catch (InterruptedException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							} catch (SQLException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
-						}
-					});
-					return button2;
-					case 5: final JButton button3 = new JButton(COLUMN_NAMES[columnIndex]);
+
+					case 3: final JButton button3 = new JButton(COLUMN_NAMES[columnIndex]);
 					button3.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent arg0) {
 						
@@ -170,13 +147,12 @@ public class Cards extends JPanel {
 	 * @throws SQLException 
 	 * @throws InterruptedException 
 	 */
-	public Cards(final Project proj, final MainFrame p) throws InterruptedException, SQLException {
+	public Lists(final Project proj, final MainFrame p, final Card card) throws InterruptedException, SQLException {
 		//System.out.print("hey!");
 		setLayout(new BorderLayout(0, 0));
 		pr = proj;
-		par=p;
-		JLabel lblNewLabel = new JLabel("Амбулаторные карты");
-		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 30));
+		JLabel lblNewLabel = new JLabel("Листы  осмотра пациента"+"  "+card.getPacient().getSurname() + " "+card.getPacient().getName()+ " "+card.getPacient().getOtchestvo());
+		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 20));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setForeground(Color.DARK_GRAY);
 		add(lblNewLabel, BorderLayout.NORTH);
@@ -189,20 +165,15 @@ public class Cards extends JPanel {
 		JToolBar toolBar = new JToolBar();
 		add(toolBar, BorderLayout.SOUTH);
 		final JLabel lblNewLabel_1 = new JLabel("");
-		JButton btnNewButton = new JButton("Новая карта");
+		JButton btnNewButton = new JButton("Новый лист");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CardNew n;
-				try {
-					n = new CardNew(proj,p);
-					n.setVisible(true);
-					me.revalidate();
-					p.contentPane.remove(me);
-					p.contentPane.add(n,BorderLayout.CENTER);
-				} catch (InterruptedException | SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				listNew n;
+				n = new listNew(proj,p,card);
+				n.setVisible(true);
+				me.revalidate();
+				p.contentPane.remove(me);
+				p.contentPane.add(n,BorderLayout.CENTER);
 
 			}
 		});
@@ -210,12 +181,12 @@ public class Cards extends JPanel {
 		btnNewButton.setForeground(Color.DARK_GRAY);
 		toolBar.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("На главную");
+		JButton btnNewButton_1 = new JButton("Назад");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StartPanal st;
+				Cards st;
 				try {
-					st = new StartPanal(p);
+					st = new Cards(proj, p);
 					st.setVisible(true);
 					me.revalidate();
 					p.contentPane.remove(me);
@@ -240,14 +211,21 @@ public class Cards extends JPanel {
 				p.progressBar.revalidate();
 				p.revalidate();
 				p.repaint();
-				try {
-					tbldata = proj.listCards();
+				// ;
+				 List<ListOsmotra> zurnal= card.getListOsmotras();
+				 Object[][] tbldata = new Object[zurnal.size()][4];
+					int i=0;
+					SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd");
+					for(ListOsmotra p : zurnal){
+						
+						tbldata[i][0]= p.getId();
+						tbldata[i][2]= formatter.format(new java.sql.Date(p.getDateTime().getTime()).toString());
+						tbldata[i][3]=null;
+						tbldata[i][4]=null;
+						i++;
+					}
 					
-					System.out.print(tbldata.length);
-				} catch (InterruptedException | SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				System.out.print(tbldata.length);
 				
 				len = tbldata.length;
 				table = new JTable(new JTableModel()); 
@@ -256,7 +234,6 @@ public class Cards extends JPanel {
 
 				TableCellRenderer buttonRenderer = new JTableButtonRenderer();
 				table.getColumn("Просмотр").setCellRenderer(buttonRenderer);
-				table.getColumn("Листы осмотра").setCellRenderer(buttonRenderer);
 				table.getColumn("Удалить").setCellRenderer(buttonRenderer);
 				table.addMouseListener(new JTableButtonMouseListener(table));
 			    //JTable tbl = new JTable(tbldata, tblheader);
