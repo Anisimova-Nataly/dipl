@@ -169,11 +169,17 @@ public class Lists extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				listNew n;
-				n = new listNew(proj,p,card);
-				n.setVisible(true);
-				me.revalidate();
-				p.contentPane.remove(me);
-				p.contentPane.add(n,BorderLayout.CENTER);
+				try {
+					n = new listNew(proj,p,card);
+					n.setVisible(true);
+					me.revalidate();
+					p.contentPane.remove(me);
+					p.contentPane.add(n,BorderLayout.CENTER);
+				} catch (InterruptedException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
 
 			}
 		});
