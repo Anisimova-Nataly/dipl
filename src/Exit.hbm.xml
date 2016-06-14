@@ -1,37 +1,38 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 13.06.2016 18:50:25 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 14.06.2016 11:55:55 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="table.Exit" table="EXIT">
         <id name="id" type="java.lang.Integer">
             <column name="ID" />
             <generator class="increment" />
         </id>
-        <one-to-one name="consultationResult" class="table.ConsultationResult"></one-to-one>
-        <one-to-one name="exit" class="table.Exit" access="field"></one-to-one>
-        <property name="date" type="java.util.Date" access="field">
+        <property name="cardid" type="int">
+            <column name="CARDID" />
+        </property>
+        <property name="date" type="java.util.Date">
             <column name="DATE" />
         </property>
-        <property name="timeofarrival" type="java.sql.Time" access="field">
+        <property name="timeofarrival" type="java.sql.Time">
             <column name="TIMEOFARRIVAL" />
         </property>
-        <property name="timeaway" type="java.sql.Timestamp" access="field">
+        <property name="timeaway" type="java.sql.Timestamp">
             <column name="TIMEAWAY" />
         </property>
-        <property name="traveltime" type="java.sql.Timestamp" access="field">
+        <property name="traveltime" type="java.sql.Timestamp">
             <column name="TRAVELTIME" />
         </property>
-        <property name="kilometers" type="java.lang.Integer" access="field">
+        <property name="kilometers" type="java.lang.Integer">
             <column name="KILOMETERS" />
         </property>
-        <property name="reasoncall" type="java.lang.String" access="field">
+        <property name="reasoncall" type="java.lang.String">
             <column name="REASONCALL" />
         </property>
-        <property name="number" type="java.lang.Integer" access="field">
+        <property name="number" type="java.lang.Integer">
             <column name="NUMBER" />
         </property>
-        <property name="appointmentnarcotic" type="boolean" access="field">
+        <property name="appointmentnarcotic" type="boolean">
             <column name="APPOINTMENTNARCOTIC" />
         </property>
     </class>

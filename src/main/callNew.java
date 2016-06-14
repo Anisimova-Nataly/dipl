@@ -150,11 +150,51 @@ public class callNew extends JPanel {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//вписать сохранение сюда
+				PhoneConsultationsJournal ph = new PhoneConsultationsJournal();
+				ph.setCardid( Integer.parseInt(cards[comboBox.getSelectedIndex()][0].toString()));
+				ph.setReason((String) comboBox_1.getSelectedItem());
+				Caller caller = new Caller();
+				caller.setName(textField_2.getText());
+				caller.setSurname(textField.getText());
+				caller.setOtchestvo(textField_1.getText());
+				caller.setPhoneConsultationsJournal(ph);
+				ConsultationResult res = new ConsultationResult();
+				res.setPsychologicalhelp(radioButton.isSelected());
+				res.setReccommendations(textField_3.getText());
+				try {
+					proj.newResult(res);
+					proj.newCaller(caller);
+				} catch (InterruptedException | SQLException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+			
+				ph.setCallerid(caller.getId());
 				
+
+				ph.setConsultationResultId(res.getId());
+				ph.setSpecialistid(4);
+				ph.setDate( new java.sql.Date( new java.util.Date().getTime()) );
+				try {
+			
+					proj.newCall(ph);
+					
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SQLException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
 				
+				Plan pl;
+				pl = new Plan(p,proj);
+				pl.setVisible(true);
+				me.revalidate();
+				p.contentPane.remove(me);
+				p.contentPane.add(pl,BorderLayout.CENTER);
 				
-			}
+			}	
 		});
 		toolBar.add(button);
 		

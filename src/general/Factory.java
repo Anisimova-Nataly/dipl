@@ -25,7 +25,9 @@ import impl.ConsultationResultDaoImpl;
 import impl.DateDaoImpl;
 import impl.DiuresisDaoImpl;
 import impl.EvaluationXbsShvoDaoImpl;
+import impl.ExitDaoImpl;
 import dao.EvaluationXbsShvoDao;
+import dao.ExitDao;
 import dao.HeavyNarcoticJournalDao;
 import impl.HeavyNarcoticJournalDaoImpl;
 import dao.LiverDao;
@@ -83,6 +85,7 @@ public class Factory {
 	public ScheduleDao  scheduleDao;
 	public ConsultationResultDao consultationResuilDao;
 	public CallerDao callerDao;
+	private ExitDao exitDao;
 	private Factory(){};
 	public static Factory getInstance(){
 		return Factory.instance;
@@ -105,6 +108,11 @@ public class Factory {
 	public ManipulationDao getManipulationDao(){
 		if(manipDao==null)manipDao = new ManipulationDaoImpl();
 		return manipDao;
+		}
+	
+	public ExitDao getExtDao(){
+		if(exitDao==null)exitDao = new ExitDaoImpl();
+		return exitDao;
 		}
 	public CallerDao getCallerDao(){
 		if(callerDao==null)callerDao = new CallerDaoImpl();

@@ -16,6 +16,8 @@ import general.Project;
 import table.Card;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JTextField;
@@ -25,6 +27,7 @@ import javax.swing.JSeparator;
 
 public class listNew extends JPanel {
 	 final listNew me =  this;
+	 SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd");
 	 private JTextField textField;
 	 private JTextField textField_1;
 	 private JTextField textField_2;
@@ -113,7 +116,7 @@ public class listNew extends JPanel {
 				FormSpecs.RELATED_GAP_ROWSPEC,
 				FormSpecs.DEFAULT_ROWSPEC,}));
 		
-		JLabel label_1 = new JLabel("вставить сюда дату и время");
+		JLabel label_1 = new JLabel(formatter.format(new Date()));
 		panel.add(label_1, "4, 2");
 		
 		JSeparator separator = new JSeparator();

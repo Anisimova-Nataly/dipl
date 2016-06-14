@@ -20,6 +20,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 import java.awt.GridLayout;
 import com.jgoodies.forms.layout.FormLayout;
@@ -249,7 +250,7 @@ public class CardNew extends JPanel {
 		comboBox_4.setModel(new DefaultComboBoxModel(proj.listSpec()));
 		panel.add(comboBox_4, "4, 2, fill, default");
 		
-		JLabel label_8 = new JLabel("Вставить сюда запись даты");
+		JLabel label_8 = new JLabel(formatter.format(new Date()));
 		panel.add(label_8, "4, 4");
 		
 		JSeparator separator_8 = new JSeparator();

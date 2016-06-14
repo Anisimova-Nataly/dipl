@@ -1,17 +1,26 @@
 package main;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 import java.awt.BorderLayout;
 import javax.swing.JToolBar;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.JTabbedPane;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
@@ -23,19 +32,124 @@ import java.awt.event.ActionEvent;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.BoxLayout;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import com.toedter.calendar.JCalendar;
 
+import dao.CardDao;
+import general.Factory;
 import general.Project;
 
 public class Plan extends JPanel {
 	private JTable table;
+	private static Object[][] tbldata =null;
+	 private static String[] tblheader = { "ID выезда", "ФИО пациента","Просмотр карты","Удалить" };
+	  static int len;
 	JLabel label_2;
 	JLabel label_1;
 	Date curr = new Date();
+	  static Project pr;
+	   static MainFrame par;
 
+	public static class JTableModel extends AbstractTableModel {
+		private static final long serialVersionUID = 1L;
+		private static final String[] COLUMN_NAMES = tblheader;
+		private static final Class<?>[] COLUMN_TYPES = new Class<?>[] {Object.class, Object.class, JButton.class,  JButton.class};
+		
+		@Override public int getColumnCount() {
+			return COLUMN_NAMES.length;
+		}
+
+		@Override public int getRowCount() {
+			return len;
+		}
+		
+		@Override public String getColumnName(int columnIndex) {
+	        return COLUMN_NAMES[columnIndex];
+	    }
+		
+		@Override public Class<?> getColumnClass(int columnIndex) {
+			return COLUMN_TYPES[columnIndex];
+		}
+
+		@Override public Object getValueAt(final int rowIndex, final int columnIndex) {
+			switch (columnIndex) {
+				case 0: return tbldata[rowIndex][0];
+				case 1: try {
+					return pr.getCard(Integer.parseInt((tbldata[rowIndex][1].toString()))).getPacient().getSurname();
+				} catch (NumberFormatException | InterruptedException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				case 2: final JButton button1 = new JButton(COLUMN_NAMES[columnIndex]);
+						button1.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent arg0) {
+								try {
+									pr.delExit(Integer.parseInt(tbldata[rowIndex][0].toString()));
+								} catch (InterruptedException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								} catch (SQLException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+							}
+						});
+						return button1;
+				case 3: final JButton button3 = new JButton(COLUMN_NAMES[columnIndex]);
+				button3.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+					
+					
+						
+						
+					}
+				});
+				return button3;
+				default: return "Error";
+			}
+		}	
+	}
+
+ private static class JTableButtonRenderer implements TableCellRenderer {		
+		@Override public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+			JButton button = (JButton)value;
+			if (isSelected) {
+				button.setForeground(table.getSelectionForeground());
+				button.setBackground(table.getSelectionBackground());
+		    } else {
+		    	button.setForeground(table.getForeground());
+		    	button.setBackground(UIManager.getColor("Button.background"));
+		    }
+			return button;	
+		}
+	}
+ 
+	private static class JTableButtonMouseListener extends MouseAdapter {
+		private final JTable table;
+		
+		public JTableButtonMouseListener(JTable table) {
+			this.table = table;
+		}
+
+		public void mouseClicked(MouseEvent e) {
+			int column = table.getColumnModel().getColumnIndexAtX(e.getX());
+			int row    = e.getY()/table.getRowHeight(); 
+
+			if (row < table.getRowCount() && row >= 0 && column < table.getColumnCount() && column >= 0) {
+			    Object value = table.getValueAt(row, column);
+			    if (value instanceof JButton) {
+			    	((JButton)value).doClick();
+			    }
+			}
+		}
+	}
+ 
+	
+	
 	
 	Calendar cal = Calendar.getInstance();
 	SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd");
@@ -46,6 +160,9 @@ public class Plan extends JPanel {
 	 * Create the panel.
 	 */
 	public Plan(final MainFrame p,final Project proj) {
+		
+		pr = proj;
+		par=p;
 		setLayout(new BorderLayout(0, 0));
 		
 		JToolBar toolBar = new JToolBar();
@@ -105,7 +222,23 @@ public class Plan extends JPanel {
 		tabbedPane.addTab("Маршрут", null, panel_6, null);
 		panel_6.setLayout(new BorderLayout(0, 0));
 		
-		table = new JTable();
+		
+		try {
+			tbldata = proj.listExs();
+		} catch (InterruptedException | SQLException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		
+		len = tbldata.length;
+		table = new JTable(new JTableModel()); 
+		JScrollPane scrollPane = new JScrollPane(table);
+		table.setFillsViewportHeight(true);	
+
+		TableCellRenderer buttonRenderer = new JTableButtonRenderer();
+		table.getColumn("Просмотр карты").setCellRenderer(buttonRenderer);
+		table.getColumn("Удалить").setCellRenderer(buttonRenderer);
+		table.addMouseListener(new JTableButtonMouseListener(table));
 		panel_6.add(table, BorderLayout.CENTER);
 		
 		JToolBar toolBar_2 = new JToolBar();

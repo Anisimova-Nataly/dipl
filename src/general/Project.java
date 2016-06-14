@@ -4,6 +4,7 @@ package general;
 import dao.CallerDao;
 import dao.CardDao;
 import dao.ConsultationResultDao;
+import dao.ExitDao;
 import dao.HeavyNarcoticJournalDao;
 import dao.JournalOutpatientReceptionDao;
 import dao.ListOsmotraDao;
@@ -18,6 +19,7 @@ import main.phonecollGUI;
 import table.Caller;
 import table.Card;
 import table.ConsultationResult;
+import table.Exit;
 import table.HeavyNarcoticJournal;
 import table.JournalOutpatientReception;
 import table.ListOsmotra;
@@ -156,6 +158,14 @@ public void newMan(Manipulation man) throws InterruptedException, SQLException {
 		CardDao cardDao = factory.getCardDao();
 		cardDao.deleteCard(cardDao.getCard(id));	
 	}
+	public void delExit(int id) throws InterruptedException, SQLException {
+		
+		Factory factory = Factory.getInstance();
+		ExitDao exDao = factory.getExtDao();
+		exDao.deleteExit(exDao.getExit(id));	
+	}
+	
+	
 	
 public Card getCard(int id) throws InterruptedException, SQLException {
 		
@@ -270,6 +280,28 @@ public String[] listSpec()  throws InterruptedException, SQLException {
 		return objs;
 		
 	}
+	
+public Object[][] listExs()  throws InterruptedException, SQLException {
+		
+		Factory factory = Factory.getInstance();
+		ExitDao zurDao = factory.getExtDao();
+		List <Exit> zurnal = zurDao.getExit();
+		Object[][] objs = new Object[zurnal.size()][4];
+		int i=0;
+		SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd");
+		for(Exit p : zurnal){
+			
+			objs[i][0]= p.getId();
+			objs[i][1]= p.getCardid();
+			objs[i][2]=null;
+			objs[i][3]=null;
+			i++;
+		}
+		return objs;
+		
+	}
+	
+	
 	
 	
 	
