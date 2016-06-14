@@ -83,46 +83,7 @@ public class CardEdit extends JPanel {
 		JButton btnNewButton = new JButton("Сохранить");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Card card = new Card();
-				card.setReasondesease(textField_10.getText());
-				card.setDate(cal.getTime());
-				if(!textField_9.getText().isEmpty()){
-				card.setPhonecontact(BigInteger.valueOf(Long.parseLong(textField_9.getText())));}
-				try {
-					card.setFirstvisit(formatter1.parse(textField_7.getText()));
-					card.setFirstvisit(formatter1.parse(textField_8.getText()));
 				
-				} catch (ParseException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
-				}
-				
-				Pacient pac = new Pacient();
-				pac.setSurname(textField.getText());
-				pac.setName(textField_1.getText());
-				pac.setOtchestvo(textField_2.getText());
-				pac.setSex(comboBox_1.getSelectedItem().toString());;
-				pac.setSocialpackage(rdbtnNewRadioButton.isSelected());
-				
-				
-				try {
-					pac.setBirthdate(formatter1.parse(textField_6.getText()));
-				} catch (ParseException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
-				}
-				
-				try {
-					proj.newCard(card);
-					proj.newPacient(pac);
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				System.out.print(card.getDate().getTime());
 				Cards c;
 				try {
 					c = new Cards(proj, p);

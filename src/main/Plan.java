@@ -96,6 +96,11 @@ public class Plan extends JPanel {
 									// TODO Auto-generated catch block
 									e.printStackTrace();
 								}
+								Plan pl = new Plan(par,pr);
+								pl.setVisible(true);
+								par.contentPane.removeAll();
+								par.contentPane.revalidate();
+								par.contentPane.add(pl,BorderLayout.CENTER);
 							}
 						});
 						return button1;
