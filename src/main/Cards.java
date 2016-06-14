@@ -72,9 +72,28 @@ public class Cards extends JPanel {
 					case 3: final JButton button1 = new JButton(COLUMN_NAMES[columnIndex]);
 							button1.addActionListener(new ActionListener() {
 								public void actionPerformed(ActionEvent arg0) {
-									JOptionPane.showMessageDialog(JOptionPane.getFrameForComponent(button1), 
-											"Button clicked for row "+rowIndex);
+									
+									CardEdit edit;
+									try {
+										Factory factory = Factory.getInstance();
+										CardDao zurDao = factory.getCardDao();
+										
+										edit = new CardEdit(pr, par,zurDao.getCard(Integer.parseInt(tbldata[rowIndex][0].toString())));
+										edit.setVisible(true);
+										
+										par.contentPane.removeAll();
+										par.contentPane.revalidate();
+										par.contentPane.add(edit,BorderLayout.CENTER);
+									} catch (InterruptedException e1) {
+										// TODO Auto-generated catch block
+										e1.printStackTrace();
+									} catch (SQLException e1) {
+										// TODO Auto-generated catch block
+										e1.printStackTrace();
+									}
 								}
+									
+						
 							});
 							return button1;
 					case 4: final JButton button2 = new JButton(COLUMN_NAMES[columnIndex]);

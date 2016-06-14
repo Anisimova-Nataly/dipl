@@ -84,7 +84,7 @@ public class Plan extends JPanel {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				case 2: final JButton button1 = new JButton(COLUMN_NAMES[columnIndex]);
+				case 3: final JButton button1 = new JButton(COLUMN_NAMES[columnIndex]);
 						button1.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent arg0) {
 								try {
@@ -99,10 +99,28 @@ public class Plan extends JPanel {
 							}
 						});
 						return button1;
-				case 3: final JButton button3 = new JButton(COLUMN_NAMES[columnIndex]);
+				case 2: final JButton button3 = new JButton(COLUMN_NAMES[columnIndex]);
 				button3.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 					
+						CardEdit edit;
+						try {
+							Factory factory = Factory.getInstance();
+							CardDao zurDao = factory.getCardDao();
+							
+							edit = new CardEdit(pr, par,zurDao.getCard(Integer.parseInt(tbldata[rowIndex][0].toString())));
+							edit.setVisible(true);
+							
+							par.contentPane.removeAll();
+							par.contentPane.revalidate();
+							par.contentPane.add(edit,BorderLayout.CENTER);
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 					
 						
 						
