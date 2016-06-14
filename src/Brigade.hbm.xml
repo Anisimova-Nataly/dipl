@@ -3,12 +3,11 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 14.06.2016 19:47:04 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="table.Schedule" table="SCHEDULE">
-        <id name="id" type="java.lang.Integer">
+    <class name="table.Brigade" table="BRIGADE">
+        <id name="id" type="int" access="field">
             <column name="ID" />
             <generator class="increment" />
         </id>
-        <one-to-one name="schedule" class="table.Schedule"></one-to-one>
         <list name="exits" inverse="false" table="EXIT" lazy="true">
             <key>
                 <column name="ID" />
@@ -16,14 +15,8 @@
             <list-index></list-index>
             <one-to-many class="table.Exit" />
         </list>
-        <property name="numbervizov" type="java.lang.Integer">
-            <column name="NUMBERVIZOV" />
-        </property>
-        <property name="date" type="java.util.Date">
-            <column name="DATE" />
-        </property>
-        <property name="kmperday" type="java.lang.Integer">
-            <column name="KMPERDAY" />
+        <property name="number" type="java.lang.Integer">
+            <column name="NUMBER" />
         </property>
     </class>
 </hibernate-mapping>

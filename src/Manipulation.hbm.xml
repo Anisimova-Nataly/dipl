@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 13.06.2016 18:50:25 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 14.06.2016 19:47:04 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="table.Manipulation" table="MANIPULATION">
         <id name="id" type="java.lang.Integer">
@@ -9,13 +9,13 @@
             <generator class="increment" />
         </id>
         <one-to-one name="therapeuticDiagnosticManipulationsJournal" class="table.TherapeuticDiagnosticManipulationsJournal"></one-to-one>
-        <property name="datetime" type="java.sql.Timestamp" access="field">
+        <property name="datetime" type="java.sql.Timestamp">
             <column name="DATETIME" />
         </property>
-        <property name="result" type="java.lang.String" access="field">
+        <property name="result" type="java.lang.String">
             <column name="RESULT" />
         </property>
-        <property name="diagnosisafter" type="java.lang.String" access="field">
+        <property name="diagnosisafter" type="java.lang.String">
             <column name="DIAGNOSISAFTER" />
         </property>
     </class>
