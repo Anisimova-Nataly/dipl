@@ -47,14 +47,7 @@ public class ListOsmotra {
 	private EvaluationShfa evaluationShfa;
 	private ExternalEvidence externalEvidence;
 	private Tyazest tyazest;
-
 	
-	public Integer getCardid() {
-		return cardid;
-	}
-	public void setCardid(Integer cardid) {
-		this.cardid = cardid;
-	}
 	//private Card card;
 	private ListOsmotra listOsmotra;
 	
@@ -68,8 +61,6 @@ public class ListOsmotra {
 	 	private String reason;
 	 @Column(name = "complaints")
 	 	private String complaints;
-	 @Column(name = "cardid")
-	 	private Integer cardid;
 	 @Column(name = "ly")
 		private String lY;
 	 @Column(name = "bedsores")
@@ -319,7 +310,7 @@ public class ListOsmotra {
 	//public void setListOsmotraHeavyNarcoticJournal(ListOsmotra listOsmotra) {
 	//	this.listOsmotra = listOsmotra;
 	//}
-	/*@ManyToOne
+	@ManyToOne
 	@JoinColumn(name="cardid")
 	public ListOsmotra getListOsmotra(){
 		return listOsmotra;
@@ -327,7 +318,7 @@ public class ListOsmotra {
 	public void setListOsmotra(ListOsmotra listOsmotra){
 		this.listOsmotra = listOsmotra;	
 	}
-*/
+
 	/*public Card getCard() {
 		return card;
 	}
