@@ -28,7 +28,6 @@ import javax.persistence.Table;
 
 
 public class JournalOutpatientReception {
-	private List <Specialist> specialists;
 	private JournalOutpatientReception journalOutpatientReception;
 	@Id	
 	 @Column(name = "id")
@@ -64,13 +63,13 @@ public class JournalOutpatientReception {
 	public void setContentRenderedServices(String contentRenderedServices) {
 		this.contentRenderedServices = contentRenderedServices;
 	}
-	@OneToMany(targetEntity=Specialist.class, mappedBy="specialist", cascade=CascadeType.ALL,
-			fetch=FetchType.LAZY)
-	public List <Specialist> getSpecialists(){
-		return specialists;
+	@ManyToOne
+	@JoinColumn(name="specialistid")
+	public JournalOutpatientReception getJournalOutpatientReceptionspecialistid(){
+		return journalOutpatientReception;
 	}
-	public void setSpecialists(List<Specialist> specialist){
-		this.specialists = specialists;
+	public void setJournalOutpatientReceptionspecialistid(JournalOutpatientReception journalOutpatientReception){
+		this.journalOutpatientReception = journalOutpatientReception;	
 	}
 	@ManyToOne
 	@JoinColumn(name="cardid")
