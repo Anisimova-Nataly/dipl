@@ -44,7 +44,7 @@ public class StartPanal extends JPanel {
 		JLabel lblNewLabel = new JLabel("Помощник");
 		lblNewLabel.setBackground(Color.LIGHT_GRAY);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Liberation Serif", Font.BOLD, 54));
+		lblNewLabel.setFont(new Font("Liberation Serif", Font.BOLD, 70));
 		lblNewLabel.setForeground(Color.DARK_GRAY);
 		add(lblNewLabel, BorderLayout.NORTH);
 		
@@ -52,6 +52,7 @@ public class StartPanal extends JPanel {
 		add(panel, BorderLayout.CENTER);
 		
 		JButton btnNewButton = new JButton("Амбулаторные карты");
+		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Cards c;
@@ -68,10 +69,11 @@ public class StartPanal extends JPanel {
 				
 			}
 		});
-		panel.setLayout(new MigLayout("", "[333px][333px]", "[111px][111px][111px][111px]"));
-		panel.add(btnNewButton, "cell 0 0,grow");
+		panel.setLayout(new GridLayout(0, 2, 0, 0));
+		panel.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Журнал манипуляций");
+		btnNewButton_1.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -90,9 +92,10 @@ public class StartPanal extends JPanel {
 				
 			}
 		});
-		panel.add(btnNewButton_1, "cell 1 0,grow");
+		panel.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Журнал амбулаторного приема");
+		btnNewButton_2.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -109,9 +112,10 @@ public class StartPanal extends JPanel {
 				}				
 			}
 		});
-		panel.add(btnNewButton_2, "cell 0 1,grow");
+		panel.add(btnNewButton_2);
 			
 		JButton btnNewButton_3 = new JButton("Планировщик");
+		btnNewButton_3.setFont(new Font("Dialog", Font.BOLD, 16));
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Plan pl = new Plan(parent,proj);
@@ -122,9 +126,10 @@ public class StartPanal extends JPanel {
 				
 			}
 		});
-		panel.add(btnNewButton_3, "cell 1 1,grow");
+		panel.add(btnNewButton_3);
 		
 		JButton btnNewButton_5 = new JButton("Журнал приема звонков");
+		btnNewButton_5.setFont(new Font("Dialog", Font.BOLD, 16));
 		
 			
 			btnNewButton_5.addActionListener(new ActionListener() {
@@ -150,10 +155,16 @@ public class StartPanal extends JPanel {
 
 				}
 			});
-			panel.add(btnNewButton_5, "cell 0 2,grow");
+			panel.add(btnNewButton_5);
+		
+		JLabel label_1 = new JLabel("");
+		panel.add(label_1);
+		
+		JLabel label_2 = new JLabel("");
+		panel.add(label_2);
 		
 		JLabel label = new JLabel("");
-		panel.add(label, "cell 1 3,grow");
+		panel.add(label);
 
 	}
 }

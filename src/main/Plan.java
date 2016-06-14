@@ -255,6 +255,7 @@ public class Plan extends JPanel {
 		
 		len = tbldata.length;
 		table = new JTable(new JTableModel()); 
+		table.setFont(new Font("Dialog", Font.PLAIN, 14));
 		JScrollPane scrollPane = new JScrollPane(table);
 		table.setFillsViewportHeight(true);	
 
@@ -262,7 +263,7 @@ public class Plan extends JPanel {
 		table.getColumn("Просмотр карты").setCellRenderer(buttonRenderer);
 		table.getColumn("Удалить").setCellRenderer(buttonRenderer);
 		table.addMouseListener(new JTableButtonMouseListener(table));
-		panel_6.add(table, BorderLayout.CENTER);
+		panel_6.add(scrollPane, BorderLayout.CENTER);
 		
 		JToolBar toolBar_2 = new JToolBar();
 		panel_6.add(toolBar_2, BorderLayout.NORTH);

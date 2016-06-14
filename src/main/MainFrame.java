@@ -14,6 +14,8 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 import javax.swing.JProgressBar;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class MainFrame extends JFrame {
 
@@ -39,14 +41,19 @@ public class MainFrame extends JFrame {
 	 * Create the frame.
 	 * @throws InterruptedException 
 	 * @throws SQLException 
+	 * @throws UnsupportedLookAndFeelException 
+	 * @throws IllegalAccessException 
+	 * @throws InstantiationException 
+	 * @throws ClassNotFoundException 
 	 */
 	
 	
 
 	
 	
-	public MainFrame() throws InterruptedException, SQLException {
+	public MainFrame() throws InterruptedException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
 		super("Помощник");
+		UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
 		ImageIcon icon = new ImageIcon("/Bowl_hygeia_darkred.svg");
 		setIconImage(icon.getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
