@@ -23,7 +23,7 @@ import javax.swing.ImageIcon;
 public class manipJornal extends JPanel {
 	private JTable table;
 	 private Object[][] tbldata =null;
-	 private String[] tblheader = { "ID", "ФИО пациента", "Осложнения","Дата","Способ наблюдения за пациентом", "Результат","Диагноз после манипуляции", "ФИО мед работника"};
+	 private String[] tblheader = { "ID", "ФИО пациента", "Осложнения","Дата", "Результат","Диагноз после"};
 	 final manipJornal me =  this;
 
 	/**
@@ -40,7 +40,7 @@ public class manipJornal extends JPanel {
 		lblNewLabel.setForeground(Color.DARK_GRAY);
 		add(lblNewLabel, BorderLayout.NORTH);
 		
-		table = new JTable();
+		
 		//
 		//
 	
@@ -104,12 +104,12 @@ public class manipJornal extends JPanel {
 				p.progressBar.revalidate();
 				p.revalidate();
 				p.repaint();
-			//	try {
-			//		tbldata = proj.listCall();
-			//	} catch (InterruptedException | SQLException e1) {
+				try {
+					tbldata = proj.listManip();
+				} catch (InterruptedException | SQLException e1) {
 					// TODO Auto-generated catch block
-			//		e1.printStackTrace();
-			//	}
+					e1.printStackTrace();
+				}
 
 			    JTable tbl = new JTable(tbldata, tblheader);
 				me.add(new JScrollPane(tbl), BorderLayout.CENTER);

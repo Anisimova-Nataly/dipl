@@ -31,11 +31,12 @@ import table.TherapeuticDiagnosticManipulationsJournal;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Project {
-
+	SimpleDateFormat formatter = new SimpleDateFormat ("dd.mm.yyyy");
 
 
 /*
@@ -220,18 +221,17 @@ public ConsultationResult getResult(int id) throws InterruptedException, SQLExce
 		
 
 		List <PhoneConsultationsJournal> zurnal = zurDao.getPhoneConsultationsJournal();
-		Object[][] objs = new Object[zurnal.size()][7];
+		Object[][] objs = new Object[zurnal.size()][4];
 		int i=0;
 		
 		for(PhoneConsultationsJournal p : zurnal){
 			//System.out.println(p.getId() +"   "+ p.getReason()+"   "+p.getDate().toString());
 			objs[i][0]= p.getId();
 			objs[i][1]= this.getCard(p.getCardid()).getPacient().getSurname()+" "+this.getCard(p.getCardid()).getPacient().getName()+ " "+this.getCard(p.getCardid()).getPacient().getOtchestvo() ;
-			objs[i][2]= this.getCaller(p.getCallerid()).getSurname()+ " " +this.getCaller(p.getCallerid()).getName()+ " "+ this.getCaller(p.getCallerid()).getOtchestvo();
-			objs[i][3]= p.getDate();
-			objs[i][4]= p.getReason();
-			objs[i][5]= this.getSpec(p.getSpecialistid()).getValue1();
-			objs[i][6]= p.getConsultationResultId();
+			objs[i][2]= p.getDate();
+			objs[i][3]= p.getReason();
+			
+
 			
 			i++;
 		}
@@ -249,7 +249,7 @@ public String[] listSpec()  throws InterruptedException, SQLException {
 		int i = 0;
 		
 		String str[]=new String[1];
-				str[0] = s.getValue1()+" "+s.getValue2()+s.getValue3();
+				str[0] = s.getValue1()+" "+s.getValue2()+ " "+s.getValue3();
 		//String str[]=new String[zurnal.size()];
 		//for(Specialist p : zurnal){
 		//	str[i] = p.getValue1()+" "+p.getValue2()+p.getValue3();
@@ -266,7 +266,7 @@ public String[] listSpec()  throws InterruptedException, SQLException {
 		List <Card> zurnal = zurDao.getCard();
 		Object[][] objs = new Object[zurnal.size()][6];
 		int i=0;
-		SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd");
+		SimpleDateFormat formatter = new SimpleDateFormat ("dd.mm.yyyy");
 		for(Card p : zurnal){
 			
 			objs[i][0]= p.getId();
@@ -288,7 +288,7 @@ public Object[][] listExs()  throws InterruptedException, SQLException {
 		List <Exit> zurnal = zurDao.getExit();
 		Object[][] objs = new Object[zurnal.size()][4];
 		int i=0;
-		SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd");
+		SimpleDateFormat formatter = new SimpleDateFormat ("dd.mm.yyyy");
 		for(Exit p : zurnal){
 			
 			objs[i][0]= p.getId();
@@ -316,9 +316,9 @@ public Object[][] listLists()  throws InterruptedException, SQLException {
 		for(ListOsmotra p : zurnal){
 			
 			objs[i][0]= p.getId();
-			objs[i][2]= formatter.format(new java.sql.Date(p.getDateTime().getTime()).toString());
+			objs[i][1]= formatter.format(new java.sql.Date(p.getDateTime().getTime()).toString());
+			objs[i][2]=null;
 			objs[i][3]=null;
-			objs[i][4]=null;
 			i++;
 		}
 		return objs;
@@ -339,8 +339,8 @@ public Object[][] listLists()  throws InterruptedException, SQLException {
 				//System.out.println(p.getId() +"   "+ p.getReason()+"   "+p.getDate().toString());
 				objs[i][0]= p.getId();
 				objs[i][1]= null;
-				objs[i][2]= p.getInspectionDateTime();
-				objs[i][3]= null;
+				objs[i][2]= formatter.format(new Date(p.getInspectionDateTime().getTime()));
+				objs[i][3]= this.getSpec(4).getValue1()+" "+this.getSpec(4).getValue2()+" "+this.getSpec(4).getValue3();
 				objs[i][4]= p.getContentRenderedServices();
 				//objs[i][5]= p.getSpecialistid();
 				//objs[i][6]= p.getConsultationResultId();
@@ -358,19 +358,19 @@ public Object[][] listLists()  throws InterruptedException, SQLException {
 		
 
 		List <TherapeuticDiagnosticManipulationsJournal> zurnal = zurDao.getTherapeuticDiagnosticManipulationsJournal();
-		Object[][] objs = new Object[zurnal.size()][8];
+		Object[][] objs = new Object[zurnal.size()][6];
 		int i=0;
-		
+	
 		for(TherapeuticDiagnosticManipulationsJournal p : zurnal){
 			//System.out.println(p.getId() +"   "+ p.getReason()+"   "+p.getDate().toString());
-			objs[i][0]= null;
+			objs[i][0]= p.getId();
 			objs[i][1]= null;
-			objs[i][2]= null;
-			objs[i][3]= null;
-			objs[i][4]= null;
-			objs[i][5]= null;
-			objs[i][6]= null;
-			objs[i][7]= null;
+			objs[i][2]= p.getComplication();
+			objs[i][3]= formatter.format(new java.util.Date(p.getManipulation().getDatetime().getTime()));
+			objs[i][4]= p.getManipulation().getResult();
+			objs[i][5]= p.getManipulation().getDiagnosisafter();
+			
+		
 			
 			
 			//objs[i][5]= p.getSpecialistid();
@@ -410,5 +410,11 @@ public Object[][] listLists()  throws InterruptedException, SQLException {
 			i++;
 		}
 		return objs;	
+	}
+	public void newList(ListOsmotra j) throws SQLException {
+		Factory factory = Factory.getInstance();
+		ListOsmotraDao liDao = factory.getListOsmotraDao();
+		liDao.addListOsmotra(j);	
+		
 	}
 }

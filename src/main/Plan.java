@@ -175,7 +175,7 @@ public class Plan extends JPanel {
 	
 	
 	Calendar cal = Calendar.getInstance();
-	SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd");
+	SimpleDateFormat formatter = new SimpleDateFormat ("dd.mm.yyyy");
 	final Plan me =  this;
 	private JTextField textField;
 

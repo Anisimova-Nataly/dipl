@@ -60,7 +60,7 @@ public class CardNew extends JPanel {
 	JComboBox comboBox_1;
 	JRadioButton rdbtnNewRadioButton;
 	Calendar cal = Calendar.getInstance();
-	SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd");
+	SimpleDateFormat formatter = new SimpleDateFormat ("dd.mm.yyyy");
 	SimpleDateFormat formatter1 = new SimpleDateFormat ("dd.mm.yyyy");
 	/**
 	 * Create the panel.
@@ -385,26 +385,6 @@ public class CardNew extends JPanel {
 		JSeparator separator_11 = new JSeparator();
 		panel.add(separator_11, "4, 44");
 		
-		JLabel label_3 = new JLabel("Адрес");
-		panel.add(label_3, "2, 46, right, default");
-		
-		JPanel panel_2 = new JPanel();
-		panel.add(panel_2, "4, 46, fill, fill");
-		panel_2.setLayout(new FormLayout(new ColumnSpec[] {
-				FormSpecs.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("default:grow"),},
-			new RowSpec[] {
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,}));
-		
-		JComboBox comboBox_2 = new JComboBox();
-		panel_2.add(comboBox_2, "2, 2, fill, default");
-		
-		JButton button = new JButton("Добавить");
-		panel_2.add(button, "2, 4");
-		
 		JLabel lblNewLabel_3 = new JLabel("Семейное положение");
 		panel.add(lblNewLabel_3, "2, 48, right, default");
 		
@@ -419,37 +399,11 @@ public class CardNew extends JPanel {
 		panel.add(textField_4, "4, 50, fill, default");
 		textField_4.setColumns(10);
 		
-		JLabel lblNewLabel_5 = new JLabel("Контакты");
-		panel.add(lblNewLabel_5, "2, 52, right, default");
-		
-		JPanel panel_1 = new JPanel();
-		panel.add(panel_1, "4, 52, fill, fill");
-		panel_1.setLayout(new FormLayout(new ColumnSpec[] {
-				FormSpecs.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("default:grow"),},
-			new RowSpec[] {
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,}));
-		
-		JComboBox comboBox = new JComboBox();
-		panel_1.add(comboBox, "2, 2, fill, default");
-		
-		JButton btnNewButton_2 = new JButton("Добавить\n");
-		panel_1.add(btnNewButton_2, "2, 4");
-		
 		JSeparator separator_2 = new JSeparator();
 		panel.add(separator_2, "2, 54");
 		
 		JSeparator separator_3 = new JSeparator();
 		panel.add(separator_3, "4, 54");
-		
-		JLabel lblNewLabel_6 = new JLabel("Поликлиника");
-		panel.add(lblNewLabel_6, "2, 56, right, default");
-		
-		JComboBox comboBox_3 = new JComboBox();
-		panel.add(comboBox_3, "4, 56, fill, default");
 		
 		JLabel lblNewLabel_7 = new JLabel("Дата направления");
 		panel.add(lblNewLabel_7, "2, 58, right, default");

@@ -15,12 +15,18 @@ import javax.swing.UIManager;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 
+import dao.JournalOutpatientReceptionDao;
+import dao.ListOsmotraDao;
+
+import java.util.Date;
 import java.util.List;
 
+import general.Factory;
 import general.Project;
 
 import main.tryTable.JTableModel;
 import table.Card;
+import table.JournalOutpatientReception;
 import table.ListOsmotra;
 
 import java.awt.Font;
@@ -151,7 +157,7 @@ public class Lists extends JPanel {
 		//System.out.print("hey!");
 		setLayout(new BorderLayout(0, 0));
 		pr = proj;
-		JLabel lblNewLabel = new JLabel("Листы  осмотра пациента"+"  "+card.getPacient().getSurname() + " "+card.getPacient().getName()+ " "+card.getPacient().getOtchestvo());
+		JLabel lblNewLabel = new JLabel("Листы  осмотра:"+card.getPacient().getSurname() + " "+card.getPacient().getName()+ " "+card.getPacient().getOtchestvo());
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 20));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setForeground(Color.DARK_GRAY);
@@ -218,18 +224,30 @@ public class Lists extends JPanel {
 				p.revalidate();
 				p.repaint();
 				// ;
-				 List<ListOsmotra> zurnal= card.getListOsmotras();
-				 Object[][] tbldata = new Object[zurnal.size()][4];
+				Factory factory = Factory.getInstance();
+				ListOsmotraDao zurDao = factory.getListOsmotraDao();
+				
+				List<ListOsmotra> zurnal;
+				try {
+					zurnal = zurDao.getListOsmotra();
+					 tbldata = new Object[10][4];
 					int i=0;
-					SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd");
-					for(ListOsmotra p : zurnal){
+					 Date d = new Date();
+					
+					SimpleDateFormat formatter = new SimpleDateFormat ("dd.MM.yyyy");
+					for(int k =0;k<10;k++){
+						d.setDate(k*15-150);
+						tbldata[k][0]= 10-k;
+						tbldata[k][1]= formatter.format(d);
+						tbldata[k][2]=null;
+						tbldata[k][3]=null;
 						
-						tbldata[i][0]= p.getId();
-						tbldata[i][2]= formatter.format(new java.sql.Date(p.getDateTime().getTime()).toString());
-						tbldata[i][3]=null;
-						tbldata[i][4]=null;
-						i++;
 					}
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				 
 					
 				System.out.print(tbldata.length);
 				

@@ -37,7 +37,7 @@ import javax.swing.ImageIcon;
 public class Cards extends JPanel {
 	private JTable table;
 	 private static Object[][] tbldata =null;
-	 private static String[] tblheader = { "ID карты", "ФИО пациента", "Год рождения","Просмотр","Листы осмотра","Удалить" };
+	 private static String[] tblheader = { "ID карты", "ФИО пациента", "Год рождения","Просмотр","Листы","Удалить" };
 	 final    Cards me =  this;
 	  static int len;
 	  static Project pr;
@@ -275,7 +275,7 @@ public class Cards extends JPanel {
 
 				TableCellRenderer buttonRenderer = new JTableButtonRenderer();
 				table.getColumn("Просмотр").setCellRenderer(buttonRenderer);
-				table.getColumn("Листы осмотра").setCellRenderer(buttonRenderer);
+				table.getColumn("Листы").setCellRenderer(buttonRenderer);
 				table.getColumn("Удалить").setCellRenderer(buttonRenderer);
 				table.addMouseListener(new JTableButtonMouseListener(table));
 			    //JTable tbl = new JTable(tbldata, tblheader);

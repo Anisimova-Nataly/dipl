@@ -30,8 +30,8 @@ import org.hibernate.annotations.IndexColumn;
 @Table(name = "card")
 
 public class Card {
-	private List <Specialist> specialists;
-	private Card card;
+	//private List <Specialist> specialists;
+//	private Card card;
 	private Pacient pacient;
 	private List <ListOsmotra> listOsmotras;
 	private List <Exit> exits;
@@ -60,15 +60,7 @@ public class Card {
  	private java.util.Date date;
 	@Column(name = "signature")
  	private String signature;
-
-	@OneToMany(targetEntity=ListOsmotra.class, mappedBy="listosmotra", cascade=CascadeType.ALL,
-	fetch=FetchType.LAZY)
-	public List <ListOsmotra> getListOsmotras(){
-		return listOsmotras;
-	}
-	public void setListOsmotras(List<ListOsmotra> listOsmotras){
-		this.listOsmotras = listOsmotras;
-	}
+	
 	@OneToMany(targetEntity=Exit.class, mappedBy="exit", cascade=CascadeType.ALL,
 			fetch=FetchType.LAZY)
 	public List <Exit> getExits(){
@@ -144,5 +136,12 @@ public class Card {
 	}
 	public void setPacient(Pacient pacient) {
 		this.pacient = pacient;
+	}
+	@OneToMany(targetEntity=ListOsmotra.class, mappedBy="cardid", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	public List <ListOsmotra> getListOsmotras(){
+		return listOsmotras;
+	}
+	public void setListOsmotras(List <ListOsmotra> listOsmotras){
+		this.listOsmotras = listOsmotras;
 	}
 }

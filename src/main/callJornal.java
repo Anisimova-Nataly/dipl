@@ -23,7 +23,7 @@ import javax.swing.ImageIcon;
 public class callJornal extends JPanel {
 	private JTable table;
 	 private Object[][] tbldata =null;
-	 private String[] tblheader = { "ID", "ФИО пациента", "ФИО звонившего", "Дата", "Причина звонка", "ФИО принявшего звонок", "Результат" };
+	 private String[] tblheader = { "ID", "ФИО пациента",  "Дата", "Причина звонка" };
 	 final callJornal me =  this;
 
 	/**

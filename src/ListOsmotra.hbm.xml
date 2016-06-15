@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 13.06.2016 18:50:25 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 15.06.2016 16:05:09 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="table.ListOsmotra" table="LISTOSMOTRA">
         <id name="id" type="int">
@@ -18,7 +18,9 @@
         <one-to-one name="evaluationShfa" class="table.EvaluationShfa"></one-to-one>
         <one-to-one name="externalEvidence" class="table.ExternalEvidence"></one-to-one>
         <one-to-one name="tyazest" class="table.Tyazest"></one-to-one>
-        <one-to-one name="listOsmotra" class="table.ListOsmotra"></one-to-one>
+        <many-to-one name="cardid" class="table.Card" access="field" fetch="join">
+            <column name="CARDID" />
+        </many-to-one>
         <property name="dateTime" type="java.sql.Timestamp">
             <column name="DATETIME" />
         </property>

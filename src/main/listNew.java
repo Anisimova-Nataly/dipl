@@ -16,8 +16,11 @@ import com.jgoodies.forms.layout.RowSpec;
 
 import general.Project;
 import table.Card;
+import table.ListOsmotra;
+
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.awt.event.ActionEvent;
@@ -49,7 +52,7 @@ public class listNew extends JPanel {
 	public listNew(final Project proj, final MainFrame p, final Card card) throws InterruptedException, SQLException {
 		setLayout(new BorderLayout(0, 0));
 		
-		JLabel label = new JLabel("Лист осмотра");
+		JLabel label = new JLabel("Новый лист осмотра");
 		label.setFont(new Font("Dialog", Font.BOLD, 30));
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		add(label, BorderLayout.NORTH);
@@ -79,6 +82,26 @@ public class listNew extends JPanel {
 		toolBar.add(button);
 		
 		JButton button_1 = new JButton("Сохранить");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ListOsmotra j = new ListOsmotra();
+	
+				j.setDateTime(new Timestamp(System.currentTimeMillis()));
+				
+				try {
+					proj.newList(j);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+
+			
+			}
+		});
+		
+		
+		
 		toolBar.add(button_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
